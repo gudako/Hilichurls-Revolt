@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+
+#mainbar{
+    display: flex;
+    padding: 10px 0;
+    justify-content: flex-end;
+    background-color: #068181;
+    color: whitesmoke;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 17px;
+    text-align: center;
+    position: fixed;
+    align-items: center;
+    top: 0;
+    width: 100%;
+}
+
+#mainbar a{
+    text-decoration: none;
+    color: inherit;
+}
+
+#mainbar>span.norm, #top_menu_button{
+    padding: 10px 7px;
+    margin: 0 7px;
+    transition-duration: 0.25s;
+    display: inline-flex;
+    align-items: center;
+}
+
+#mainbar>span.norm>img, #login_button>img, #top_menu_button>img{
+    height: 17px;
+    width: auto;
+    margin-right: 5px;
+}
+
+#mainbar>span.norm:hover, #top_menu_button:hover{
+    background-color: #08a6a6;
+}
+
+#mainbar>span.norm:active, #top_menu_button:active{
+    background-color: #0a8ebe;
+}
+
+#login_button{
+    border-radius: 3px;
+    border: 2px #02021c ridge;
+    padding: 4px 16px;
+    background-color: #9af1f1;
+    margin: 0 16px;
+    color: #02021c;
+    display: inline-flex;
+    align-items: center;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+#login_button:hover{
+    background-color: #89e0e0;
+}
+
+#login_button:active{
+    background: linear-gradient(0deg, #6fe2e2, #4e9c9c);
+}
+
+#logo{
+    height: 120px;
+    width: auto;
+    margin: -30px auto -30px 15px;
+}
+
+#lang{
+    margin: 0 15px 0 7px;
+}
+
+#top_menu_button{
+    display: none;
+}
+
+#top_menu{
+    display: none;
+}
+
+@media only screen and (max-width: 930px) {
+    #mainbar>span.norm{
+        display: none;
+    }
+
+    #top_menu_button{
+        display: inline;
+    }
+
+    #top_menu_button>img{
+        height: 20px;
+        margin-right: 0;
+    }
+
+    /*for the top list dropdown menu todo todo todo */
+    #top_menu{
+        display: block;
+        position: absolute;
+        width: 40px;
+        left: 0;
+        top: 0;
+        background-color: #2f6060;
+    }
+
+
+}
+
+@media only screen and (max-width: 585px) {
+    #login_button{
+        margin: 0 12px 0 5px;
+    }
+
+    #login_button>img{
+        display: none;
+    }
+
+    #lang{
+        display: none;
+    }
+
+    #logo{
+        margin-left: 5px;
+    }
+}

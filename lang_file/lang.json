@@ -1,0 +1,22 @@
+{
+  "game_name": {
+    "en": "Hilichurls Revolt",
+    "zh": "丘丘人的反抗"
+  },
+  "mainbar_mainpage": {
+    "en": "Main Page",
+    "zh": "游戏首页"
+  },
+  "mainbar_achievements": {
+    "en": "Achievements",
+    "zh": "所有成就"
+  },
+  "mainbar_bosses": {
+    "en": "Bosses",
+    "zh": "击败强敌"
+  },
+  "mainbar_play": {
+    "en": "Play Now!",
+    "zh": "开始游戏!"
+  }
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hilichurls Revolt.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/mainbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/back/mainback1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/icons/achievements.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/icons/bosses.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/icons/mainpage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/icons/play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/icons/top_list.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/logo_en.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/logo_zh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/initialize.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang_file/lang.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang_file/lang.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mainbar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mainpage.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BLkzDJuduqAufWPT81uErBlano" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Hilichurls Revolt&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="" />
+      <created>1656807954347</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656807954347</updated>
+      <workItem from="1656807955844" duration="6702000" />
+      <workItem from="1656814774339" duration="197000" />
+      <workItem from="1656815366368" duration="4574000" />
+      <workItem from="1656864904020" duration="7506000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
