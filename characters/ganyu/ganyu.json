@@ -1,5 +1,6 @@
 {
-  "name": "charname_ganyu",
+  "name": "ganyu",
+  "textcode": "charname_ganyu",
   "rank": 5,
   "levelup_factor": -1,
   "hp": 16000,
@@ -10,6 +11,10 @@
   "poise": 100,
   "dodge_factor": 0.7,
   "width_px": 194,
+  "resistance": {
+    "cyro": 0.4
+  },
+  "protector": null,
   "skills":
   [
     {
@@ -17,8 +22,7 @@
       "textcode": "skill_frostflake_arrow",
       "fire_time": 3000,
       "fail_time": 2000,
-      "dodge_mul": 0.7,
-      "poise_image": "jfdduewirkejad.png"
+      "dodge_mul": 0.7
     }
 
   ]

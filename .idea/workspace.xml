@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/characters/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/characters/ganyu/frostflake_arrow.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/characters/ganyu/ganyu.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/window.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/pages/close.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/json_schema/battlefield.schema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/characters/ganyu/ganyu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/window/setlang.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/window/window.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/window/window.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/mainbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/characters/ganyu/ganyu.json" beforeDir="false" afterPath="$PROJECT_DIR$/characters/ganyu/ganyu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/window.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/window.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/modal.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/mainbar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +29,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -47,6 +47,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -59,6 +60,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\window" />
       <recent name="F:\Hilichurls Revolt\characters\ganyu" />
       <recent name="F:\Hilichurls Revolt\img\pages" />
     </key>
@@ -75,7 +77,7 @@
       <workItem from="1656814774339" duration="197000" />
       <workItem from="1656815366368" duration="4574000" />
       <workItem from="1656864904020" duration="23311000" />
-      <workItem from="1656920551475" duration="7538000" />
+      <workItem from="1656920551475" duration="20122000" />
     </task>
     <servers />
   </component>

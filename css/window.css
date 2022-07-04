@@ -13,11 +13,12 @@
     justify-content: center;
     align-items: center;
     font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
 }
 
 #window{
-    width: 75%;
-    max-width: 500px;
+    width: 60%;
+    max-width: 440px;
     display: block;
     margin: auto;
     position: relative;
@@ -30,6 +31,37 @@
     display: flex;
     margin: 10px;
     font-size: 18px;
+    align-items: center;
+    font-weight: bold;
 }
 
+#window>div.sap{
+    display: block;
+    width: 100%;
+    background-color: #02021c;
+    height: 1px;
+    margin-top: -3px;
+}
 
+#title_box>a{
+    margin-left: auto;
+    transition-duration: 0.15s;
+}
+
+#title_box>a>img{
+    width: 17px;
+    height: auto;
+}
+
+#title_box>a:hover{
+    opacity: 0.6;
+}
+
+#title_box>a:active{
+    opacity: 0.4;
+}
+
+#content_box{
+    display: block;
+    margin: 10px;
+}

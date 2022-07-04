@@ -50,8 +50,14 @@ include_once 'lang_file/lang.php';
     <!--dropdown list for smaller screen-->
     <div id="top_menu" style="display: none">
         <?php add_normal_links();?>
-        <a class="norm"><span><?php echo text('mainbar_menu_change_lang');?></span></a>
+        <a class="norm" id="setlang"><span><?php echo text('mainbar_menu_change_lang');?></span></a>
     </div>
+
+    <!--for the language change-->
+    <script src="window/window.js"></script>
+    <script>
+        $('#setlang').click(()=>openWindow('Set language','setlang.html'))
+    </script>
 
     <!--script for the dropdown list-->
     <script>
