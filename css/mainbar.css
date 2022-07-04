@@ -4,7 +4,7 @@
     display: flex;
     padding: 10px 0;
     justify-content: flex-end;
-    background-color: #068181;
+    background-color: #00554e;
     color: whitesmoke;
     font-family: 'Noto Sans SC', sans-serif;
     font-size: 17px;
@@ -20,34 +20,45 @@
     color: inherit;
 }
 
-#mainbar>span.norm, #top_menu_button{
+#mainbar>a.norm, #top_menu_button{
     padding: 10px 7px;
     margin: 0 7px;
-    transition-duration: 0.25s;
+    transition-duration: 0.2s;
     display: inline-flex;
     align-items: center;
 }
 
-#mainbar>span.norm>img, #login_button>img, #top_menu_button>img{
+#mainbar>a.norm>img, #login_button>img, #top_menu_button>img{
     height: 17px;
     width: auto;
     margin-right: 5px;
 }
 
-#mainbar>span.norm:hover, #top_menu_button:hover{
-    background-color: #08a6a6;
+#mainbar>a.norm:hover, #top_menu_button:hover{
+    background-color: #00695f;
 }
 
-#mainbar>span.norm:active, #top_menu_button:active{
-    background-color: #0a8ebe;
+#mainbar>a.norm:active, #top_menu_button:active{
+    background-color: #009184;
+}
+
+#top_menu_button[opened], #top_menu>a.norm, #top_menu{
+    background-color: #008b9d;
+}
+
+#top_menu_button[opened]:hover, #top_menu>a.norm:hover{
+    background-color: #07a8be;
+}
+
+#top_menu_button[opened]:active, #top_menu>a.norm:active{
+    background-color: #17bdd5;
 }
 
 #login_button{
     border-radius: 3px;
-    border: 2px #02021c ridge;
-    padding: 4px 16px;
+    padding: 6px 16px;
     background-color: #9af1f1;
-    margin: 0 16px;
+    margin: 0 20px 0 16px;
     color: #02021c;
     display: inline-flex;
     align-items: center;
@@ -70,7 +81,7 @@
 }
 
 #lang{
-    margin: 0 15px 0 7px;
+    margin: 0 15px 0 4px;
 }
 
 #top_menu_button{
@@ -82,12 +93,13 @@
 }
 
 @media only screen and (max-width: 930px) {
-    #mainbar>span.norm{
+    #mainbar>a.norm{
         display: none;
     }
 
     #top_menu_button{
         display: inline;
+        cursor: pointer;
     }
 
     #top_menu_button>img{
@@ -95,33 +107,60 @@
         margin-right: 0;
     }
 
-    /*for the top list dropdown menu todo todo todo */
+    #lang{
+        display: none;
+    }
+
+    /*for the top list dropdown menu*/
     #top_menu{
         display: block;
         position: absolute;
-        width: 40px;
+        width: 130px;
         left: 0;
         top: 0;
-        background-color: #2f6060;
     }
 
+    #top_menu>a.norm{
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        transition-duration: 0.2s;
+        cursor: pointer;
+    }
 
+    #top_menu>a.norm>img{
+        height: 14px;
+        width: auto;
+    }
+
+    #top_menu>a.norm>span{
+        margin-left: auto;
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width: 585px) {
     #login_button{
-        margin: 0 12px 0 5px;
+        margin: 0 13px 0 5px;
     }
 
     #login_button>img{
         display: none;
     }
 
-    #lang{
-        display: none;
-    }
-
     #logo{
         margin-left: 5px;
+    }
+
+    #top_menu{
+        width: 105px;
+    }
+
+    #top_menu>a.norm>span{
+        margin-left: unset;
+    }
+
+    #top_menu>a.norm>img{
+        display: none;
     }
 }

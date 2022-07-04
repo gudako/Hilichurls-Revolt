@@ -18,5 +18,9 @@
   "mainbar_play": {
     "en": "Play Now!",
     "zh": "开始游戏!"
+  },
+  "mainbar_menu_change_lang": {
+    "en": "Set language",
+    "zh": "变更游戏语言"
   }
 }
