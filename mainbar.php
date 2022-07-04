@@ -56,7 +56,9 @@ include_once 'lang_file/lang.php';
     <!--for the language change-->
     <script src="window/window.js"></script>
     <script>
-        $('#setlang').click(()=>openWindow('Set language','setlang.html'))
+        $('#setlang').click(()=>{
+            whenSthMoved('');
+            openWindow('Set language','setlang.html');});
     </script>
 
     <!--script for the dropdown list-->
