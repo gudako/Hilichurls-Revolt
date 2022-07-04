@@ -10,5 +10,16 @@
     <title><?php echo text('game_name');?></title>
 </head>
 <body style="margin: 0; padding: 0">
-    <?php include 'mainbar.php'?>
+<?php include 'mainbar.php'?>
+
+<link href="css/window.css" rel="stylesheet"/>
+<div id="modal_back">
+    <div id="window">
+        <div id="title_box">
+            <span>tiewlbox</span>
+            <a></a>
+        </div>
+    </div>
+</div>
+
 </body>

@@ -53,6 +53,7 @@ include_once 'lang_file/lang.php';
         <a class="norm"><span><?php echo text('mainbar_menu_change_lang');?></span></a>
     </div>
 
+    <!--script for the dropdown list-->
     <script>
         const topMenu = $('#top_menu');
         const topMenuButton = $('#top_menu_button');

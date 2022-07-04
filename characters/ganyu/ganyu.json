@@ -1,0 +1,25 @@
+{
+  "name": "charname_ganyu",
+  "rank": 5,
+  "levelup_factor": -1,
+  "hp": 16000,
+  "atk": 2400,
+  "def": 700,
+  "crit_rate": 0.5,
+  "crit_dmg": 2.0,
+  "poise": 100,
+  "dodge_factor": 0.7,
+  "width_px": 194,
+  "skills":
+  [
+    {
+      "name": "frostflake_arrow",
+      "textcode": "skill_frostflake_arrow",
+      "fire_time": 3000,
+      "fail_time": 2000,
+      "dodge_mul": 0.7,
+      "poise_image": "jfdduewirkejad.png"
+    }
+
+  ]
+}

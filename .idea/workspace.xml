@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/characters/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/characters/ganyu/frostflake_arrow.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/characters/ganyu/ganyu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/window.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/json_schema/battlefield.schema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hilichurls Revolt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Hilichurls Revolt.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/mainbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang_file/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang_file/lang.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/mainbar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="CSS File" />
       </list>
     </option>
@@ -43,9 +53,16 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "F:/Hilichurls Revolt",
     "list.type.of.created.stylesheet": "CSS",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "JavaScript.Libraries"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\characters\ganyu" />
+      <recent name="F:\Hilichurls Revolt\img\pages" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +74,8 @@
       <workItem from="1656807955844" duration="6702000" />
       <workItem from="1656814774339" duration="197000" />
       <workItem from="1656815366368" duration="4574000" />
-      <workItem from="1656864904020" duration="19514000" />
+      <workItem from="1656864904020" duration="23311000" />
+      <workItem from="1656920551475" duration="7538000" />
     </task>
     <servers />
   </component>
