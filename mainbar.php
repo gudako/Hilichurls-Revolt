@@ -34,17 +34,17 @@ include_once 'lang_file/lang.php';
 
     <!--dropdown list to set language-->
     <script>
-        function setLang(){
+        function setLang(valu = 'lang'){
             const date = new Date();
             date.setTime(date.getTime() + (365*24*60*60*1000));
             const expires = "; expires=" + date.toUTCString();
-            document.cookie = "lang=" + ($("#lang option:selected").val() || "")  + expires + "; path=/";
+            document.cookie = "lang=" + ($("#"+valu+" option:selected").val() || "")  + expires + "; path=/";
             location.reload();
         }
     </script>
     <select id="lang" onchange="setLang()">
         <option value="en" <?php echo get_lang()=='en'?'selected':'';?>>English</option>
-        <option value="zh" <?php echo get_lang()=='zh'?'selected':'';?>>Chinese</option>
+        <option value="zh" <?php echo get_lang()=='zh'?'selected':'';?>>中文</option>
     </select>
 
     <!--dropdown list for smaller screen-->
@@ -58,7 +58,10 @@ include_once 'lang_file/lang.php';
     <script>
         $('#setlang').click(()=>{
             whenSthMoved('');
-            openWindow('Set language','setlang.html');});
+            openWindow({
+                "title": {"text": "<?php echo text('setlang_window_title');?>"},
+                "context": "setlang.php"
+            });});
     </script>
 
     <!--script for the dropdown list-->

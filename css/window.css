@@ -38,13 +38,13 @@
     display: flex;
     padding: 8px 10px;
     margin: 2px 0;
-    font-size: 18px;
+    font-size: 16px;
     align-items: center;
     font-weight: bold;
     background-color: #bbffff;
 }
 
-#window>div.sap{
+#title_separator{
     display: block;
     width: 100%;
     background-color: #02021c;
@@ -52,25 +52,44 @@
     margin-top: -3px;
 }
 
-#title_box>a{
+#close_button{
     margin-left: auto;
     transition-duration: 0.15s;
 }
 
-#title_box>a>img{
+#close_button>img{
     width: 17px;
     height: auto;
 }
 
-#title_box>a:hover{
+#close_button:hover{
     opacity: 0.6;
 }
 
-#title_box>a:active{
+#close_button:active{
     opacity: 0.4;
 }
 
 #content_box{
     display: block;
-    margin: 10px;
+    margin: 16px 14px;
+}
+
+.press_button{
+    border-radius: 3px;
+    padding: 4px 12px;
+    background-color: #dedede;
+    color: #02021c;
+    display: inline-flex;
+    align-items: center;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.press_button:hover{
+    background-color: #cbcbcb;
+}
+
+.press_button:active{
+    background: linear-gradient(0deg, #d0d0d0, #c0c0c0);
 }

@@ -22,5 +22,21 @@
   "mainbar_menu_change_lang": {
     "en": "Set language",
     "zh": "变更游戏语言"
+  },
+  "setlang_window_title": {
+    "en": "Change Language",
+    "zh": "更改游戏语言"
+  },
+  "setlang_window_content": {
+    "en": "Change the current language to:",
+    "zh": "将当前语言变更为："
+  },
+  "common_confirm": {
+    "en": "Confirm",
+    "zh": "确认"
+  },
+  "common_cancel": {
+    "en": "Cancel",
+    "zh": "取消"
   }
 }

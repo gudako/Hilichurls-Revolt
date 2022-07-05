@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/window/sheer_window.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/window.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/window.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang_file/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang_file/lang.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/mainbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/setlang.html" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/window.html" beforeDir="false" afterPath="$PROJECT_DIR$/window/window.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/window/setlang.html" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/window/sheer_window.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/window/window.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/window/window.js" beforeDir="false" afterPath="$PROJECT_DIR$/window/window.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,20 +42,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "F:/Hilichurls Revolt/window",
-    "list.type.of.created.stylesheet": "CSS",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "JavaScript.Libraries"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Hilichurls Revolt/window&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;JavaScript.Libraries&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Hilichurls Revolt\window" />
@@ -77,7 +78,8 @@
       <workItem from="1656814774339" duration="197000" />
       <workItem from="1656815366368" duration="4574000" />
       <workItem from="1656864904020" duration="23311000" />
-      <workItem from="1656920551475" duration="23624000" />
+      <workItem from="1656920551475" duration="23729000" />
+      <workItem from="1656994456463" duration="9294000" />
     </task>
     <servers />
   </component>
