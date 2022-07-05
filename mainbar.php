@@ -16,7 +16,7 @@ include_once 'lang_file/lang.php';
     function add_normal_links(){
         add_normal_link('mainpage','mainbar_mainpage');
         add_normal_link('achievements','mainbar_achievements');
-        add_normal_link('bosses','mainbar_bosses');
+        add_normal_link('handbook','mainbar_handbook');
     }
     add_normal_links();
     ?>
@@ -42,7 +42,7 @@ include_once 'lang_file/lang.php';
             location.reload();
         }
     </script>
-    <select id="lang" onchange="setLang()">
+    <select id="lang" onchange="setLang('lang')">
         <option value="en" <?php echo get_lang()=='en'?'selected':'';?>>English</option>
         <option value="zh" <?php echo get_lang()=='zh'?'selected':'';?>>中文</option>
     </select>

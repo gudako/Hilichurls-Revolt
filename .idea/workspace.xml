@@ -5,14 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/css/handbook.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/lowbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handbook.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/back/handbook_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/icons/handbook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lowbar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/window.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/window.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mainbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pages/icons/bosses.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lang_file/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang_file/lang.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/mainbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/setlang.html" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/sheer_window.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/window.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/window.js" beforeDir="false" afterPath="$PROJECT_DIR$/window/window.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/window/setlang.php" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -61,6 +65,7 @@
       <recent name="F:\Hilichurls Revolt\window" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\img\pages\icons" />
       <recent name="F:\Hilichurls Revolt\window" />
       <recent name="F:\Hilichurls Revolt\characters\ganyu" />
       <recent name="F:\Hilichurls Revolt\img\pages" />
@@ -79,7 +84,7 @@
       <workItem from="1656815366368" duration="4574000" />
       <workItem from="1656864904020" duration="23311000" />
       <workItem from="1656920551475" duration="23729000" />
-      <workItem from="1656994456463" duration="9294000" />
+      <workItem from="1656994456463" duration="15683000" />
     </task>
     <servers />
   </component>

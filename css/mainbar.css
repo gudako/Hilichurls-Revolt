@@ -2,7 +2,7 @@
 
 #mainbar{
     display: flex;
-    padding: 10px 0;
+    padding: 7px 0 5px 0;
     justify-content: flex-end;
     background-color: #00554e;
     color: whitesmoke;
@@ -13,6 +13,8 @@
     align-items: center;
     top: 0;
     width: 100%;
+    z-index: 1;
+    box-shadow: 0 5px 3px #004444;
 }
 
 #mainbar a{
@@ -78,6 +80,8 @@
     height: 120px;
     width: auto;
     margin: -30px auto -30px 15px;
+    position: relative;
+    top: 10px;
 }
 
 #lang{
@@ -92,7 +96,7 @@
     display: none;
 }
 
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 900px) {
     #mainbar>a.norm{
         display: none;
     }
@@ -154,14 +158,6 @@
     }
 
     #top_menu{
-        width: 105px;
-    }
-
-    #top_menu>a.norm>span{
-        margin-left: unset;
-    }
-
-    #top_menu>a.norm>img{
-        display: none;
+        width: 120px;
     }
 }
