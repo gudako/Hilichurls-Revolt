@@ -9,7 +9,7 @@
     <title><?php echo text('game_name');?></title>
 </head>
 <body style="margin: 0; padding: 0">
-<?php include 'mainbar.php'; include 'lowbar.php';?>
+<?php include 'mainbar.php'; include 'lowbar.php'; include 'vert_screen_alert.php';?>
 <link href="css/mainpage.css" rel="stylesheet"/>
 <div id="bar1">
     <div id="bar1_clip_img" class="clip_img"> <img src="img/pages/mainpage1.jpg"></div>
@@ -25,6 +25,8 @@
     <div id="bar3_statement"><?php echo text('mainpage_bar3_text1');?></div>
 </div>
 <div id="bar4">
-
+    <div>
+        <?php echo text('mainpage_bar4_text');?>
+    </div>
 </div>
 </body>

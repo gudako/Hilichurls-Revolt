@@ -55,9 +55,12 @@ body {
 }
 
 #bar3_sub_img{
-    margin-top: -88vw;
+    position: absolute;
+    top: -6vw;
+    left: 30vw;
     z-index: 1;
     text-align: center;
+
 }
 
 #bar3_sub_img>img{
@@ -66,19 +69,42 @@ body {
 }
 
 #bar3_advocate{
-    margin-top: 40vw;
     padding-right: 3vw;
-    font-size: 4vw;
+    font-size: 3.6vw;
     text-align: right;
     text-shadow: -0.4vw 0 0.4vw black;
+    position: absolute;
+    top: 66.6vw;
+    margin-left: auto;
+    left: 0;
+    right: 0;
 }
 
 #bar3_statement{
-    margin-left: 4vw;
-    margin-top: -25vw;
-    font-size: 2.7vw;
+    font-size: 2.3vw;
     text-shadow: -0.4vw 0 0.4vw black;
+    position: absolute;
+    top: 50vw;
+    padding-left: 3vw;
 }
+
+#bar4{
+    margin: 0;
+    background-color: #001010;
+    padding: 5vw 9vw;
+}
+
+#bar4>div{
+    border: 0.3vw rgba(107, 107, 107, 0.4) solid;
+    border-radius: 0.3vw;
+    font-size: 21px;
+    padding: 49px 30px;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* up is the normal settings...... */
+/* THE 1000 PX SETTINGS ARE BELOW PROCEED WITH CAUTION */
 
 @media only screen and (max-width: 1000px) {
     #bar1_clip_img>img, #bar3_clip_img>img{
@@ -101,7 +127,7 @@ body {
     }
 
     #bar3_sub_img{
-        margin-top: -104vw;
+        left: 25vw;
     }
 
     #bar3_sub_img>img{
@@ -109,14 +135,22 @@ body {
     }
 
     #bar3_advocate{
-        margin-top: 45vw;
         font-size: 4.5vw;
+        top: 81vw;
     }
 
     #bar3_statement{
-        margin-top: -30vw;
+        font-size: 2.5vw;
+        top: 66vw;
+    }
+
+    #bar4>div{
+        font-size: 19px;
+        padding: 39px 25px;
     }
 }
+
+/* THE 700 PX SETTINGS ARE BELOW PROCEED WITH CAUTION */
 
 @media only screen and (max-width: 700px) {
     #bar1_clip_img>img, #bar3_clip_img>img{
@@ -139,20 +173,26 @@ body {
     }
 
     #bar3_sub_img{
-        margin-top: -136vw;
+        left: 20vw;
+
     }
 
     #bar3_sub_img>img{
-        width: 61vw;
+        width: 60vw;
     }
 
     #bar3_advocate{
-        margin-top: 64vw;
-        font-size: 5.4vw;
+        font-size: 5vw;
+        top: 110vw;
     }
 
     #bar3_statement{
-        font-size: 4vw;
-        margin-top: -40vw;
+        font-size: 3.4vw;
+        top: 90vw
+    }
+
+    #bar4>div{
+        font-size: 17px;
+        padding: 30px 20px;
     }
 }
