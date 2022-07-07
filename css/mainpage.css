@@ -4,22 +4,22 @@ body {
     margin: 0;
     background-color: #202020;
     font-family: 'Noto Sans SC', sans-serif;
+    color: whitesmoke;
 }
 
 #bar1{
     top: 72px;
     width: 100%;
     position: relative;
-    bottom: 0;
 }
 
-#bar1_clip_img{
+.clip_img{
     display: flex;
     justify-content: center;
     overflow: hidden;
 }
 
-#bar1_clip_img>img{
+.clip_img>img{
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -33,7 +33,6 @@ body {
 
 #bar1_advocate>div{
     font-size: 3.6vw;
-    color: whitesmoke;
     background-color: rgba(127, 0, 56, 0.69);
     display: block;
     width: 36vw;
@@ -43,16 +42,46 @@ body {
 
 #bar2{
     margin-top: calc(72px + 3.5vw);
-    color: whitesmoke;
-    font-size: 1.7vw;
+    font-size: 2vw;
     background-color: #393838;
     text-align: center;
     padding: 0.2vw;
 }
 
+#bar3{
+    width: 100%;
+    margin-top: 6vw;
+    position: relative;
+}
+
+#bar3_sub_img{
+    margin-top: -88vw;
+    z-index: 1;
+    text-align: center;
+}
+
+#bar3_sub_img>img{
+    width: 40vw;
+    height: auto;
+}
+
+#bar3_advocate{
+    margin-top: 40vw;
+    padding-right: 3vw;
+    font-size: 4vw;
+    text-align: right;
+    text-shadow: -0.4vw 0 0.4vw black;
+}
+
+#bar3_statement{
+    margin-left: 4vw;
+    margin-top: -25vw;
+    font-size: 2.7vw;
+    text-shadow: -0.4vw 0 0.4vw black;
+}
 
 @media only screen and (max-width: 1000px) {
-    #bar1_clip_img>img{
+    #bar1_clip_img>img, #bar3_clip_img>img{
         width: 120%;
     }
 
@@ -66,14 +95,31 @@ body {
     }
 
     #bar2{
-        font-size: 2.3vw;
-        padding: 0.3vw;
+        font-size: 2.6vw;
+        padding: 0.26vw;
         margin-top: calc(72px + 5vw);
+    }
+
+    #bar3_sub_img{
+        margin-top: -104vw;
+    }
+
+    #bar3_sub_img>img{
+        width: 50vw;
+    }
+
+    #bar3_advocate{
+        margin-top: 45vw;
+        font-size: 4.5vw;
+    }
+
+    #bar3_statement{
+        margin-top: -30vw;
     }
 }
 
 @media only screen and (max-width: 700px) {
-    #bar1_clip_img>img{
+    #bar1_clip_img>img, #bar3_clip_img>img{
         width: 160%;
     }
 
@@ -90,5 +136,23 @@ body {
         font-size: 3.7vw;
         padding: 0.34vw;
         margin-top: calc(72px + 6.5vw);
+    }
+
+    #bar3_sub_img{
+        margin-top: -136vw;
+    }
+
+    #bar3_sub_img>img{
+        width: 61vw;
+    }
+
+    #bar3_advocate{
+        margin-top: 64vw;
+        font-size: 5.4vw;
+    }
+
+    #bar3_statement{
+        font-size: 4vw;
+        margin-top: -40vw;
     }
 }

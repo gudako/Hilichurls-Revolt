@@ -12,13 +12,19 @@
 <?php include 'mainbar.php'; include 'lowbar.php';?>
 <link href="css/mainpage.css" rel="stylesheet"/>
 <div id="bar1">
-    <div id="bar1_clip_img"> <img src="img/pages/mainpage1.jpg"></div>
-    <div id="bar1_advocate"><div>Help us FIGHT BACK the traveller</div></div>
+    <div id="bar1_clip_img" class="clip_img"> <img src="img/pages/mainpage1.jpg"></div>
+    <div id="bar1_advocate"><div><?php echo text('mainpage_bar1_text');?></div></div>
 </div>
 <div id="bar2">
-    We are the hilichurls, in Teyvat.
+    <?php echo text('mainpage_bar2_text');?>
 </div>
 <div id="bar3">
+    <div id="bar3_clip_img" class="clip_img"><img src="img/pages/mainpage2.jpg"></div>
+    <div id="bar3_sub_img" class="clip_img"><img src="img/pages/mainpage3.png"></div>
+    <div id="bar3_advocate"><?php echo text('mainpage_bar3_text2');?></div>
+    <div id="bar3_statement"><?php echo text('mainpage_bar3_text1');?></div>
+</div>
+<div id="bar4">
 
 </div>
 </body>

@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/css/mainpage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/pages/mainpage1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/mainpage2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/mainpage3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/handbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/handbook.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/mainbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/handbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/pages/back/handbook_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/mainpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/window.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/window.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pages/back/mainback1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang_file/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang_file/lang.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/mainbar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +83,8 @@
       <workItem from="1656920551475" duration="23729000" />
       <workItem from="1656994456463" duration="18603000" />
       <workItem from="1657065858840" duration="169000" />
-      <workItem from="1657169463081" duration="6178000" />
+      <workItem from="1657169463081" duration="6949000" />
+      <workItem from="1657183359694" duration="5841000" />
     </task>
     <servers />
   </component>
@@ -91,6 +93,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/index.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

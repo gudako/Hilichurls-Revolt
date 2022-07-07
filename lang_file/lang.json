@@ -13,7 +13,7 @@
   },
   "mainbar_handbook": {
     "en": "Handbook",
-    "zh": "图鉴一览"
+    "zh": "生物图鉴"
   },
   "mainbar_play": {
     "en": "Play Now!",
@@ -38,5 +38,21 @@
   "common_cancel": {
     "en": "Cancel",
     "zh": "取消"
+  },
+  "mainpage_bar1_text": {
+    "en": "Help us FIGHT BACK the traveller",
+    "zh": "帮助我们对旅行者<br>...发起反击!"
+  },
+  "mainpage_bar2_text": {
+    "en": "We are the hilichurls, ordinary residents in Teyvat.",
+    "zh": "我们是丘丘人，提瓦特大陆的原始住民。"
+  },
+  "mainpage_bar3_text1": {
+    "en": "500 years ago, we were natives in a big kingdom<br>named Khaenri'ah.",
+    "zh": "五百余年前，我们曾一同生活在名为坎瑞亚的国度里。"
+  },
+  "mainpage_bar3_text2": {
+    "en": "...And now the <font color=\"red\" font-weight=bold>Caused</font> in that disaster.",
+    "zh": "而我们也是坎瑞亚灾难中... <br>遭受<font color=\"red\" font-weight=bold>诅咒</font>的人。"
   }
 }

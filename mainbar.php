@@ -54,6 +54,7 @@ include_once 'lang_file/lang.php';
     </div>
 
     <!--for the language change-->
+    <link href="css/window.css" rel="stylesheet"/>
     <script src="window/window.js"></script>
     <script>
         $('#setlang').click(()=>{
