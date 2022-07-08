@@ -1,4 +1,4 @@
-<?php require 'initialize.php';
+<?php require 'include/initialize.php';
 
 function get_lang(){
     if(!isset($_COOKIE['lang']))return 'en';

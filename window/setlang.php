@@ -1,4 +1,4 @@
-<?php require 'initialize.php';?>
+<?php require 'include/initialize.php';?>
 <p style="margin-right: 5px;">
     <?php echo text('setlang_window_content');?>
 </p>

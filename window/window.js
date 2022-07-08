@@ -24,7 +24,7 @@ const openWindow = function (settings, done){
         titleThing.append('<span id="title_text">'+text+'</span>');
         if(hasCloseButton)
             $('<a id="close_button" onclick="closeWindow()"></a>').appendTo(titleThing)
-                .append('<img src="/img/pages/close.png">');
+                .append('<img src="/img/pages/icons/close.png">');
         finish();
     }
     else if(typeof title === 'string'){ //type: string, path rel to window

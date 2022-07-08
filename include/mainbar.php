@@ -3,7 +3,7 @@ require 'initialize.php';
 include_once 'lang_file/lang.php';
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link href="css/mainbar.css" rel="stylesheet"/>
+<link href="../css/mainbar.css" rel="stylesheet"/>
 <div id="mainbar">
     <img id="logo" src="img/pages/logo_<?php echo get_lang();?>.png">
 
@@ -23,12 +23,12 @@ include_once 'lang_file/lang.php';
 
     <!--only shown on smaller screen-->
     <span id="top_menu_button">
-        <img id="top_list_icon" src="img/pages/icons/top_list.png">
+        <img id="top_list_icon" src="../img/pages/icons/top_list.png">
     </span>
 
     <!--the login button-->
     <span id="login_button">
-        <img src="img/pages/icons/play.png">
+        <img src="../img/pages/icons/play.png">
         <?php echo text('mainbar_play');?>
     </span>
 
@@ -54,8 +54,8 @@ include_once 'lang_file/lang.php';
     </div>
 
     <!--for the language change-->
-    <link href="css/window.css" rel="stylesheet"/>
-    <script src="window/window.js"></script>
+    <link href="../css/window.css" rel="stylesheet"/>
+    <script src="../window/window.js"></script>
     <script>
         $('#setlang').click(()=>{
             whenSthMoved('');

@@ -103,11 +103,64 @@ body {
     margin: 0 auto;
 }
 
+#bar5{
+    padding-top: 39px;
+    display: block;
+    position: relative;
+    background-color: #001010;
+}
+
+#bar5_img_div{
+    margin-bottom: 125px;
+}
+
+#bar5_text1_div{
+    padding-left: 5vw;
+    padding-bottom: 5.5vw;
+    font-size: 3vw;
+}
+
+#bar5_text2_div{
+    position: absolute;
+    top: 9vw;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.76);
+    padding: 1vw;
+    font-size: 4vw;
+    left: 55vw;
+}
+
+#bar5_text3_div{
+    position: absolute;
+    top: 66vw;
+    left: calc(50vw - 600px/2);
+    width: 600px;
+    background-color: rgba(2, 157, 177, 0.76);
+    padding: 14px;
+    z-index: 1;
+    font-size: 23px;
+}
+
+#bar6{
+    text-align: center;
+}
+
+#bar6>img{
+    width: 46px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#bar6{
+    margin-top: -35px;
+    line-height: 233%;
+    font-size: 22px;
+}
+
 /* up is the normal settings...... */
 /* THE 1000 PX SETTINGS ARE BELOW PROCEED WITH CAUTION */
-
 @media only screen and (max-width: 1000px) {
-    #bar1_clip_img>img, #bar3_clip_img>img{
+    .clip_img>.clip_img_movable{
         width: 120%;
     }
 
@@ -148,12 +201,34 @@ body {
         font-size: 19px;
         padding: 39px 25px;
     }
+
+    #bar5_img_div{
+        margin-bottom: 115px;
+    }
+
+    #bar5_text1_div{
+        font-size: 3.3vw;
+        padding-bottom: 6vw;
+    }
+
+    #bar5_text2_div{
+        top: 11.5vw;
+        font-size: 4.7vw;
+        left: 50vw;
+    }
+
+    #bar5_text3_div{
+        width: 550px;
+        top: 77vw;
+        left: calc(50vw - 600px/2);
+        font-size: 22px;
+    }
 }
 
 /* THE 700 PX SETTINGS ARE BELOW PROCEED WITH CAUTION */
 
 @media only screen and (max-width: 700px) {
-    #bar1_clip_img>img, #bar3_clip_img>img{
+    .clip_img>.clip_img_movable{
         width: 160%;
     }
 
@@ -194,5 +269,27 @@ body {
     #bar4>div{
         font-size: 17px;
         padding: 30px 20px;
+    }
+
+    #bar5_img_div{
+        margin-bottom: 125px;
+    }
+
+    #bar5_text1_div{
+        font-size: 3.9vw;
+        padding-bottom: 7.5vw;
+    }
+
+    #bar5_text2_div{
+        top: 14.5vw;
+        font-size: 6vw;
+        left: 36vw;
+    }
+
+    #bar5_text3_div{
+        width: 70vw;
+        top: 99vw;
+        left: calc(50vw - 70vw/2);
+        font-size: 20px;
     }
 }

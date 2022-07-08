@@ -1,9 +1,9 @@
-<?php require 'initialize.php';?>
+<?php require 'include/initialize.php';?>
 <head>
     <title><?php echo text('game_name');?></title>
 </head>
 <body>
-<?php include 'mainbar.php'; include 'lowbar.php';?>
+<?php include 'include/page_include.php';?>
 <link href="css/handbook.css" rel="stylesheet"/>
 
 
