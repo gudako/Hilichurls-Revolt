@@ -66,6 +66,7 @@
     align-items: center;
     transition-duration: 0.3s;
     cursor: pointer;
+    user-select: none;
 }
 
 #login_button:hover{
@@ -94,6 +95,10 @@
 
 #top_menu{
     display: none;
+}
+
+#setlang{
+    user-select: none;
 }
 
 @media only screen and (max-width: 915px) {

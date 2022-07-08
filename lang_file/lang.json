@@ -48,8 +48,8 @@
     "zh": "JavaScript 未被启用<br>启用 JavaScript 以继续浏览"
   },
   "mainpage_bar1_text": {
-    "en": "Help us FIGHT BACK the traveller",
-    "zh": "帮助我们对旅行者<br>...发起反击!"
+    "en": "Help us FIGHT BACK the \"Traveller\"",
+    "zh": "帮助我们对\"旅行者\"<br>...发起反击!"
   },
   "mainpage_bar2_text": {
     "en": "We are the hilichurls, ordinary residents in Teyvat.",
@@ -77,10 +77,26 @@
   },
   "mainpage_bar5_text3": {
     "en": "She is now the <font color=\"yellow\">Traveller</font> in Teyvat, killing countless of our compatriots with her fellows, and with her own blade.",
-    "zh": "她现在是提瓦特大陆的<font color=\"yellow\">旅行者</font>，<br>与她的同伴用锋利的刀刃杀害了无数的我们的同族。"
+    "zh": "她现在是提瓦特大陆的<font color=\"yellow\">旅行者</font>，<br>与她的同伴，以及她自己的利刃，....杀害了无数的我们的同族。"
   },
   "mainpage_bar6_text": {
     "en": "No longer enduring.<br>No longer hiding.<br>Take our right of life back,<br>With this <font color=\"red\" font-weight=bold>REVOLT</font>.",
-    "zh": ""
+    "zh": "不再忍受压迫。<br>不必隐匿身形。<br>我们将夺回生存的权利，<br>以此发起<font color=\"red\" font-weight=bold>抗争</font>。"
+  },
+  "mainpage_slime_complaint!": {
+    "en": "slime: you s**t throwing me",
+    "zh": "史莱姆：我*****你扔我"
+  },
+  "mainpage_play_login": {
+    "en": "Let the fight begin.",
+    "zh": "开始我们的抗争"
+  },
+  "mainpage_play_continue": {
+    "en": "Continue our Fight.",
+    "zh": "继续我们的抗争"
+  },
+  "mainpage_credit": {
+    "en": "This setting is not stated in the original work Genshin Impact.",
+    "zh": "该设定可能不存在于在原作<原神>中。"
   }
 }

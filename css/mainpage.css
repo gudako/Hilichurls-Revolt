@@ -122,12 +122,12 @@ body {
 
 #bar5_text2_div{
     position: absolute;
-    top: 9vw;
+    top: 9.25vw;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.76);
     padding: 1vw;
     font-size: 4vw;
-    left: 55vw;
+    left: 57vw;
 }
 
 #bar5_text3_div{
@@ -143,18 +143,60 @@ body {
 
 #bar6{
     text-align: center;
+    display: flex;
+    line-height: 233%;
+    font-size: 24px;
+    justify-content: space-evenly;
+    align-items: flex-end;
 }
 
 #bar6>img{
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+#bar6_text>img{
     width: 46px;
     height: auto;
     margin: 0 auto;
 }
 
-#bar6{
-    margin-top: -35px;
-    line-height: 233%;
-    font-size: 22px;
+#play_button{
+    margin: 45px 0 ;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    position: relative;
+    padding: 14px 0;
+    background-color: #272727;
+}
+
+@keyframes flicker_back{
+    0%   { background-color: #3b0909; }
+    50%  { background-color: #4b1616; color: whitesmoke;}
+    100% { background-color: #3b0909; }
+}
+
+#play_button>span{
+    padding: 9px;
+    animation: flicker_back 1s infinite;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+    color: #f0f0ab;
+    cursor: pointer;
+    user-select: none;
+}
+
+#play_button>span:hover{
+    animation: unset;
+    transition-duration: 0.2s;
+    background: linear-gradient(180deg, #904646, #902d2d);
+}
+
+#play_button>span:active{
+    background: linear-gradient(180deg, #713434, #b14141);
 }
 
 /* up is the normal settings...... */
@@ -212,7 +254,7 @@ body {
     }
 
     #bar5_text2_div{
-        top: 11.5vw;
+        top: 12vw;
         font-size: 4.7vw;
         left: 50vw;
     }
@@ -223,10 +265,17 @@ body {
         left: calc(50vw - 600px/2);
         font-size: 22px;
     }
+
+    #bar6{
+        font-size: 23px;
+    }
+
+    #bar6>img{
+        width: 139px;
+    }
 }
 
 /* THE 700 PX SETTINGS ARE BELOW PROCEED WITH CAUTION */
-
 @media only screen and (max-width: 700px) {
     .clip_img>.clip_img_movable{
         width: 160%;
@@ -281,7 +330,7 @@ body {
     }
 
     #bar5_text2_div{
-        top: 14.5vw;
+        top: 15.5vw;
         font-size: 6vw;
         left: 36vw;
     }
@@ -290,6 +339,22 @@ body {
         width: 70vw;
         top: 99vw;
         left: calc(50vw - 70vw/2);
+        font-size: 19px;
+    }
+
+    #bar6{
         font-size: 20px;
+    }
+
+    #bar6>img{
+        width: 123px;
+    }
+
+    #bar6>img:first-child{
+        margin-right: -15px;
+    }
+
+    #bar6>img:last-child{
+        margin-left: -15px;
     }
 }
