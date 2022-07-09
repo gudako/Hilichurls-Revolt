@@ -8,9 +8,8 @@ body {
 }
 
 #bar1{
-    top: 72px;
     width: 100%;
-    position: relative;
+    margin-top: 72px;
 }
 
 .clip_img{
@@ -32,17 +31,17 @@ body {
 }
 
 #bar1_advocate>div{
-    font-size: 3.6vw;
+    font-size: calc(19.5px + 1.75vw);
     background-color: rgba(127, 0, 56, 0.69);
     display: block;
-    width: 36vw;
+    width: calc(195px + 17.5vw);
     padding: 0.3vw 1.7vw;
     margin: 0 auto 0 4vw;
 }
 
 #bar2{
-    margin-top: calc(72px + 3.5vw);
-    font-size: 2vw;
+    margin-top: 8.9vw;
+    font-size: calc(12.9px + 1.11vw);
     background-color: #393838;
     text-align: center;
     padding: 0.2vw;
@@ -57,20 +56,28 @@ body {
 #bar3_sub_img{
     position: absolute;
     top: -6vw;
-    left: 30vw;
+    left: calc(50vw - (150px + 20vw)/2);
     z-index: 1;
     text-align: center;
 
 }
 
 #bar3_sub_img>img{
-    width: 40vw;
+    width: calc(150px + 20vw);
     height: auto;
+}
+
+#bar3_statement{
+    font-size: calc(10.5px + 1.4vw);
+    text-shadow: -0.4vw 0 0.4vw black;
+    position: absolute;
+    top: 50vw;
+    padding-left: 3vw;
 }
 
 #bar3_advocate{
     padding-right: 3vw;
-    font-size: 3.6vw;
+    font-size: calc(14px + 2.6vw);
     text-align: right;
     text-shadow: -0.4vw 0 0.4vw black;
     position: absolute;
@@ -80,24 +87,16 @@ body {
     right: 0;
 }
 
-#bar3_statement{
-    font-size: 2.3vw;
-    text-shadow: -0.4vw 0 0.4vw black;
-    position: absolute;
-    top: 50vw;
-    padding-left: 3vw;
-}
-
 #bar4{
     margin: 0;
     background-color: #001010;
-    padding: 5vw 9vw;
+    padding: 8vw 9vw;
 }
 
 #bar4>div{
     border: 0.3vw rgba(107, 107, 107, 0.4) solid;
     border-radius: 0.3vw;
-    font-size: 21px;
+    font-size: calc(14.7px + 0.5vw);
     padding: 49px 30px;
     max-width: 680px;
     margin: 0 auto;
@@ -111,47 +110,47 @@ body {
 }
 
 #bar5_img_div{
-    margin-bottom: 125px;
+    margin-bottom: 17.5vw;
 }
 
 #bar5_text1_div{
     padding-left: 5vw;
-    padding-bottom: 5.5vw;
-    font-size: 3vw;
+    padding-bottom: calc(28px + 1.8vw);
+    font-size: calc(12.25px + 1.35vw);
 }
 
 #bar5_text2_div{
     position: absolute;
-    top: 9.25vw;
+    top: calc(67.6667px + 2.33333vw);
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.76);
     padding: 1vw;
-    font-size: 4vw;
-    left: 57vw;
+    font-size: calc(23.3333px + 1.66667vw);
+    left: calc(-70px + 56vw);
 }
 
 #bar5_text3_div{
     position: absolute;
     top: 66vw;
-    left: calc(50vw - 600px/2);
-    width: 600px;
+    left: calc(-140px + 34vw);
+    width: calc(240px + 31vw);
     background-color: rgba(2, 157, 177, 0.76);
     padding: 14px;
     z-index: 1;
-    font-size: 23px;
+    font-size: calc(14px + 0.8vw);
 }
 
 #bar6{
     text-align: center;
     display: flex;
     line-height: 233%;
-    font-size: 24px;
+    font-size: calc(13.5px + 1.35vw);
     justify-content: space-evenly;
     align-items: flex-end;
 }
 
 #bar6>img{
-    width: 150px;
+    width: calc(60.7143px + 11.8571vw);
     height: auto;
     object-fit: contain;
 }
@@ -197,164 +196,4 @@ body {
 
 #play_button>span:active{
     background: linear-gradient(180deg, #713434, #b14141);
-}
-
-/* up is the normal settings...... */
-/* THE 1000 PX SETTINGS ARE BELOW PROCEED WITH CAUTION */
-@media only screen and (max-width: 1000px) {
-    .clip_img>.clip_img_movable{
-        width: 120%;
-    }
-
-    #bar1_advocate>div{
-        width: 51vw;
-        font-size: 5.1vw;
-    }
-
-    #bar1_advocate{
-         margin-top: -8.6vw;
-    }
-
-    #bar2{
-        font-size: 2.6vw;
-        padding: 0.26vw;
-        margin-top: calc(72px + 5vw);
-    }
-
-    #bar3_sub_img{
-        left: 25vw;
-    }
-
-    #bar3_sub_img>img{
-        width: 50vw;
-    }
-
-    #bar3_advocate{
-        font-size: 4.5vw;
-        top: 81vw;
-    }
-
-    #bar3_statement{
-        font-size: 2.5vw;
-        top: 66vw;
-    }
-
-    #bar4>div{
-        font-size: 19px;
-        padding: 39px 25px;
-    }
-
-    #bar5_img_div{
-        margin-bottom: 115px;
-    }
-
-    #bar5_text1_div{
-        font-size: 3.3vw;
-        padding-bottom: 6vw;
-    }
-
-    #bar5_text2_div{
-        top: 12vw;
-        font-size: 4.7vw;
-        left: 50vw;
-    }
-
-    #bar5_text3_div{
-        width: 550px;
-        top: 77vw;
-        left: calc(50vw - 600px/2);
-        font-size: 22px;
-    }
-
-    #bar6{
-        font-size: 23px;
-    }
-
-    #bar6>img{
-        width: 139px;
-    }
-}
-
-/* THE 700 PX SETTINGS ARE BELOW PROCEED WITH CAUTION */
-@media only screen and (max-width: 700px) {
-    .clip_img>.clip_img_movable{
-        width: 160%;
-    }
-
-    #bar1_advocate>div{
-        width: 60vw;
-        font-size: 6vw;
-    }
-
-    #bar1_advocate{
-        margin-top: -9.5vw;
-    }
-
-    #bar2{
-        font-size: 3.7vw;
-        padding: 0.34vw;
-        margin-top: calc(72px + 6.5vw);
-    }
-
-    #bar3_sub_img{
-        left: 20vw;
-
-    }
-
-    #bar3_sub_img>img{
-        width: 60vw;
-    }
-
-    #bar3_advocate{
-        font-size: 5vw;
-        top: 110vw;
-    }
-
-    #bar3_statement{
-        font-size: 3.4vw;
-        top: 90vw
-    }
-
-    #bar4>div{
-        font-size: 17px;
-        padding: 30px 20px;
-    }
-
-    #bar5_img_div{
-        margin-bottom: 125px;
-    }
-
-    #bar5_text1_div{
-        font-size: 3.9vw;
-        padding-bottom: 7.5vw;
-    }
-
-    #bar5_text2_div{
-        top: 15.5vw;
-        font-size: 6vw;
-        left: 36vw;
-    }
-
-    #bar5_text3_div{
-        width: 70vw;
-        top: 99vw;
-        left: calc(50vw - 70vw/2);
-        font-size: 19px;
-    }
-
-    #bar6{
-        font-size: 20px;
-    }
-
-    #bar6>img{
-        width: 123px;
-    }
-
-    #bar6>img:first-child{
-        margin-right: -15px;
-    }
-
-    #bar6>img:last-child{
-        margin-left: -15px;
-    }
 }

@@ -21,8 +21,8 @@
 <div id="bar3">
     <div id="bar3_clip_img" class="clip_img"><img class="clip_img_movable" src="img/pages/mainpage/mainpage2.jpg"></div>
     <div id="bar3_sub_img" class="clip_img"><img src="img/pages/mainpage/mainpage3.png"></div>
-    <div id="bar3_advocate"><?php echo text('mainpage_bar3_text2');?></div>
     <div id="bar3_statement"><?php echo text('mainpage_bar3_text1');?></div>
+    <div id="bar3_advocate"><?php echo text('mainpage_bar3_text2');?></div>
 </div>
 <div id="bar4">
     <div>

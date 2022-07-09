@@ -48,8 +48,8 @@
     "zh": "JavaScript 未被启用<br>启用 JavaScript 以继续浏览"
   },
   "mainpage_bar1_text": {
-    "en": "Help us FIGHT BACK the \"Traveller\"",
-    "zh": "帮助我们对\"旅行者\"<br>...发起反击!"
+    "en": "Help us FIGHT BACK the \"<font color='yellow'>Traveller</font>\"",
+    "zh": "帮助我们对\"<font color='yellow'>旅行者</font>\"<br>...发起反击!"
   },
   "mainpage_bar2_text": {
     "en": "We are the hilichurls, ordinary residents in Teyvat.",
