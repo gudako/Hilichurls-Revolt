@@ -1,4 +1,4 @@
-<?php require 'initialize.php';?>
+<?php require_once 'initialize.php';?>
 <!--Check for ---- js-->
 <noscript id="noscript_checker">
     <link href="../css/window.css" rel="stylesheet"/>

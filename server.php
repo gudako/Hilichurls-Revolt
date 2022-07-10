@@ -1,10 +1,11 @@
 <?php
+include_once 'config.php';
 session_start();
 
 //get database candidates
-$config = json_decode(file_get_contents("config.json"), true);
-$db_username = $config['db_username'];
-$db_password = $config['db_password'];
+$config = new Config();
+$db_username = $config->GetDBUsername();
+$db_password = $config->GetDBPassword();
 
 //check for session match
 $authorized = isset($_SESSION['username']) && $_SESSION['username'] === $db_username &&
@@ -34,30 +35,20 @@ else if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['get_session_id']) &
     die();
 }
 
-
+if(!$config->IsDebug() && !$authorized){
+    http_response_code(403);
+    die();
+}
 
 $shmop = shmop_open(1, 'a', 0600, 100000);
 $shmop_initialized = $shmop !== false;
-
-initializeLangMemory();
-
-function initializeLangMemory(){
-    $shmop = shmop_open(1, 'c', 0600, 100000);
-    $scriptContent = '<?php'.PHP_EOL.'$GLOBALS[\'langtab\']='.PHP_EOL.'array('.PHP_EOL;
-
-    $langObj = json_decode(file_get_contents(__DIR__."/lang/lang.json"), true);
-    $byteIndex = 0;
-    foreach ($langObj as $textcode => $langItem){
-        $content = '';
-        foreach ($langItem as $langName => $value)
-            $content .= '<'.$langName.'>'.$value.'</'.$langName.'>';
-        $textcode_hash = substr(sha1($textcode), 0, 10);
-        shmop_write($shmop, $content, $byteIndex);
-        $size = strlen($content);
-        $scriptContent .='"'.$textcode_hash.'"=>['.$byteIndex.','.$size.'],'.PHP_EOL;
-        $byteIndex += $size;
-    }
-    $scriptContent .= '"0000000000"=>['.$byteIndex.']);';
-    file_put_contents('lang\_langtab.php', $scriptContent);
+if(!$shmop_initialized){
+    echo "<p>The language file hasn't been loaded into memory.</p>".PHP_EOL;
+    echo "<a href='server_call/init_lang.php'>Click here to initialize</a>".PHP_EOL;
 }
+else{
+    echo "<p>Language file loaded fine.</p>".PHP_EOL;
+}
+echo PHP_EOL;
+
 
