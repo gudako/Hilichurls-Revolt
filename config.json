@@ -2,5 +2,5 @@
   "db_hostname": "hilichurl-revolt",
   "db_username": "root",
   "db_password": "root",
-  "mode_debug": false
+  "mode_debug": true
 }

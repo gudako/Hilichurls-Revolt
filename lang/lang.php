@@ -18,16 +18,11 @@ function text(string $textcode){
     if(!isset($GLOBALS['langtab'])) eval(substr(file_get_contents('lang/_langtab.php'),5));
 
     $langtab = $GLOBALS['langtab'];
-    reset($langtab);
     $textcode_hash = substr(sha1($textcode), 0, 10);
-    while(key($langtab)!=$textcode_hash){
-        next($langtab);
-        if(key($langtab)==='0000000000')
-            throw new Exception("Cannot find \"".$textcode."\" in the current transcription table.");
-    }
-    $currIndex = current($langtab);
-    $nextIndex = next($langtab);
-    $size = $nextIndex - $currIndex;
+
+    $lang_tuple = $langtab[$textcode_hash];
+    $currIndex = $lang_tuple[0];
+    $size = $lang_tuple[1];
 
     if(!isset($GLOBALS['shmop_lang']))
         $GLOBALS['shmop_lang'] = shmop_open(1, 'a', 0600, 100000);

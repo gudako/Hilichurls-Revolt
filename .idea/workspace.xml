@@ -5,34 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/pages/icons/server_down.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/_langtab.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/Database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/assets/Asset.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/assets/characters/ganyu/ganyu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script/assets/items/Item.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/window/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/script/assets/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/assets/Asset.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/assets/characters/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/script/assets/characters/Character.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/assets/characters/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/script/assets/characters/db_reflect.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/assets/characters/ganyu/frostflake_arrow.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/assets/characters/ganyu/ganyu.json" beforeDir="false" afterPath="$PROJECT_DIR$/script/assets/characters/ganyu/ganyu.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/assets/characters/ganyu/ganyu.php" beforeDir="false" afterPath="$PROJECT_DIR$/script/assets/characters/ganyu/frostflake_arrow.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/assets/items/Item.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/assets/items/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/script/assets/items/db_reflect.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/callback/Callback.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_settings/callback/CallbackBatch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/initialize.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/initialize.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/mainbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang_file/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/lang/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang_file/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang_file/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/setlang.php" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/_langtab.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/_langtab.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +102,7 @@
       <workItem from="1657228571010" duration="27244000" />
       <workItem from="1657342451053" duration="12966000" />
       <workItem from="1657430026201" duration="9252000" />
-      <workItem from="1657459403706" duration="6998000" />
+      <workItem from="1657459403706" duration="8281000" />
     </task>
     <servers />
   </component>
@@ -135,20 +113,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/lang/lang.php</url>
-          <line>39</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/lang/lang.php</url>
-          <line>20</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
         <watch expression="key($langtab)" language="PHP" />
