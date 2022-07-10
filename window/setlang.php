@@ -1,5 +1,5 @@
 <?php require 'include/initialize.php';?>
-<p style="margin-right: 5px;">
+<p>
     <?php echo text('setlang_window_content');?>
 </p>
 <select id="windowed_lang" style="margin: 0 0 15px 0;">
