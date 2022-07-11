@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
 
 body {
-    margin: 0;
-    background-color: #202020;
     font-family: 'Noto Sans SC', sans-serif;
     color: whitesmoke;
 }
@@ -27,61 +25,61 @@ body {
 #bar1_advocate{
     position: relative;
     z-index: 1;
-    margin-top: -6.2vw;
+    margin-top: max(-6.2vw, -62px);
 }
 
 #bar1_advocate>div{
-    font-size: calc(19.5px + 1.75vw);
+    font-size: min(calc(19.5px + 1.75vw), 37px);
     background-color: rgba(127, 0, 56, 0.69);
     display: block;
-    width: calc(195px + 17.5vw);
+    width: min(calc(195px + 17.5vw), 370px);
     padding: 0.3vw 1.7vw;
     margin: 0 auto 0 4vw;
 }
 
 #bar2{
-    margin-top: 8.9vw;
-    font-size: calc(12.9px + 1.11vw);
+    margin-top: min(8.9vw, 89px);
+    font-size: min(calc(12.9px + 1.11vw), 24px);
     background-color: #393838;
     text-align: center;
-    padding: 0.2vw;
+    padding: min(0.2vw, 2px);
 }
 
 #bar3{
     width: 100%;
-    margin-top: 6vw;
+    margin-top: min(6vw, 60px);
     position: relative;
 }
 
 #bar3_sub_img{
     position: absolute;
-    top: -6vw;
-    left: calc(50vw - (150px + 20vw)/2);
+    top: max(-6vw, -60px);
+    left: min(calc(50vw - (150px + 20vw)/2), 325px);
     z-index: 1;
     text-align: center;
 
 }
 
 #bar3_sub_img>img{
-    width: calc(150px + 20vw);
+    width: min(calc(150px + 20vw), 350px);
     height: auto;
 }
 
 #bar3_statement{
-    font-size: calc(10.5px + 1.4vw);
-    text-shadow: -0.4vw 0 0.4vw black;
+    font-size: min(calc(10.5px + 1.4vw), 24.5px);
+    text-shadow: max(-0.4vw,-4px) 0 min(0.4vw,4px) black;
     position: absolute;
-    top: 50vw;
-    padding-left: 3vw;
+    top: min(50vw, 500px);
+    padding-left: min(3vw, 30px);
 }
 
 #bar3_advocate{
-    padding-right: 3vw;
-    font-size: calc(14px + 2.6vw);
+    padding-right: min(3vw, 30px);
+    font-size: min(calc(14px + 2.6vw), 40px);
     text-align: right;
-    text-shadow: -0.4vw 0 0.4vw black;
+    text-shadow: max(-0.4vw,-4px) 0 min(0.4vw,4px) black;
     position: absolute;
-    top: 66.6vw;
+    top: min(66.6vw,666px);
     margin-left: auto;
     left: 0;
     right: 0;
@@ -90,13 +88,13 @@ body {
 #bar4{
     margin: 0;
     background-color: #001010;
-    padding: 8vw 9vw;
+    padding: min(8vw,80px) min(9vw,90px);
 }
 
 #bar4>div{
-    border: 0.3vw rgba(107, 107, 107, 0.4) solid;
-    border-radius: 0.3vw;
-    font-size: calc(14.7px + 0.5vw);
+    border: min(0.3vw,3px) rgba(107, 107, 107, 0.4) solid;
+    border-radius: min(0.3vw,3px);
+    font-size: min(calc(14.7px + 0.5vw),19.7px);
     padding: 49px 30px;
     max-width: 680px;
     margin: 0 auto;
@@ -110,47 +108,47 @@ body {
 }
 
 #bar5_img_div{
-    margin-bottom: 17.5vw;
+    margin-bottom: min(17.5vw,175px);
 }
 
 #bar5_text1_div{
     padding-left: 5vw;
-    padding-bottom: calc(28px + 1.8vw);
-    font-size: calc(12.25px + 1.35vw);
+    padding-bottom: min(calc(28px + 1.8vw),46px);
+    font-size: min(calc(12.25px + 1.35vw),25.75px);
 }
 
 #bar5_text2_div{
     position: absolute;
-    top: calc(67.6667px + 2.33333vw);
+    top: min(calc(67.6667px + 2.33333vw),100px);
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.76);
     padding: 1vw;
-    font-size: calc(23.3333px + 1.66667vw);
-    left: calc(-70px + 56vw);
+    font-size: min(calc(23.3333px + 1.66667vw),40px);
+    left: min(calc(-70px + 56vw),490px);
 }
 
 #bar5_text3_div{
     position: absolute;
-    top: 66vw;
-    left: calc(-140px + 34vw);
-    width: calc(240px + 31vw);
+    top: min(66vw,660px);
+    left: min(calc(-140px + 34vw),200px);
+    width: min(calc(240px + 31vw),550px);
     background-color: rgba(2, 157, 177, 0.76);
     padding: 14px;
     z-index: 1;
-    font-size: calc(14px + 0.8vw);
+    font-size: min(calc(14px + 0.8vw),22px);
 }
 
 #bar6{
     text-align: center;
     display: flex;
     line-height: 233%;
-    font-size: calc(13.5px + 1.35vw);
+    font-size: min(calc(13.5px + 1.35vw),27px);
     justify-content: space-evenly;
     align-items: flex-end;
 }
 
 #bar6>img{
-    width: calc(60.7143px + 11.8571vw);
+    width: min(calc(60.7143px + 11.8571vw),179.2853px);
     height: auto;
     object-fit: contain;
 }

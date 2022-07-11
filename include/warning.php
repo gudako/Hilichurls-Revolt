@@ -1,6 +1,6 @@
 <?php
 require_once 'initialize.php';
-include_once $_SERVER['DOCUMENT_ROOT'].'/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/config.php';
 use Game\Config;
 $config = new Config();
 $isServerDown = $config->IsServerDown();
@@ -20,12 +20,12 @@ $alright = !$isServerDown && !$inMaintenance;
                 elseif($inMaintenance){
                     echo "<font style='font-weight: bold;'>".text('maintenance_alert_title').'</font>';
                     echo "<br><div style='border: 1px gray solid; padding: 6px; margin: 10px 20px 5px 20px;".
-                        " font-size: 14px; text-align: left; max-height: 200px; overflow-y: scroll; color: #3d3b3b;'>";
+                        " font-size: 14px; text-align: left; max-height: 200px; overflow-y: auto; color: #3d3b3b;'>";
                     $mText = file_get_contents($_SERVER['DOCUMENT_ROOT']."/_maintenance.txt");
                     $lang = get_lang();
                     $matches = array();
-                    preg_match("/(?<=<".$lang.">).*(?=<\/".$lang.">)/",$mText,$matches);
-                    echo $matches[0].'</div>';
+                    preg_match("/(?<=<".$lang.">)(.|\r|\n)*(?=<\/".$lang.">)/m",$mText,$matches);
+                    echo str_replace(["\r\n","\n"],"<br>", trim($matches[0])).'</div>';
                 }
                 else echo text('pages_js_alert_text');
                 ?>

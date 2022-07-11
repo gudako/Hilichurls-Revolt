@@ -1,6 +1,6 @@
 <?php
-include_once 'config.php';
-include_once 'script/database.php';
+require_once 'config.php';
+require_once 'script/database.php';
 use Game\Config, Game\Database;
 
 session_start();
@@ -44,7 +44,7 @@ function GetDefaultMaintenanceText(Config $config):string{
 
 function CheckMaintenanceText(string $text, Config $config):bool{
     foreach ($config->GetAllLanguages() as $lang){
-        $pattern = "/(?<=<".$lang.">).+(?=<\/".$lang.">)/";
+        $pattern = "/(?<=<".$lang.">)(.|\r|\n)+(?=<\/".$lang.">)/";
         if(preg_match_all($pattern, $text)!==1) return false;
     }
     return true;
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
         $scriptContent .= '"0000000000"=>['.$byteIndex.']);';
         file_put_contents('lang\_langtab.php', $scriptContent);
-        echo "<p>Success!</p>".clickHereToContinue;
+        echo ColoredText("Success!",colorSuccess).clickHereToContinue;
     }
 
     //- INITIALIZE OR RELOAD MAINTENANCE DATA -//

@@ -1,5 +1,5 @@
 <?php
-include 'mainbar.php';
-include 'lowbar.php';
-include 'vert_screen_alert.php';
-include 'warning.php';
+require_once 'mainbar.php';
+require_once 'lowbar.php';
+require_once 'maintenance_alert.php';
+require_once 'warning.php';

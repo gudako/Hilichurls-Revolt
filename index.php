@@ -1,4 +1,4 @@
-<?php require 'include/initialize.php';
+<?php require_once 'include/initialize.php';
     if(isset($_GET['lang'])) {
         setcookie('lang', $_GET['lang'], time()+(60*60*24*365));
         header('Location: index.php');
@@ -8,8 +8,12 @@
 <head>
     <title><?php echo text('game_name');?></title>
 </head>
-<body style="margin: 0; padding: 0">
-<?php include 'include/page_include.php';?>
+<body>
+<link href="css/overview.css" rel="stylesheet"/>
+<div class="clip">
+
+
+<?php require_once 'include/page_include.php';?>
 <link href="css/mainpage.css" rel="stylesheet"/>
 <div id="bar1">
     <div id="bar1_clip_img" class="clip_img"> <img class="clip_img_movable" src="img/pages/mainpage/mainpage1.jpg"></div>
@@ -60,5 +64,7 @@
 </a>
 <div class="credit">
     <sup>(1)</sup> <?php echo text('mainpage_credit');?>
+</div>
+
 </div>
 </body>

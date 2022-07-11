@@ -15,6 +15,10 @@
     width: 100%;
     z-index: 11;
     box-shadow: 0 5px 3px #004444;
+    max-width: 1006px;
+    margin: 0 auto;
+    border-left: 3px white solid;
+    border-right: 3px white solid;
 }
 
 #mainbar a{
@@ -99,6 +103,12 @@
 
 #setlang{
     user-select: none;
+}
+
+@media only screen and (max-width: 1000px) {
+    #mainbar{
+        border: none;
+    }
 }
 
 @media only screen and (max-width: 915px) {

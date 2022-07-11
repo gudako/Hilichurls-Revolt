@@ -1,4 +1,4 @@
-<?php require 'initialize.php';?>
+<?php require_once 'initialize.php';?>
 <link href="../css/vert_screen_alert.css" rel="stylesheet"/>
 <div id="vert_alert">
     <div>

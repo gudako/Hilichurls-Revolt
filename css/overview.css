@@ -1,0 +1,19 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-image: url("../img/pages/back.jpg");
+}
+
+div.clip{
+  max-width: 1006px;
+  margin: auto;
+  background-color: #202020;
+  border-left: 3px white solid;
+  border-right: 3px white solid;
+}
+
+@media only screen and (max-width: 1000px) {
+  div.clip{
+    border: none;
+  }
+}

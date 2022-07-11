@@ -1,6 +1,6 @@
 <?php
 namespace Game;
-include_once $_SERVER['DOCUMENT_ROOT'].'/script/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/script/database.php';
 use DateInterval, DateTime;
 
 class Config
@@ -53,7 +53,7 @@ class Config
         return self::$shmopIdLang;
     }
 
-    function GetAllLanguages(): Array{
+    function GetAllLanguages(): array{
         return self::$allLanguages;
     }
 
