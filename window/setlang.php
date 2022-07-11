@@ -1,4 +1,4 @@
-<?php require_once 'include/initialize.php';?>
+<?php if(!isset($_SESSION))session_start();?>
 <p>
     <?php echo text('setlang_window_content');?>
 </p>

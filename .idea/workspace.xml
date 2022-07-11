@@ -5,24 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/css/overview.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/pages/back.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/calls/maintenance_check.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/lowbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/lowbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/mainbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/mainpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/overview.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/commonplace.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/vert_screen_alert.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/handbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/handbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/initialize.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/initialize.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/initialize.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/include/lowbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/lowbar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/mainbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/page_include.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/page_include.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/vert_screen_alert.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/maintenance_alert.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/warning.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/warning.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/maintenance_alert.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/maintenance_tip.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/page_include.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/warning.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/error_tip.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/script/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/window/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/window/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/window/setlang.php" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.php" afterDir="false" />
     </list>
@@ -55,6 +51,9 @@
     </servers>
   </component>
   <component name="PhpWebServerValidation" path_to_validation_script="F:\Hilichurls Revolt" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost:80" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2BLkzDJuduqAufWPT81uErBlano" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -126,7 +125,7 @@
       <workItem from="1657342451053" duration="12966000" />
       <workItem from="1657430026201" duration="9252000" />
       <workItem from="1657459403706" duration="11688000" />
-      <workItem from="1657499565126" duration="36039000" />
+      <workItem from="1657499565126" duration="42407000" />
     </task>
     <servers />
   </component>

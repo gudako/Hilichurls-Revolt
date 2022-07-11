@@ -1,3 +1,3 @@
-<?php require_once 'initialize.php';?>
+<?php if(!isset($_SESSION))session_start();?>
 <link href="../css/lowbar.css" rel="stylesheet"/>
 

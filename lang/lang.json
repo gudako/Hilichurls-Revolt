@@ -43,9 +43,9 @@
     "en": "Cancel",
     "zh": "取消"
   },
-  "pages_vert_alert_text": {
-    "en": "Notice: The webpage is intended for vertical screen display",
-    "zh": "注意：竖屏使用该网页，效果可能更佳"
+  "maintenance_issued_alert": {
+    "en": "Notice: Server Maintenance after %H hr %I min",
+    "zh": "注意：服务器将会在 %H 小时 %I 分钟后进入维护状态"
   },
   "pages_js_alert_text": {
     "en": "JavaScript is not enabled<br>Turn ON JavaScript to continue",
