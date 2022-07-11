@@ -5,11 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server_call/init_lang.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/pages/icons/maintenance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/warning.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/db_init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/js_warning.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/js_warning.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/initialize.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/initialize.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/js_warning.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/mainbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/page_include.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/page_include.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/_langtab.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/_langtab.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/script/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_call/init_lang.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +76,14 @@
     "list.type.of.created.stylesheet": "SCSS",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "watcher.settings"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "MySQL"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -103,6 +127,7 @@
       <workItem from="1657342451053" duration="12966000" />
       <workItem from="1657430026201" duration="9252000" />
       <workItem from="1657459403706" duration="11688000" />
+      <workItem from="1657499565126" duration="30931000" />
     </task>
     <servers />
   </component>
@@ -116,6 +141,10 @@
     <watches-manager>
       <configuration name="index.php">
         <watch expression="key($langtab)" language="PHP" />
+        <watch expression="shmop_open(self::$shmopIdMaintenance, 'a', 0777, 1)" language="PHP" />
+      </configuration>
+      <configuration name="server.php">
+        <watch expression="$config-&gt;GetDBHostname()" language="PHP" />
       </configuration>
     </watches-manager>
   </component>

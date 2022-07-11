@@ -1,4 +1,4 @@
 order deny,allow
-<Files "db_config.json">
+<Files "config.json">
 deny from all
 </Files>

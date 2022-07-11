@@ -1,6 +1,10 @@
 {
-  "db_hostname": "hilichurl-revolt",
+  "db_hostname": "HilichurlsRevolt",
   "db_username": "root",
   "db_password": "root",
-  "mode_debug": true
+  "mode_debug": true,
+  "shmop_id_maintenance": 101010,
+  "shmop_id_lang": 114514,
+  "lang_max_size": 100000,
+  "all_languages": ["en", "zh"]
 }

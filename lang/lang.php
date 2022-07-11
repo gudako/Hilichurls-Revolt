@@ -2,6 +2,7 @@
 require_once 'include/initialize.php';
 require_once 'config.php';
 require_once '_langtab.php';
+use Game\Config;
 
 function get_lang(){
     if(!isset($_COOKIE['lang'])) return 'en';
@@ -12,7 +13,7 @@ function get_lang(){
 
 function text(string $textcode){
     $lang = get_lang();
-    if(isDebug())
+    if((new Config())->IsDebug())
         return json_decode(file_get_contents('lang.json', true), true)[$textcode][$lang];
 
     if(!isset($GLOBALS['langtab'])) eval(substr(file_get_contents('lang/_langtab.php'),5));
@@ -27,8 +28,7 @@ function text(string $textcode){
     if(!isset($GLOBALS['shmop_lang']))
         $GLOBALS['shmop_lang'] = shmop_open(1, 'a', 0600, 100000);
     $langItem = shmop_read($GLOBALS['shmop_lang'], $currIndex, $size);
-    if($langItem === false)
-        throw new Exception("Failed to open SHMOP object...");
+
     $matches = array();
     if(preg_match("/(?<=<".$lang.">).*(?=<\/".$lang.">)/",$langItem,$matches)!==1 || !isset($matches[0]))
         throw new Exception("No definition for language named \"".$lang."\".");

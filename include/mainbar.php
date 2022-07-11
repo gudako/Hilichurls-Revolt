@@ -9,11 +9,11 @@ include_once 'lang/lang.php';
 
     <!--only shown on larger screen-->
     <?php
-    function add_normal_link(string $name, string $textcode){
+    function add_normal_link(string $name, string $textcode): void{
         echo '<a class="norm" href="'. $name .'.php"><img src="img/pages/icons/'. $name .'.png">'. '<span>'.
             text($textcode) . '</span></a>' . PHP_EOL;
     }
-    function add_normal_links(){
+    function add_normal_links(): void{
         add_normal_link('mainpage','mainbar_mainpage');
         add_normal_link('achievements','mainbar_achievements');
         add_normal_link('handbook','mainbar_handbook');

@@ -77,4 +77,5 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # ignore generated files...
-_langtab.php
+/lang/_langtab.php
+/_maintenance.txt
