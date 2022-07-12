@@ -11,9 +11,9 @@ require_once 'lang/lang.php';
 </head>
 <body>
 <link href="css/commonplace.css" rel="stylesheet"/>
+<link href="css/mainpage.css" rel="stylesheet"/>
 <div class="clip">
     <?php require_once 'include/page.php';?>
-    <link href="css/mainpage.css" rel="stylesheet"/>
     <div id="bar1">
         <div id="bar1_clip_img" class="clip_img"> <img class="clip_img_movable" src="img/pages/mainpage/mainpage1.jpg"></div>
         <div id="bar1_advocate"><div><?php echo text('mainpage_bar1_text');?></div></div>

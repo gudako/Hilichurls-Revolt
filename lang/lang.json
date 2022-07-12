@@ -100,7 +100,11 @@
     "zh": "继续我们的抗争"
   },
   "mainpage_credit": {
-    "en": "This setting is not stated in the original work Genshin Impact.",
-    "zh": "该设定可能不存在于在原作<原神>中。"
+    "en": "potentially out of character?",
+    "zh": "可能超出原作设定？"
+  },
+  "achievements_title_suffix": {
+    "en": "Achievements",
+    "zh": "成就"
   }
 }
