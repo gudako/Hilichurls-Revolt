@@ -1,7 +1,6 @@
 <?php
-
 namespace Game;
-
+require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
 class Achievements
 {
     private static array $achvdata, $visiachv, $catadata;

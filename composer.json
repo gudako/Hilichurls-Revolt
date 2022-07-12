@@ -1,0 +1,20 @@
+{
+  "name": "gudako/hilichurls-revolt",
+  "description": "//todo description",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "gudako",
+      "email": "lostbelt@protonmail.com"
+    }
+  ],
+  "require": {
+    "athari/yalinqo": "*",
+    "ext-shmop": "*"
+  },
+  "autoload": {
+    "classmap": ["achv", "assets", "db"],
+    "files": ["config.php", "lang/lang.php"]
+  }
+}

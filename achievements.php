@@ -1,10 +1,6 @@
-<?php if(!isset($_SESSION))session_start();
-require_once 'lang/lang.php';
-require_once 'achv/achv.php';
-use Game\Achievements;
-?>
+<?php require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php"; ?>
 <head>
-    <title><?php echo text('game_name').' - '. text('achievements_title_suffix');?></title>
+    <title><?php echo memtxt(0,53/*REMAP%game_name*/).' - '. memtxt(3393,36/*REMAP%achievements_title_suffix*/);?></title>
 </head>
 <body>
 <link href="css/commonplace.css" rel="stylesheet"/>
@@ -36,6 +32,8 @@ use Game\Achievements;
 
 </div>
 <div id="achvScript">
+<?php
 
+?>
 </div>
 </body>

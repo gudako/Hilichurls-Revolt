@@ -5,34 +5,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/achv/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/achv/achv.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/achv/achv.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/achv/achvcata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/.scrutinizer.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/.sensiolabs.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/Tests/Stubs/AggregateIteratorWrapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/Tests/Stubs/Temp.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/Tests/Testing/TestCaseEnumerable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/Tests/Unit/EnumerableTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/Tests/Unit/FunctionsTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/Tests/Unit/LinqTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/Tests/Unit/OrderedEnumerableTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/Tests/Unit/UtilsTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/YaLinqo/Enumerable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/YaLinqo/EnumerableGeneration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/YaLinqo/EnumerablePagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/YaLinqo/Errors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/YaLinqo/Functions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/YaLinqo/Linq.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/YaLinqo/OrderedEnumerable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/YaLinqo/Utils.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/phpdoc.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/phpdoc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/phpunit.xml.dist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/athari/yalinqo/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hilichurls Revolt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Hilichurls Revolt.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/achievements.php" beforeDir="false" afterPath="$PROJECT_DIR$/achievements.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achv/achv.json" beforeDir="false" afterPath="$PROJECT_DIR$/achv/achv.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achv/achv.php" beforeDir="false" afterPath="$PROJECT_DIR$/achv/achv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achv/achvcata.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/assets/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/Asset.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Asset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/characters/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/Character.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/characters/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/db_reflect.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/characters/ganyu/frostflake_arrow.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/ganyu/frostflake_arrow.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/characters/ganyu/ganyu.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/ganyu/ganyu.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/characters/ganyu/ganyu.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/ganyu/ganyu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/items/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/items/Item.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/assets/items/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/items/db_reflect.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/calls/maint_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/calls/maint_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/db_init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/db_init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/db_init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/db_init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/handbook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/error_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/error_tip.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/mainbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/maint_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/maint_tip.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/layout/item.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/item.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/window/setlang.php" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution />
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -42,6 +85,7 @@
         <option value="Sass File" />
         <option value="SCSS File" />
         <option value="CSS File" />
+        <option value="composer.json" />
       </list>
     </option>
   </component>
@@ -55,6 +99,12 @@
     </servers>
   </component>
   <component name="PhpWebServerValidation" path_to_validation_script="F:\Hilichurls Revolt" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost:80" />
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/athari/yalinqo" />
+    </include_path>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -66,28 +116,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "F:/Hilichurls Revolt/achv",
-    "list.type.of.created.stylesheet": "CSS",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "watcher.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Hilichurls Revolt/achv&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Hilichurls Revolt\achv" />
@@ -132,7 +182,8 @@
       <workItem from="1657459403706" duration="11688000" />
       <workItem from="1657499565126" duration="42951000" />
       <workItem from="1657590834786" duration="1871000" />
-      <workItem from="1657595502713" duration="10427000" />
+      <workItem from="1657595502713" duration="13164000" />
+      <workItem from="1657620960769" duration="18136000" />
     </task>
     <servers />
   </component>
@@ -148,7 +199,8 @@
         <watch expression="str_replace([&quot;\r\n&quot;,&quot;\n&quot;],&quot;&lt;br&gt;&quot;, trim($matches[0]))" language="PHP" />
       </configuration>
       <configuration name="server.php">
-        <watch expression="$config-&gt;GetDBHostname()" language="PHP" />
+        <watch expression="$path" language="PHP" />
+        <watch expression="scandir($dir)" language="PHP" />
       </configuration>
     </watches-manager>
   </component>

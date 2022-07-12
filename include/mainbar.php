@@ -5,13 +5,13 @@ require_once 'lang/lang.php';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="../css/mainbar.css" rel="stylesheet"/>
 <div id="mainbar">
-    <img id="logo" src="img/pages/logo_<?php echo get_lang();?>.png">
+    <img id="logo" src="img/pages/logo_<?php echo getlang();?>.png">
 
     <!--only shown on larger screen-->
     <?php
     function add_normal_link(string $name, string $textcode): void{
         echo '<a class="norm" href="'. $name .'.php"><img src="img/pages/icons/'. $name .'.png">'. '<span>'.
-            text($textcode) . '</span></a>' . PHP_EOL;
+            memtxt($textcode) . '</span></a>' . PHP_EOL;
     }
     function add_normal_links(): void{
         add_normal_link('mainpage','mainbar_mainpage');
@@ -29,7 +29,7 @@ require_once 'lang/lang.php';
     <!--the login button-->
     <span id="login_button">
         <img src="../img/pages/icons/play.png">
-        <?php echo text('mainbar_play');?>
+        <?php echo memtxt(228,40/*REMAP%mainbar_play*/);?>
     </span>
 
     <!--dropdown list to set language-->
@@ -43,14 +43,14 @@ require_once 'lang/lang.php';
         }
     </script>
     <select id="lang" onchange="setLang('lang')">
-        <option value="en" <?php echo get_lang()=='en'?'selected':'';?>>English</option>
-        <option value="zh" <?php echo get_lang()=='zh'?'selected':'';?>>中文</option>
+        <option value="en" <?php echo getlang()=='en'?'selected':'';?>>English</option>
+        <option value="zh" <?php echo getlang()=='zh'?'selected':'';?>>中文</option>
     </select>
 
     <!--dropdown list for smaller screen-->
     <div id="top_menu" style="display: none">
         <?php add_normal_links();?>
-        <a class="norm" id="setlang"><span><?php echo text('mainbar_menu_change_lang');?></span></a>
+        <a class="norm" id="setlang"><span><?php echo memtxt(268,48/*REMAP%mainbar_menu_change_lang*/);?></span></a>
     </div>
 
     <!--for the language change-->
@@ -60,7 +60,7 @@ require_once 'lang/lang.php';
         $('#setlang').click(()=>{
             whenSthMoved('');
             openWindow({
-                "title": {"text": "<?php echo text('setlang_window_title');?>"},
+                "title": {"text": "<?php echo memtxt(316,51/*REMAP%setlang_window_title*/);?>"},
                 "context": "setlang.php"
             });});
     </script>
