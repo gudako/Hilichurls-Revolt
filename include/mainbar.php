@@ -9,14 +9,14 @@ require_once 'lang/lang.php';
 
     <!--only shown on larger screen-->
     <?php
-    function add_normal_link(string $name, string $textcode): void{
+    function add_normal_link(string $name, int $textMemOffset, int $textMemSize): void{
         echo '<a class="norm" href="'. $name .'.php"><img src="img/pages/icons/'. $name .'.png">'. '<span>'.
-            memtxt($textcode) . '</span></a>' . PHP_EOL;
+            memtxt($textMemOffset, $textMemSize) . '</span></a>' . PHP_EOL;
     }
     function add_normal_links(): void{
-        add_normal_link('mainpage','mainbar_mainpage');
-        add_normal_link('achievements','mainbar_achievements');
-        add_normal_link('handbook','mainbar_handbook');
+        add_normal_link('mainpage',116,39/*REMAP%mainbar_mainpage*/);
+        add_normal_link('achievements',155,35/*REMAP%mainbar_achievements*/);
+        add_normal_link('handbook',190,38/*REMAP%mainbar_handbook*/);
     }
     add_normal_links();
     ?>

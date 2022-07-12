@@ -78,4 +78,4 @@ fabric.properties
 
 # ignore generated files...
 lang/_langtab.php
-_maintenance.txt
+_maint.txt

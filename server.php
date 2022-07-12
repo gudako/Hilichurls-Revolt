@@ -13,17 +13,17 @@ $authorized = $config->IsDebug() || (isset($_SESSION['username']) && $_SESSION['
     isset($_SESSION['password_hash']) && $_SESSION['password_hash'] === sha1($db_password));
 
 // DEFINE CONSTANT AND FUNCTIONS FOR EASE
-const colorError = 'darkred',  colorMaintain = 'blue', colorSuccess = 'darkgreen', colorProcess = 'darkslategray',
+const colorError = 'darkred', colorMaintain = 'blue', colorSuccess = 'darkgreen', colorProcess = 'darkslategray',
     colorSubprocess = 'gray';
 const permissionFull = 0666;
 const clickHereToContinue = "<a style='display: block;' href='server.php'>Click here to continue</a>".PHP_EOL;
 
 //maintenance mode initialized?
-$shmop_maintain = shmop_open($config->GetShmopIdMaintenance(), 'w', permissionFull, 26);
-$maintain_initialized = $shmop_maintain !== false;
+$shmop_maint = shmop_open($config->GetShmopIdMaintenance(), 'w', permissionFull, 26);
+$maint_initialized = $shmop_maint !== false;
 $shmop_lang = shmop_open($config->GetShmopIdLang(), 'w', permissionFull, $config->GetLangMaxSize());
 $lang_initialized = $shmop_lang !== false;
-$database_initialized = $database->IsInitialized();
+$db_initialized = $database->IsInitialized();
 
 // PREDEFINED FUNCTIONS FOR EASE!
 $colortxt = function(string $text, string $color = 'black'):string{
@@ -34,20 +34,35 @@ $colortxt = function(string $text, string $color = 'black'):string{
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     // - PREDEFINED FUNCTIONS FOR EASE! - //
+    $mustInitMaint = function()use($maint_initialized,$colortxt):void{
+        if(!$maint_initialized){
+            echo $colortxt("ERROR: Maintenance data is not initialized.",colorError).clickHereToContinue;
+            http_response_code(400);
+            die();
+        }
+    };
+
     $checkMaintText = function(string $text)use($config):bool{
         foreach ($config->GetAllLanguages() as $lang){
-            $pattern = "/(?<=<".$lang.">)(.|\r|\n)+(?=<\/".$lang.">)/";
+            $pattern = "/<".$lang.">[\s\S]*\S+[\s\S]*<\/".$lang.">/u";
             if(preg_match_all($pattern, $text)!==1) return false;
         }
         return true;
     };
-
-    $mustInitMaint = function()use($maintain_initialized,$colortxt):void{
-        if(!$maintain_initialized){
-            echo $colortxt("Maintenance data is not initialized.",colorError).clickHereToContinue;
+    
+    $mustHaveGoodMaintText = function($postName)use($checkMaintText,$colortxt):void{
+        if(!$checkMaintText($_POST[$postName])){
+            echo $colortxt("ERROR: Make sure your text is available in all languages and without duplicate.",
+                    colorError).clickHereToContinue;
             http_response_code(400);
-            die();
-        }
+            die();}
+    };
+
+    $simplifyMaintText=function ($maintText)use($config): string {
+        $langs =implode("|",$config->GetAllLanguages());
+        $optimized1 = preg_replace("/<(".$langs.")>\s*([\s\S]+?)\s*<\/(".$langs.")>/u",
+            "<$1>\n$2\n</$1>\n\n", $maintText);
+        return preg_replace("/(\r\n|\n)(\r\n|\n)/u",'',$optimized1);
     };
 
     //- WHEN USER WANT TO GET ACCESS TO THE ADMIN PANEL -//
@@ -64,14 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     //- INITIALIZE OR RELOAD LANGUAGE DATA -//
     elseif (isset($_POST['init_lang']) && $_POST['init_lang']=='true'){
         $mustInitMaint();
-        if($lang_initialized && !$config->InMaintenance()){
+        if($lang_initialized && !$config->InMaintenance() && !$config->IsDebug()){
             echo $colortxt("Reloading language-text file is only possible in maintenance mode.",colorError).
                 clickHereToContinue;
             http_response_code(400);
             die();
         }
         startLangInit:
-        echo $colortxt("Loading the language-text file into memory...",colorProcess);
+        echo $colortxt("Loading the language-text file into memory......",colorProcess);
         $shmop = shmop_open($config->GetShmopIdLang(), 'c', permissionFull, $config->GetLangMaxSize());
         $decoded = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT']."/lang/lang.json"), true);
         $byte = 0;
@@ -86,8 +101,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $remap[$textcode] = [$byte, $size];
             $byte += $size;
         }
-        echo $colortxt("Memory loaded to offset ".$byte,colorSubprocess).PHP_EOL;
-        echo $colortxt("Remapping the function calls in the PHP files...",colorProcess).PHP_EOL;
+        $maxSize = $config->GetLangMaxSize();
+        echo $colortxt("Memory loaded to offset ".$byte." for a maximum at ".$maxSize.
+                " (space used ".round(100.0*$byte/$maxSize,2)."%).", colorSubprocess).PHP_EOL;
+        echo $colortxt("Remapping the function calls in the PHP files......",colorProcess).PHP_EOL;
         $remapInFiles = function(string $dir) use (&$remapInFiles, $colortxt, $remap):void{
             $paths = scandir($dir);
             foreach ($paths as $path) {
@@ -137,20 +154,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 
     //- INITIALIZE OR RELOAD MAINTENANCE DATA -//
-    elseif (isset($_POST['init_maintain']) && $_POST['init_maintain']=='true'){
-        if($maintain_initialized && !$config->InMaintenance()){
-            echo $colortxt("ERROR: No maintenance is currently in progress.",colorError).PHP_EOL;
-            if(!$config->IsDebug()){
-                echo clickHereToContinue;
-                http_response_code(400);
-                die();
-            }
-            else echo $colortxt("The previous error is suppressed by DEBUG mode.",colorError).PHP_EOL;
+    elseif (isset($_POST['init_maint']) && $_POST['init_maint']=='true'){
+        if($maint_initialized && !$config->InMaintenance() &&!$config->IsDebug()){
+            echo $colortxt("ERROR: No maintenance is currently in progress.",colorError).clickHereToContinue;
+            http_response_code(400);
+            die();
         }
-        $quitMaint = $maintain_initialized && !$config->NoMaintenance();
-        echo $colortxt("Loading initial maintenance status memory...",colorProcess);
-        $shmop_maintain= shmop_open($config->GetShmopIdMaintenance(),'c',permissionFull,26);
-        shmop_write($shmop_maintain, '00000000000000000000000000', 0);
+        $quitMaint = $maint_initialized && !$config->NoMaintenance();
+        echo $colortxt("Loading initial maintenance status memory......",colorProcess);
+        $shmop_maint= shmop_open($config->GetShmopIdMaintenance(),'c',permissionFull,26);
+        shmop_write($shmop_maint, '00000000000000000000000000', 0);
         if($quitMaint){
             echo $colortxt("Successfully reset maintenance memory. Requiring a language-text memory reload.",
                 colorSubprocess).PHP_EOL;
@@ -160,89 +173,93 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 
     //- START A MAINTENANCE with TEXT AND TIME -//
-    elseif(isset($_POST['maintain_hrs'], $_POST['maintain_txt'])){
-        if(!$maintain_initialized || !$lang_initialized){
-            echo $colortxt("Make sure everything is initialized well.",colorError).
+    elseif(isset($_POST['maint_hrs'], $_POST['maint_mins'], $_POST['maint_text'])){
+        if(!$maint_initialized || !$lang_initialized || !$db_initialized){
+            echo $colortxt("ERROR: Make sure everything is initialized well.",colorError).
                 clickHereToContinue;
             http_response_code(400);
             die();
         }
         if(!$config->NoMaintenance()){
-            echo $colortxt("Already under maintenance or already issued a maintenance.",colorError).
+            echo $colortxt("ERROR: Already under maintenance or already issued a maintenance.",colorError).
                 clickHereToContinue;
             http_response_code(400);
             die();
         }
-        $maintHrs = $_POST['maintain_hrs'];
-        $maintText = $_POST['maintain_txt'];
-        if (filter_var($maintHrs, FILTER_VALIDATE_INT)===false ||
-            $maintHrs < ($config->IsDebug()?0:1) || $maintHrs > 24){
-            echo $colortxt("The maintain number input is not valid.",colorError).clickHereToContinue;
+        $maintHrs = $_POST['maint_hrs'];
+        $maintMins = $_POST['maint_mins'];
+        if (filter_var($maintHrs, FILTER_VALIDATE_INT)===false || $maintHrs>24 || $maintHrs<0 ||
+            filter_var($maintMins, FILTER_VALIDATE_INT)===false || $maintMins>59 || $maintMins<0 ||
+            ($maintHrs==0&&$maintMins==0)){
+            echo $colortxt("ERROR: The maintain time number input is invalid.",colorError).clickHereToContinue;
             http_response_code(400);
             die();
         }
-        if(!$checkMaintText($maintText)){
-            echo $colortxt("ERROR: Make sure your text is available in all languages without duplicate.",
-                    colorError).clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
-        echo $colortxt("Issuing a maintenance after ".$maintHrs." hours...");
+        $mustHaveGoodMaintText('maint_text');
+        echo $colortxt("Issuing a maintenance after ".$maintHrs." hours ". $maintMins." minutes......",
+                colorProcess).PHP_EOL;
         $now = new DateTime();
-        $add = new DateInterval('PT'.$maintHrs.'H');
+        $add = new DateInterval('PT'.$maintHrs.'H'.$maintMins.'M');
         $toWrite = $now->add($add)->format('Y-m-d H:i:s.u');
-        shmop_write($shmop_maintain, $toWrite, 0);
-        file_put_contents($_SERVER['DOCUMENT_ROOT']."/_maintenance.txt", $maintText);
-        echo $colortxt("Success!",colorSuccess).clickHereToContinue;
+        shmop_write($shmop_maint, $toWrite, 0);
+        echo $colortxt("Written to the maintenance memory: \"".$toWrite."\"",colorSubprocess).PHP_EOL;
+        $_POST['change_maint_text'] = $_POST['maint_text'];
+        goto startChangeMaintText;
     }
 
     //- CHANGE THE MAINTENANCE TEXT -//
-    elseif(isset($_POST['change_maintain_text'])){
-        if(!$maintain_initialized){
-            echo $colortxt("Maintenance data uninitialized.",colorError).clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
+    elseif(isset($_POST['change_maint_text'])){
+        $mustInitMaint();
         if($config->NoMaintenance()){
-            echo $colortxt("Currently no maintenance is issued.",colorError).clickHereToContinue;
+            echo $colortxt("ERROR: Currently no maintenance is issued.",colorError).clickHereToContinue;
             http_response_code(400);
             die();
         }
-        if(!$checkMaintText($_POST['change_maintain_text'])){
-            echo $colortxt("Make sure your text is available in all languages and ...without duplicate!",
-                    colorError).clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
-        echo $colortxt("Changing maintenance text...");
-        file_put_contents($_SERVER['DOCUMENT_ROOT']."/_maintenance.txt", $_POST['change_maintain_text']);
+        $mustHaveGoodMaintText('change_maint_text');
+        startChangeMaintText:
+        $targetText =$simplifyMaintText($_POST['change_maint_text']);
+        echo $colortxt("Changing maintenance text to......",colorProcess);
+        file_put_contents($_SERVER['DOCUMENT_ROOT']."/_maint.txt", $targetText);
+        echo $colortxt(str_replace(["\r\n","\n"],"<br>",htmlspecialchars($targetText)),colorSubprocess).PHP_EOL;
         echo $colortxt("Success!",colorSuccess).clickHereToContinue;
     }
 
     // CREATE THE DATABASE, THAT IS INITIALIZATION
     elseif(isset($_POST['db_init'])&&$_POST['db_init']=='true'){
-        if(!$maintain_initialized){
-            echo $colortxt("Maintenance data uninitialized. You should always do that first!",
+        $mustInitMaint();
+        echo $colortxt("Running initialization database scripts......",colorProcess).PHP_EOL;
+        $initData = file_get_contents($_SERVER['DOCUMENT_ROOT']."/db/db_init.sql");
+        echo $colortxt($initData,colorSubprocess).PHP_EOL;
+        $res = $database->GetConnection(false)->query($initData);
+        if ($res!==false) echo $colortxt("Success!",colorSuccess).clickHereToContinue;
+        else echo $colortxt("ERROR: Things are going wrong. Need debug.",colorError).clickHereToContinue;
+    }
+
+    //ONLY FOR DEBUG, IMMEDIATELY DROP INTO THE MAINTENANCE MODE
+    elseif(isset($_POST['imm_maint'])&&$_POST['imm_maint']=='true'){
+        $mustInitMaint();
+        if(!$config->IsDebug()){
+            echo $colortxt("ERROR: Only available in DEBUG mode to immediately turn into maintenance.",
                     colorError).clickHereToContinue;
             http_response_code(400);
             die();
         }
-        echo $colortxt("Running initialization database scripts...").PHP_EOL;
-        $initData = file_get_contents($_SERVER['DOCUMENT_ROOT']."/db/db_init.sql");
-        echo $initData;
-        $res = $database->GetConnection(false)->query($initData);
-        if ($res!==false) echo $colortxt("Success!",colorSuccess).clickHereToContinue;
-        else echo $colortxt("Things are going wrong. Need debug.",colorError).clickHereToContinue;
+        echo $colortxt("Issuing an immediate maintenance......",colorProcess).PHP_EOL;
+        $toWrite=(new DateTime())->format('Y-m-d H:i:s.u');
+        shmop_write($shmop_maint, $toWrite, 0);
+        echo $colortxt("Written to the maintenance memory: \"".$toWrite."\"",colorSubprocess).PHP_EOL;
+        echo $colortxt("Success!",colorSuccess).clickHereToContinue;
     }
+    
     else{
         echo clickHereToContinue;
         http_response_code(200);
+        die();
     }
-
     http_response_code(202);
     die();
 }
-// POST QUERY END --- POST QUERY END --- POST QUERY END --- POST QUERY END --- POST QUERY END --- POST QUERY END //
+// POST QUERY END //
 
 elseif($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['get_session_id']) && $_GET['get_session_id'] === 'true'){
     echo 'session_id='. session_id() . PHP_EOL;
@@ -260,23 +277,27 @@ $postButton = function (string $call, string $text): void{
         "value='true'><input type='submit' value='".$text."'></form>".PHP_EOL;
 };
 
-if(!$maintain_initialized){
-    echo $colortxt("The maintenance data hasn't been loaded into memory.",colorError).PHP_EOL;
-    $postButton('init_maintain', 'Click here to load it');
+if(!$maint_initialized){
+    echo $colortxt("ERROR: The maintenance data hasn't been loaded into memory.",colorError).PHP_EOL;
+    $postButton('init_maint', 'Click here to load it');
 }
 else{
     echo $colortxt("Maintenance data loaded fine.",colorSuccess).PHP_EOL;
     $maintainTime = $config->GetMaintenanceTime();
 
-    if($maintainTime===false){
+    $getDefMaintText=function()use($config):string{
         $defMaintText = '';
-        foreach ($config->GetAllLanguages() as $lang) $defMaintText .= "<".$lang."></".$lang.">".PHP_EOL;
+        foreach ($config->GetAllLanguages() as $lang)
+            $defMaintText .= "<".$lang.">".PHP_EOL.($config->IsDebug()?"TEST VALUE":"").PHP_EOL. "</".$lang.">".PHP_EOL;
+        return $defMaintText;
+    };
+
+    if($maintainTime===false){
         echo "<form action='server.php' method='post'>".
-            "<label>Issue a maintanence for </label><input type='number' name='maintain_hrs' ".
-            "value='4' max='24' min='" .($config->IsDebug()?'0':'1').
-            "'><label> hours</label><br>with the message:<br>".
-            "<textarea name='maintain_txt'>".$defMaintText."</textarea>".
-            "<br><input type='submit' value='Issue maintenence'></form>";
+            "Issue a maintanence for <input type='number' name='maint_hrs' value='1' max='24' min='0'> hours ".
+            "<input type='number' name='maint_mins' value='0' max='59' min='0'> minutes <br>with the message:<br>".
+            "<textarea name='maint_text' style='height: 255px; width: 500px; resize: none;'>".$getDefMaintText().
+            "</textarea><br><input type='submit' value='Issue a Maintenence'></form>";
     }
     else{
         if($maintainTime->invert == 0){
@@ -287,40 +308,41 @@ else{
             echo $colortxt("Maintenance state will start after ".
                     $maintainTime->format('%H:%I:%S'),colorMaintain).PHP_EOL;
         }
-        $data = file_get_contents('_maintenance.txt');
-        echo "<form action='server.php' method='post'><label>Current maintenance text:</label>".
-            "<textarea name='change_maintain_text'>".($data===false?'<en></en>\n<zh></zh>':$data).
-            "</textarea><br>>>>>>>>>>>>>>>>>>>>>><input type='submit' value='Set maintenance text'></form>";
-        if($data===false) echo $colortxt("WARNING: Currently NO maintenance text is set.",colorError);
-        if($maintainTime->invert == 0) $postButton('init_maintain', 'Exit maintenance mode');
-        else if($config->IsDebug()) $postButton('init_maintain', 'Exit maintenance mode (DEBUG ONLY)');
+        $maintFileData = file_get_contents('_maint.txt');
+        echo "<form action='server.php' method='post'><label>Current maintenance text:</label><br>".
+            "<textarea name='change_maint_text' style='height: 255px; width: 500px; resize: none;'>".
+            ($maintFileData===false?$getDefMaintText():$maintFileData).
+            "</textarea><br><input type='submit' value='Change Maintenance Text'></form>";
+        if($maintFileData===false) echo $colortxt("WARNING: Currently NO maintenance text is set.",colorError);
+        if($maintainTime->invert == 0) $postButton('init_maint', 'Exit Maintenance Mode');
+        elseif($config->IsDebug()) {
+            $postButton('imm_maint', 'Immediately enter Maintenance (DEBUG ONLY)');
+            $postButton('init_maint', 'Undo issuing the Maintenance (DEBUG ONLY)');
+        }
     }
 }
 
 if(!$lang_initialized){
     echo $colortxt("The language file data hasn't been loaded into memory.",colorError).PHP_EOL;
-    $postButton('init_lang', 'Click here to load it');
+    $postButton('init_lang', 'Click here to load language-text memory');
 }
 else{
-    echo $colortxt("Language file loaded fine.",colorSuccess).PHP_EOL;
-    if($config->InMaintenance()){
-        $postButton('init_lang', 'Reload lang data');
-    }
+    echo $colortxt("Language-text memory loaded fine.",colorSuccess).PHP_EOL;
+    if($config->InMaintenance()) $postButton('init_lang', 'Reload language-text memory');
+    elseif ($config->IsDebug()) $postButton('init_lang', 'Reload language-text memory (DEBUG ONLY)');
 }
 
-if($database_initialized){
+if($db_initialized){
     echo $colortxt("Database is loaded successfully.",colorSuccess).PHP_EOL;
-    if(!$config->InMaintenance()) {
+    if(!$config->InMaintenance() && !$config->IsDebug())
         echo $colortxt("WARNING: ONLY MODIFY THE DATABASE AT MAINTENANCE MODE!!!").PHP_EOL;
-        echo $colortxt("DO NOT DO ANYTHING TO THE DATABASE NOW!! (except debug or setup)").PHP_EOL;
-    }
-    else{
-        echo $colortxt("Changes about database you should better refer to phpMyAdmin etc...").PHP_EOL;
-    }
+    else echo $colortxt($config->IsDebug()?
+            "Debugging the database you'd refer to Intellij IDEA...... You know that all!":
+            "Changes about database you should better refer to phpMyAdmin, etc......").PHP_EOL;
 }
 else{
-    echo $colortxt("Database is not properly set up...",colorError).PHP_EOL;
-    $postButton('db_init', "Initialize Database!");
+    echo $colortxt("Database is not properly set up......",colorError).PHP_EOL;
+    $postButton('db_init', "Initialize the Database!");
 }
 
 echo PHP_EOL;

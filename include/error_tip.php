@@ -21,7 +21,7 @@ $alright = !$isServerDown && !$inMaintenance;
                     echo "<font style='font-weight: bold;'>".memtxt(53,63/*REMAP%maintenance_alert_title*/).'</font>';
                     echo "<br><div style='border: 1px gray solid; padding: 6px; margin: 10px 20px 5px 20px;".
                         " font-size: 14px; text-align: left; max-height: 200px; overflow-y: auto; color: #3d3b3b;'>";
-                    $mText = file_get_contents($_SERVER['DOCUMENT_ROOT']."/_maintenance.txt");
+                    $mText = file_get_contents($_SERVER['DOCUMENT_ROOT']."/_maint.txt");
                     $lang = getlang();
                     $matches = array();
                     preg_match("/(?<=<".$lang.">)(.|\r|\n)*(?=<\/".$lang.">)/m",$mText,$matches);

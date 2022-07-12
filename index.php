@@ -1,5 +1,5 @@
-<?php if(!isset($_SESSION))session_start();
-require_once 'lang/lang.php';
+<?php
+require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
     if(isset($_GET['lang'])) {
         setcookie('lang', $_GET['lang'], time()+(60*60*24*365));
         header('Location: index.php');
