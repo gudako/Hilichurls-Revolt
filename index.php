@@ -49,7 +49,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
     </div>
     <div id="bar6">
         <img src="img/pages/mainpage/mainpage_hilichurl_left.png"
-             alt="<?php echo memtxt('mainpage_slime_complaint!');?>">
+             alt="<?php echo memtxt(3128,74/*REMAP%mainpage_slime_complaint!*/);?>">
         <div id="bar6_text">
             <img src="img/pages/icons/fight.png">
             <div>

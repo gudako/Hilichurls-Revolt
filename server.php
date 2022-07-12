@@ -94,10 +94,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         foreach ($decoded as $textcode => $textItem){
             $content = '';
             foreach ($textItem as $lang => $text) $content .= '<'.$lang.'>'.$text.'</'.$lang.'>';
+            $size = strlen($content);
+            if($byte+$size>=$config->GetLangMaxSize()){
+                echo $colortxt("ERROR: Language-text data exceeding the max memory ". $config->GetLangMaxSize().
+                    " bytes.",colorError).clickHereToContinue;
+                http_response_code(400);
+                die();
+            }
             shmop_write($shmop, $content, $byte);
             if(isset($remap[$textcode]))
                 echo $colortxt("WARNING: Duplicate of textcode \"".$textcode."\"",colorError);
-            $size = strlen($content);
             $remap[$textcode] = [$byte, $size];
             $byte += $size;
         }
@@ -126,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                     $dealcnt = 0;
                     for ($i=0;$i<=count($lines)-1;$i++){
                         $pattern = /** @lang RegExp */
-                            "/(\d+, *\d+|\d+|)( *\/\* *(<-)?REMAP%([a-z\d][a-z\d_]+[a-z\d]) *\*\/)/";
+                            "/(\d+, *\d+|\d+|)( *\/\* *(<-)?REMAP%([a-z\d][a-z\d_]+[a-z\d\?\!]) *\*\/)/";
                         $replaced = preg_replace_callback($pattern,
                             function($matches)use($colortxt, $path, $remap, $linecnt, &$dealcnt)
                             {
