@@ -1,5 +1,8 @@
 <?php if(!isset($_SESSION))session_start();
-require_once 'lang/lang.php';?>
+require_once 'lang/lang.php';
+require_once 'achv/achv.php';
+use Game\Achievements;
+?>
 <head>
     <title><?php echo text('game_name').' - '. text('achievements_title_suffix');?></title>
 </head>
@@ -30,6 +33,9 @@ require_once 'lang/lang.php';?>
         <div id="achvTabRt"></div>
         <div id="achvTabRight"></div>
     </div>
+
+</div>
+<div id="achvScript">
 
 </div>
 </body>

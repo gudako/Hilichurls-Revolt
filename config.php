@@ -1,6 +1,6 @@
 <?php
 namespace Game;
-require_once $_SERVER['DOCUMENT_ROOT'].'/script/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/script/database.php';
 use DateInterval, DateTime;
 
 class Config

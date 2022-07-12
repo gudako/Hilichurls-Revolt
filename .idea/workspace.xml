@@ -5,21 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/achievements.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/achievements.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/game/achi-point.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/game/itemback1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/game/itemback2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/game/itemback3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/game/itemback4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/game/itemback5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/game/items/mora.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/game/items/primogem.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/achv/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/achv/achv.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/achv/achv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/achv/achvcata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/commonplace.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/commonplace.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achievements.php" beforeDir="false" afterPath="$PROJECT_DIR$/achievements.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/assets/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/Asset.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Asset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/characters/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/Character.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/characters/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/db_reflect.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/characters/ganyu/frostflake_arrow.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/ganyu/frostflake_arrow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/characters/ganyu/ganyu.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/ganyu/ganyu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/characters/ganyu/ganyu.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/characters/ganyu/ganyu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/items/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/items/Item.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/assets/items/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/items/db_reflect.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/calls/maint_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/calls/maint_check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/db_init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/db_init.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,30 +66,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Hilichurls Revolt/server_call&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "F:/Hilichurls Revolt/achv",
+    "list.type.of.created.stylesheet": "CSS",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "watcher.settings"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\achv" />
       <recent name="F:\Hilichurls Revolt\server_call" />
       <recent name="F:\Hilichurls Revolt" />
       <recent name="F:\Hilichurls Revolt\game_settings\items" />
@@ -92,10 +98,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Hilichurls Revolt" />
+      <recent name="F:\Hilichurls Revolt\db" />
       <recent name="F:\Hilichurls Revolt\php" />
       <recent name="F:\Hilichurls Revolt\php\asset" />
       <recent name="F:\Hilichurls Revolt\game_settings\assets" />
-      <recent name="F:\Hilichurls Revolt\game_settings" />
     </key>
   </component>
   <component name="RunManager">
@@ -126,7 +132,7 @@
       <workItem from="1657459403706" duration="11688000" />
       <workItem from="1657499565126" duration="42951000" />
       <workItem from="1657590834786" duration="1871000" />
-      <workItem from="1657595502713" duration="5839000" />
+      <workItem from="1657595502713" duration="10427000" />
     </task>
     <servers />
   </component>
