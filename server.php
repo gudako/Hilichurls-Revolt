@@ -109,14 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 die();
             }
         }
-        if($config->InMaintenance()){
+        if($maintain_initialized && $config->InMaintenance()){
             echo ColoredText("Maintenance is quitting. Remember to initialize the lang file again.");
-            shmop_delete($shmop_lang);
             unlink($_SERVER['DOCUMENT_ROOT']."/_maintenance.txt");
         }
         echo ColoredText("Loading maintenance memory to 'No Maintenance'...");
         unlink($_SERVER['DOCUMENT_ROOT']."/lang/_langtab.php");
-        shmop_delete($shmop_lang);
         $shmop_maintain= shmop_open($config->GetShmopIdMaintenance(),'c',permissionFull,26);
         shmop_write($shmop_maintain, '00000000000000000000000000', 0);
         echo ColoredText("Success!",colorSuccess).clickHereToContinue;
