@@ -17,7 +17,7 @@ $alright = !$isServerDown && !$inMaintenance;
                 <?php
                 if($isServerDown) echo "<font style='font-weight: bold;'>SERVER ERROR<br>The server is currently down.</font>";
                 elseif($inMaintenance){
-                    echo "<font style='font-weight: bold;'>".memtxt(53,63/*REMAP%maintenance_alert_title*/).'</font>';
+                    echo "<font style='font-weight: bold;'>".memtxt(1110,63/*REMAP%maintenance_alert_title*/).'</font>';
                     echo "<br><div style='border: 1px gray solid; padding: 6px; margin: 10px 20px 5px 20px;".
                         " font-size: 14px; text-align: left; max-height: 200px; overflow-y: auto; color: #3d3b3b;'>";
                     $mText = file_get_contents($_SERVER['DOCUMENT_ROOT']."/_maint.txt");
@@ -26,7 +26,7 @@ $alright = !$isServerDown && !$inMaintenance;
                     preg_match("/(?<=<".$lang.">)(.|\r|\n)*(?=<\/".$lang.">)/m",$mText,$matches);
                     echo str_replace(["\r\n","\n"],"<br>", trim($matches[0])).'</div>';
                 }
-                else echo memtxt(635,137/*REMAP%pages_js_alert_text*/);
+                else echo memtxt(1692,137/*REMAP%pages_js_alert_text*/);
                 ?>
             </div>
         </div>

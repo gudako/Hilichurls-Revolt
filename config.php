@@ -7,21 +7,23 @@ class Config
 {
     private static bool $isDebug;
     private static string $dbHostname, $dbUsername, $dbPassword;
-    private static int $langMaxSize, $shmopIdMaintenance, $shmopIdLang;
+    private static int $shmopLangMaxsz, $shmopIdMaintenance, $shmopIdLang;
     private static array $allLanguages;
+    private static int $shmopHashtableMulti;
 
     function __construct(){
-        if(!isset(self::$isDebug, self::$dbHostname, self::$dbUsername, self::$dbPassword, self::$langMaxSize,
-            self::$langMaxSize, self::$shmopIdMaintenance, self::$shmopIdLang, self::$allLanguages)){
+        if(!isset(self::$isDebug, self::$dbHostname, self::$dbUsername, self::$dbPassword, self::$shmopLangMaxsz,
+            self::$shmopLangMaxsz, self::$shmopIdMaintenance, self::$shmopIdLang, self::$allLanguages)){
             $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].'/config.json'), true);
             self::$isDebug = $config['mode_debug'] == 'true';
             self::$dbHostname = $config['db_hostname'];
             self::$dbUsername = $config['db_username'];
             self::$dbPassword = $config['db_password'];
-            self::$langMaxSize = $config['lang_max_size'];
+            self::$shmopLangMaxsz = $config['shmop_lang_max_size'];
             self::$shmopIdMaintenance = $config['shmop_id_maintenance'];
             self::$shmopIdLang = $config['shmop_id_lang'];
             self::$allLanguages = $config['all_languages'];
+            self::$shmopHashtableMulti = $config['shmop_hashtable_multi'];
         }
     }
 
@@ -41,8 +43,8 @@ class Config
         return self::$dbPassword;
     }
 
-    function GetLangMaxSize(): int{
-        return self::$langMaxSize;
+    function GetShmopLangMaxsz(): int{
+        return self::$shmopLangMaxsz;
     }
 
     function GetShmopIdMaintenance(): int{
@@ -85,5 +87,9 @@ class Config
 
     function NoMaintenance():bool{
         return $this->GetMaintenanceTime()===false;
+    }
+
+    function GetShmopHashtableMulti():int{
+        return self::$shmopHashtableMulti;
     }
 }

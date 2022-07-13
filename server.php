@@ -21,7 +21,7 @@ const clickHereToContinue = "<a style='display: block;' href='server.php'>Click 
 //maintenance mode initialized?
 $shmop_maint = shmop_open($config->GetShmopIdMaintenance(), 'w', permissionFull, 26);
 $maint_initialized = $shmop_maint !== false;
-$shmop_lang = shmop_open($config->GetShmopIdLang(), 'w', permissionFull, $config->GetLangMaxSize());
+$shmop_lang = shmop_open($config->GetShmopIdLang(), 'w', permissionFull, $config->GetShmopLangMaxsz());
 $lang_initialized = $shmop_lang !== false;
 $db_initialized = $database->IsInitialized();
 
@@ -65,6 +65,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         return preg_replace("/(\r\n|\n)(\r\n|\n)/u",'',$optimized1);
     };
 
+    $unsigned2bin=function (int $unsigned,int $bytes)use($colortxt):string{
+        $hex = dechex($unsigned);
+        if(strlen($hex)>$bytes*2){
+            echo $colortxt("ERROR: Cannot fit binary \"".$hex."\" into a ".$bytes." bytes space.",
+                    colorError).clickHereToContinue;
+            http_response_code(400);
+            die();
+        }
+        $hex = str_pad($hex,$bytes*2,'0',STR_PAD_LEFT);
+        return hex2bin($hex);
+    };
+
     //- WHEN USER WANT TO GET ACCESS TO THE ADMIN PANEL -//
     if(isset($_POST['username']) && $_POST['username'] === $db_username && isset($_POST['password']) &&
         $_POST['password'] === $db_password){
@@ -87,16 +99,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
         startLangInit:
         echo $colortxt("Loading the language-text file into memory......",colorProcess);
-        $shmop = shmop_open($config->GetShmopIdLang(), 'c', permissionFull, $config->GetLangMaxSize());
-        $decoded = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT']."/lang/lang.json"), true);
-        $byte = 0;
+        $shmopMaxLangSize = $config->GetShmopLangMaxsz();
+        $shmop = shmop_open($config->GetShmopIdLang(), 'c', permissionFull, $shmopMaxLangSize);
+
+        $jsonPath = $_SERVER['DOCUMENT_ROOT']."/lang/lang.json";
+        $decoded = json_decode(file_get_contents($jsonPath), true);
+        if($decoded===null){
+            echo $colortxt("ERROR: Failed to parse JSON file: \"". $jsonPath."\"",colorError).clickHereToContinue;
+            http_response_code(400);
+            die();
+        }
+
+        $itemCount = count($decoded);
+        $shmopHashSize = min(20, ceil(log($shmopMaxLangSize, 256) * 3));
+        $shmopOffsetSize = ceil(log($shmopMaxLangSize, 256));
+        $shmopTupleSize = $shmopHashSize + $shmopOffsetSize*2;
+        $spaceCount = $itemCount * $config->GetShmopHashtableMulti();
+        $bytesTakenByHashtable =$shmopTupleSize * $spaceCount;
+        $byte = 4 + $bytesTakenByHashtable;
+
+        if($config->GetShmopHashtableMulti()<2){
+            echo $colortxt("ERROR: Config \"shmop_hashtable_multi\" should at least be 2.",colorError).
+                clickHereToContinue;
+            http_response_code(400);
+            die();
+        }
+
+        shmop_write($shmop,$unsigned2bin($byte,2),0);
+        shmop_write($shmop,$unsigned2bin($shmopHashSize,1),2);
+        shmop_write($shmop,$unsigned2bin($shmopOffsetSize,1),3);
+        shmop_write($shmop,str_repeat(hex2bin('00'), $bytesTakenByHashtable),4);
+        echo $colortxt("Hash size: ".$shmopHashSize.", Offset size: ".$shmopOffsetSize.
+            ", Hashtable ends at offset: ". $byte,colorSubprocess);
+
         $remap = array();
+        $timesHit = 0;
+        $timesOff = 0;
         foreach ($decoded as $textcode => $textItem){
             $content = '';
             foreach ($textItem as $lang => $text) $content .= '<'.$lang.'>'.$text.'</'.$lang.'>';
             $size = strlen($content);
-            if($byte+$size>=$config->GetLangMaxSize()){
-                echo $colortxt("ERROR: Language-text data exceeding the max memory ". $config->GetLangMaxSize().
+            if($byte+$size>=$shmopMaxLangSize){
+                echo $colortxt("ERROR: Language-text data exceeding the max memory ". $shmopMaxLangSize.
                     " bytes.",colorError).clickHereToContinue;
                 http_response_code(400);
                 die();
@@ -105,11 +149,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($remap[$textcode]))
                 echo $colortxt("WARNING: Duplicate of textcode \"".$textcode."\"",colorError);
             $remap[$textcode] = [$byte, $size];
+
+            $textcodeHash = substr(sha1($textcode),0,$shmopHashSize*2);
+            $indexInTable = (hexdec($textcodeHash) % $spaceCount) * $shmopTupleSize;
+            $read = null;
+            $timesHit++;
+            while($read=shmop_read($shmop, $indexInTable+4, $shmopTupleSize)!==
+                str_repeat(hex2bin('00'),$shmopTupleSize))
+            {
+                $timesHit++;
+                $timesOff++;
+                $indexInTable+=$shmopTupleSize;
+                if($indexInTable>=$bytesTakenByHashtable)$indexInTable-=$bytesTakenByHashtable;
+            }
+            shmop_write($shmop, hex2bin($textcodeHash).$unsigned2bin($byte,$shmopOffsetSize).
+                $unsigned2bin($size,$shmopOffsetSize),4+$indexInTable);
+
             $byte += $size;
         }
-        $maxSize = $config->GetLangMaxSize();
-        echo $colortxt("Memory loaded to offset ".$byte." for a maximum at ".$maxSize.
-                " (space used ".round(100.0*$byte/$maxSize,2)."%).", colorSubprocess).PHP_EOL;
+        $hitAccuracy =1-$timesOff/$timesHit;
+
+        echo $colortxt("Memory loaded to offset ".$byte." for a maximum at ".$shmopMaxLangSize.
+                " (space used ".round(100.0*$byte/$shmopMaxLangSize,2)."%).", colorSubprocess).PHP_EOL;
+        echo $colortxt("Hashtable hits: ".$timesOff." misses in ".$timesHit." hits. Accuracy: ".
+                round($hitAccuracy*100,2)."%",colorSubprocess).PHP_EOL;
+        if($hitAccuracy<=0.5)
+            echo $colortxt("WARNING: Hashtable hit accuracy is too low. May hinder performance at reading memory.", colorError).PHP_EOL;
+
         echo $colortxt("Remapping the function calls in the PHP files......",colorProcess).PHP_EOL;
         $remapInFiles = function(string $dir) use (&$remapInFiles, $colortxt, $remap):void{
             $paths = scandir($dir);
@@ -132,11 +198,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                     $dealcnt = 0;
                     for ($i=0;$i<=count($lines)-1;$i++){
                         $pattern = /** @lang RegExp */
-                            "/(\d+, *\d+|\d+|)( *\/\* *(<-)?REMAP%([a-z\d][a-z\d_]+[a-z\d\?\!]) *\*\/)/";
+                            "/(\d+, *\d+|\d+|)( *\/\* *REMAP%([a-z\d][a-z\d_]+[a-z\d\?\!]) *\*\/)/";
                         $replaced = preg_replace_callback($pattern,
                             function($matches)use($colortxt, $path, $remap, $linecnt, &$dealcnt)
                             {
-                                $textcode = $matches[4];
+                                $textcode = $matches[3];
                                 if(!isset($remap[$textcode])){
                                     echo $colortxt("WARNING: Undefined textcode \"".$textcode.
                                         "\" demanded in file: \"".$path."\" at line ".$linecnt,colorError).PHP_EOL;
