@@ -6,45 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/css/error.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/pages/bug.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/achv/AchievementCategory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/achv/AchievementItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/achv/AchievementSystem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/ex/Detection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/ex/LocalException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/ex/ServerException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/ex/SystemException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/game/characters/ganyu/frostflake_arrow.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/game/characters/ganyu/ganyu.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/achievements.php" beforeDir="false" afterPath="$PROJECT_DIR$/achievements.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calls/maint_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/calls/maint_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/handbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/error_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/error_tip.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/lowbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/lowbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/mainbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/maint_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/maint_tip.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/achievements.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/achv.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/achv.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/ConfigSystem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/DatabaseSystem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/game/assets/Asset.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/Asset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/game/assets/characters/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/characters/Character.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/game/assets/characters/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/characters/db_reflect.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/game/assets/characters/ganyu/frostflake_arrow.php" beforeDir="false" afterPath="$PROJECT_DIR$/error.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/game/assets/characters/ganyu/ganyu.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/characters/ganyu/ganyu.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/game/assets/characters/ganyu/ganyu.php" beforeDir="false" afterPath="$PROJECT_DIR$/init.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/game/assets/items/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/items/Item.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/game/assets/items/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/items/db_reflect.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/error.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +130,7 @@
       <workItem from="1657595502713" duration="13164000" />
       <workItem from="1657620960769" duration="28621000" />
       <workItem from="1657674976169" duration="20070000" />
-      <workItem from="1657785160944" duration="31386000" />
+      <workItem from="1657785160944" duration="33465000" />
     </task>
     <servers />
   </component>
