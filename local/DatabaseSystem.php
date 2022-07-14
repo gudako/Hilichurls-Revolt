@@ -1,7 +1,7 @@
 <?php
 namespace local;
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-use Exception, mysqli;
+use mysqli;
 
 class DatabaseSystem
 {
@@ -26,7 +26,7 @@ class DatabaseSystem
                 self::$config->GetDBHostname()."'")->fetch_row()!==null;
     }
 
-    function LogThrowable(\Throwable $throwable){
+    function LogThrowable(\Throwable $throwable, string $data):int{
 
     }
 }

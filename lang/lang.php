@@ -18,7 +18,7 @@ function memtxt(){
     if(count($args) == 1){
         $textcode = $args[0];
         if(gettype($textcode)==='array') return memtxt($textcode[0], $textcode[1]);
-        if(gettype($textcode)!=='string') throw new \local\ex\ServerException("Parameter invalid.");
+        if(gettype($textcode)!=='string') throw new Exception("Parameter invalid.");
 
         $dirEnd =hexdec(bin2hex(shmop_read($shmop, 0, 2)));
         $dirSz = $dirEnd-4;
@@ -32,7 +32,7 @@ function memtxt(){
         while($hash!== bin2hex(shmop_read($shmop,$primeIndex+4,$hashSz))){
             $primeIndex+=$tupleSz;
             if($primeIndex>=$dirSz)$primeIndex-=$dirSz;
-            if($primeIndex==$initIndex) throw new \local\ex\ServerException("Unable to find any text of textcode \"".$textcode."\".");
+            if($primeIndex==$initIndex) throw new Exception("Unable to find any text of textcode \"".$textcode."\".");
         }
 
         $offset = hexdec(bin2hex(shmop_read($shmop,$primeIndex+$hashSz+4,$offsetSz)));
@@ -42,7 +42,7 @@ function memtxt(){
     elseif(count($args) == 2){
         $offset = $args[0];
         $size = $args[1];
-        if(gettype($offset)!=='integer'||gettype($size)!=='integer') throw new \local\ex\ServerException("Parameter invalid.");
+        if(gettype($offset)!=='integer'||gettype($size)!=='integer') throw new Exception("Parameter invalid.");
 
         $langItem = shmop_read($shmop, $offset, $size);
         $lang = getlang();

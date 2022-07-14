@@ -12,10 +12,12 @@
   "require": {
     "athari/yalinqo": "*",
     "ext-shmop": "*",
-    "ext-mysqli": "*"
+    "ext-mysqli": "*",
+    "ext-openssl": "*"
   },
   "autoload": {
     "classmap": ["local"],
-    "files": ["init.php", "lang/lang.php"]
+    "files": [
+      "init_ex.php", "lang/lang.php"]
   }
 }

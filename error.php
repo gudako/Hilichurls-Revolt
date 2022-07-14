@@ -116,6 +116,8 @@ else http_response_code(500);
     <div class="texts"><?php if($lang === 'en') echo "Sincere apology to all the inconveniences we may have caused to you.";
         elseif ($lang ==='zh') echo "同时，我们诚挚地为所有可能对您造成的不便表示抱歉。";?></div><br>
     <a href="<?php echo$mailto;?>" class="texts"><?php if($lang === 'en') echo "Click here to send the email.";elseif ($lang ==='zh') echo "点击此处发送邮件。";?></a>
-    <?php echo str_repeat("<br>",10);?>
+    <div class="texts"><?php if($lang === 'en') echo "If you can't send the email by clicking the button, you can also send it manually. Just make sure to include the code above.";
+    elseif ($lang ==='zh') echo "如果你无法通过点击按钮的方式来发送此邮件，你也可以手动发送。确保你在邮件中包含了上述的错误代码。";?></div>
+    <?php echo str_repeat("<br>",7);?>
 </div>
 </body>

@@ -9,5 +9,6 @@
   "shmop_lang_max_size": 100000,
   "shmop_achv_max_size": 200000,
   "all_languages": ["en", "zh"],
-  "shmop_hashtable_multi": 3
+  "shmop_hashtable_multi": 3,
+  "log_encrypt_key": "Lappland is NO.1 under the sky!!"
 }

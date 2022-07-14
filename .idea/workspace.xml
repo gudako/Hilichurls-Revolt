@@ -6,8 +6,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/local/ex/RecoverableException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/AES-256-CBC.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/getThrowableTraceAsString.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/error.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/init_ex.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/ConfigSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/ConfigSystem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/DatabaseSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/DatabaseSystem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/ex/Detection.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/ex/LocalException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/ex/ServerException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/ex/SystemException.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +62,7 @@
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2BLkzDJuduqAufWPT81uErBlano" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -92,11 +105,11 @@
       <recent name="F:\Hilichurls Revolt\window" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\utils" />
       <recent name="F:\Hilichurls Revolt\local\achv" />
       <recent name="F:\Hilichurls Revolt\local\game" />
       <recent name="F:\Hilichurls Revolt\local" />
       <recent name="F:\Hilichurls Revolt\local\config" />
-      <recent name="F:\Hilichurls Revolt" />
     </key>
   </component>
   <component name="RunManager">
@@ -130,7 +143,7 @@
       <workItem from="1657595502713" duration="13164000" />
       <workItem from="1657620960769" duration="28621000" />
       <workItem from="1657674976169" duration="20070000" />
-      <workItem from="1657785160944" duration="37911000" />
+      <workItem from="1657785160944" duration="41212000" />
     </task>
     <servers />
   </component>

@@ -10,10 +10,12 @@ class ConfigSystem
     private static int $shmopLangMaxsz, $shmopAchvMaxsz, $shmopIdMaintenance, $shmopIdLang, $shmopIdAchv;
     private static array $allLanguages;
     private static int $shmopHashtableMulti;
+    private static string $logEncryptKey;
 
     function __construct(){
         if(!isset(self::$isDebug, self::$dbHostname, self::$dbUsername, self::$dbPassword, self::$shmopLangMaxsz,
-            self::$shmopLangMaxsz, self::$shmopIdMaintenance, self::$shmopIdLang, self::$allLanguages)){
+            self::$shmopLangMaxsz, self::$shmopIdMaintenance, self::$shmopIdLang, self::$allLanguages,
+            self::$shmopHashtableMulti, self::$logEncryptKey)){
             $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].'/local/config.json'), true);
             self::$isDebug = $config['mode_debug'] == 'true';
             self::$dbHostname = $config['db_hostname'];
@@ -26,6 +28,7 @@ class ConfigSystem
             self::$shmopIdAchv = $config['shmop_id_achv'];
             self::$allLanguages = $config['all_languages'];
             self::$shmopHashtableMulti = $config['shmop_hashtable_multi'];
+            self::$logEncryptKey = $config['log_encrypt_key'];
         }
     }
 
@@ -101,5 +104,9 @@ class ConfigSystem
 
     function GetShmopHashtableMulti():int{
         return self::$shmopHashtableMulti;
+    }
+
+    function GetLogEncryptKey():string{
+        return self::$logEncryptKey;
     }
 }
