@@ -1,9 +1,10 @@
 <?php
-namespace Game;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/db/database.php';
-use DateInterval, DateTime;
+namespace local;
+require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
+use DateInterval;
+use DateTime;
 
-class Config
+class config
 {
     private static bool $isDebug;
     private static string $dbHostname, $dbUsername, $dbPassword;
@@ -14,7 +15,7 @@ class Config
     function __construct(){
         if(!isset(self::$isDebug, self::$dbHostname, self::$dbUsername, self::$dbPassword, self::$shmopLangMaxsz,
             self::$shmopLangMaxsz, self::$shmopIdMaintenance, self::$shmopIdLang, self::$allLanguages)){
-            $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].'/config.json'), true);
+            $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].'/local/config.json'), true);
             self::$isDebug = $config['mode_debug'] == 'true';
             self::$dbHostname = $config['db_hostname'];
             self::$dbUsername = $config['db_username'];
@@ -72,7 +73,7 @@ class Config
     function IsServerDown(): bool{
         if(shmop_open(self::$shmopIdMaintenance, 'a', 0777, 1)===false)return true;
         if(shmop_open(self::$shmopIdLang, 'a', 0777, 1)===false)return true;
-        if(!(new Database())->IsInitialized())return true;
+        if(!(new database())->IsInitialized())return true;
         return false;
     }
 

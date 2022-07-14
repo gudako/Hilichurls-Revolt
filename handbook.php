@@ -1,5 +1,4 @@
-<?php if(!isset($_SESSION))session_start();
-require_once 'lang/lang.php';?>
+<?php require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";?>
 <head>
     <title><?php echo memtxt(1057,53/*REMAP%game_name*/);?></title>
 </head>

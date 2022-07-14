@@ -1,13 +1,14 @@
 <?php
-namespace Game;
-require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
-class Achievements
+namespace local;
+require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
+
+class achievements
 {
     private static array $achvdata, $visiachv, $catadata;
 
     function __construct(){
         if(!isset(self::$achvdata)){
-            self::$achvdata = json_decode(file_get_contents('achv.json'),true);
+            self::$achvdata = json_decode(file_get_contents('local.achv.json'),true);
             self::$visiachv = array();
             foreach (self::$achvdata as $achvname=>$achv){
                 if($achv['visible']=='true') self::$visiachv[$achvname] = $achv;

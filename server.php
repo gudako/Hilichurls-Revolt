@@ -1,10 +1,11 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-use Game\Config, Game\Database;
+use local\config;
+use local\database;
 
 //get database candidates
-$config = new Config();
-$database = new Database();
+$config = new config();
+$database = new database();
 $db_username = $config->GetDBUsername();
 $db_password = $config->GetDBPassword();
 
@@ -119,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             'c', permissionFull, $shmopMaxSize);
         if($shmop===false) $err("Unable to create or open the SHMOP object.");
 
-        $jsonPath = $_SERVER['DOCUMENT_ROOT'].($isAchv?"/achv/achv.json":"/lang/lang.json");
+        $jsonPath = $_SERVER['DOCUMENT_ROOT'].($isAchv?"/local/achv.json":"/lang/lang.json");
         $decoded = json_decode(file_get_contents($jsonPath), true);
         if($decoded===null)$err("Failed to parse JSON file: \"". $jsonPath."\"");
 
@@ -131,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $bytesTakenByHashtable =$shmopTupleSize * $spaceCount;
         $byte = 4 + $bytesTakenByHashtable;
 
-        if($config->GetShmopHashtableMulti()<2)$err("Config \"shmop_hashtable_multi\" should at least be 2.");
+        if($config->GetShmopHashtableMulti()<2)$err("config \"shmop_hashtable_multi\" should at least be 2.");
 
         shmop_write($shmop,hex2bin(str_repeat('00',$shmopMaxSize)),0);
         echo $colortxt("Washed the SHMOP memory to ".$shmopMaxSize." bytes.",colorSubprocess);
@@ -211,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo $colortxt("Remapping the function calls in the PHP files......",colorProcess).PHP_EOL;
         $remapCode = $isAchv? 'ACHV':"REMAP";
         $pattern = /** @lang RegExp */
-            "/(\d+, *\d+|\d+|)( *\/\* *".$remapCode."%([a-z\d][a-z\d_]+[a-z\d\?\!]) *\*\/)/";
+            "/(\d+, *\d+|\d+|)( *\/\* *".$remapCode."%([a-z\d][a-z\d_]+[a-z\d?!]) *\*\/)/";
         echo $colortxt("Using REGEX pattern: ".$pattern,colorSubprocess).PHP_EOL;
 
         $filecnt = 0;

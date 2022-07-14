@@ -1,7 +1,9 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-use Game\Config;
-$config = new Config();
+
+use local\config;
+
+$config = new config();
 $isServerDown = $config->IsServerDown();
 $inMaintenance = $config->InMaintenance();
 $alright = !$isServerDown && !$inMaintenance;

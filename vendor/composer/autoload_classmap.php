@@ -7,9 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'Game\\Achievements' => $baseDir . '/achv/achv.php',
-    'Game\\Assets\\Asset' => $baseDir . '/assets/Asset.php',
-    'Game\\Assets\\Character' => $baseDir . '/assets/characters/Character.php',
-    'Game\\Assets\\Item' => $baseDir . '/assets/items/Item.php',
-    'Game\\Database' => $baseDir . '/db/database.php',
+    'local\\Assets\\Asset' => $baseDir . '/local/game/assets/Asset.php',
+    'local\\Assets\\Character' => $baseDir . '/local/game/assets/characters/Character.php',
+    'local\\Assets\\Item' => $baseDir . '/local/game/assets/items/Item.php',
+    'local\\achievements' => $baseDir . '/local/achievements.php',
+    'local\\config' => $baseDir . '/local/config.php',
+    'local\\database' => $baseDir . '/local/database.php',
 );

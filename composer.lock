@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "65029b6e9d363d50744d17e8966564d3",
+    "content-hash": "91269c603a37b99696bbe11d9894a390",
     "packages": [
         {
             "name": "athari/yalinqo",
@@ -75,7 +75,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "ext-shmop": "*"
+        "ext-shmop": "*",
+        "ext-mysqli": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

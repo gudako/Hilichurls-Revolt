@@ -1,4 +1,2 @@
 order deny,allow
-<Files "config.json">
 deny from all
-</Files>

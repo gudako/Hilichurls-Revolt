@@ -1,6 +1,6 @@
 <?php
 
-namespace Game\Assets;
+namespace local\Assets;
 
 abstract class Asset
 {

@@ -1,9 +1,8 @@
 <?php
-if(!isset($_SESSION)) session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-use Game\Config;
+require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
+use local\config;
 
-$config = new Config();
+$config = new config();
 $maintainTime = $config->GetMaintenanceTime();
 if($maintainTime===false){
     echo "false"; //means no maintenance or issues of

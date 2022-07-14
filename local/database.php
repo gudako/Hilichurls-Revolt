@@ -1,9 +1,9 @@
 <?php
-namespace Game;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+namespace local;
+require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
 use mysqli;
 
-class Database
+class database
 {
     private static mysqli $_database;
     private static Config $config;

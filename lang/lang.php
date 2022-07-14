@@ -1,17 +1,17 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
-use Game\Config;
+use local\config;
 
 function getlang(){
     if(!isset($_COOKIE['lang'])) return 'en';
     $lang_cookie = $_COOKIE['lang'];
-    $config=new Config();
+    $config=new config();
     $lang_set = $config->GetAllLanguages();
     return in_array($lang_cookie, $lang_set) ? $lang_cookie : 'en';
 }
 
 function memtxt(){
-    $config = new Config();
+    $config = new config();
     $shmop = shmop_open($config->GetShmopIdLang(), 'a', 0600, $config->GetShmopLangMaxsz());
 
     //if the first arg is string, it's a textcode!

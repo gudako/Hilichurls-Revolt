@@ -5,10 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/achv/achv.json" beforeDir="false" afterPath="$PROJECT_DIR$/achv/achv.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achv/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/local/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achv/achv.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achv/achv.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achievements.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Asset.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/assets/Asset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/characters/Character.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/assets/characters/Character.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/characters/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/assets/characters/db_reflect.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/characters/ganyu/frostflake_arrow.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/assets/characters/ganyu/frostflake_arrow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/characters/ganyu/ganyu.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/assets/characters/ganyu/ganyu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/characters/ganyu/ganyu.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/assets/characters/ganyu/ganyu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/items/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/assets/items/Item.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/items/db_reflect.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/game/assets/items/db_reflect.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calls/maint_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/calls/maint_check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/db_init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/local/db_init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/handbook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/error_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/error_tip.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shmop.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +73,7 @@
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2BLkzDJuduqAufWPT81uErBlano" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -92,11 +115,11 @@
       <recent name="F:\Hilichurls Revolt\window" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\local" />
+      <recent name="F:\Hilichurls Revolt\local\config" />
       <recent name="F:\Hilichurls Revolt" />
       <recent name="F:\Hilichurls Revolt\db" />
       <recent name="F:\Hilichurls Revolt\php" />
-      <recent name="F:\Hilichurls Revolt\php\asset" />
-      <recent name="F:\Hilichurls Revolt\game_settings\assets" />
     </key>
   </component>
   <component name="RunManager">
@@ -130,7 +153,7 @@
       <workItem from="1657595502713" duration="13164000" />
       <workItem from="1657620960769" duration="28621000" />
       <workItem from="1657674976169" duration="20070000" />
-      <workItem from="1657785160944" duration="14916000" />
+      <workItem from="1657785160944" duration="16492000" />
     </task>
     <servers />
   </component>

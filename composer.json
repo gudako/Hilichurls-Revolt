@@ -11,10 +11,11 @@
   ],
   "require": {
     "athari/yalinqo": "*",
-    "ext-shmop": "*"
+    "ext-shmop": "*",
+    "ext-mysqli": "*"
   },
   "autoload": {
-    "classmap": ["achv", "assets", "db"],
-    "files": ["config.php", "lang/lang.php"]
+    "classmap": ["local"],
+    "files": ["lang/lang.php"]
   }
 }
