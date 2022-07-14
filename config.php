@@ -23,6 +23,7 @@ class Config
             self::$shmopAchvMaxsz = $config['shmop_achv_max_size'];
             self::$shmopIdMaintenance = $config['shmop_id_maintenance'];
             self::$shmopIdLang = $config['shmop_id_lang'];
+            self::$shmopIdAchv = $config['shmop_id_achv'];
             self::$allLanguages = $config['all_languages'];
             self::$shmopHashtableMulti = $config['shmop_hashtable_multi'];
         }

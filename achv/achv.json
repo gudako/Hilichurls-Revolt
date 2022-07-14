@@ -4,6 +4,28 @@
       "primogem":20,
       "point":2,
       "visible":true
+    },
+    "an_anti_2":{
+      "primogem":20,
+      "point":3,
+      "visible":false
+    },
+    "an_anti_332":{
+      "primogem":20,
+      "point":3,
+      "visible":true
+    }
+  },
+  "solomon_hearts_2":{
+    "an_goodorbad":{
+      "primogem":20,
+      "point":3,
+      "visible":true
+    },
+    "an_tuyiytfd34534":{
+      "primogem":20,
+      "point":3,
+      "visible":true
     }
   }
 }

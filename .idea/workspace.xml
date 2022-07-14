@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/achv/achv.json" beforeDir="false" afterPath="$PROJECT_DIR$/achv/achv.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
@@ -130,7 +130,7 @@
       <workItem from="1657595502713" duration="13164000" />
       <workItem from="1657620960769" duration="28621000" />
       <workItem from="1657674976169" duration="20070000" />
-      <workItem from="1657785160944" duration="4935000" />
+      <workItem from="1657785160944" duration="14916000" />
     </task>
     <servers />
   </component>
@@ -146,8 +146,11 @@
         <watch expression="str_replace([&quot;\r\n&quot;,&quot;\n&quot;],&quot;&lt;br&gt;&quot;, trim($matches[0]))" language="PHP" />
       </configuration>
       <configuration name="server.php">
-        <watch expression="bin2hex($unsigned2bin($byte,$shmopOffsetSize))" language="PHP" />
-        <watch expression="shmop_read($shmop,0,1000)" language="PHP" />
+        <watch expression="bin2hex(shmop_read($shmop,0,1000))" language="PHP" />
+        <watch expression="$shmopOffsetSize" language="PHP" />
+        <watch expression="bin2hex($value)" language="PHP" />
+        <watch expression="4+$indexInTable" language="PHP" />
+        <watch expression="strlen(hex2bin($textcodeHash).$unsigned2bin($byte,$shmopOffsetSize).    $unsigned2bin($size,$shmopOffsetSize))" language="PHP" />
       </configuration>
       <configuration name="test.php">
         <watch expression="bin2hex(shmop_read($shmop,0,4000))" language="PHP" />
