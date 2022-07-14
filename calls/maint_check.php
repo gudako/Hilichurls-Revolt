@@ -1,8 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
-use local\config;
+use local\ConfigSystem;
 
-$config = new config();
+$config = new ConfigSystem();
 $maintainTime = $config->GetMaintenanceTime();
 if($maintainTime===false){
     echo "false"; //means no maintenance or issues of

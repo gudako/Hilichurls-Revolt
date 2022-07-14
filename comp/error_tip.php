@@ -1,9 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
+use local\ConfigSystem;
 
-use local\config;
-
-$config = new config();
+$config = new ConfigSystem();
 $isServerDown = $config->IsServerDown();
 $inMaintenance = $config->InMaintenance();
 $alright = !$isServerDown && !$inMaintenance;

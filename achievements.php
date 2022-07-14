@@ -7,7 +7,7 @@
 <link href="css/commonplace.css" rel="stylesheet"/>
 <link href="css/achievements.css" rel="stylesheet"/>
 <div class="clip">
-    <?php require_once 'include/page.php';?>
+    <?php require_once 'comp/page.php';?>
     <div id="getRoof" class="_top">
         <div id="noLogin" style="display: none">
             The table below only includes unhidden achievements.<br>

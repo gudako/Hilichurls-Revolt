@@ -13,7 +13,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
 <link href="css/commonplace.css" rel="stylesheet"/>
 <link href="css/mainpage.css" rel="stylesheet"/>
 <div class="clip">
-    <?php require_once 'include/page.php';?>
+    <?php require_once 'comp/page.php';?>
     <div id="bar1">
         <div id="bar1_clip_img" class="clip_img"> <img class="clip_img_movable" src="img/pages/mainpage/mainpage1.jpg"></div>
         <div id="bar1_advocate"><div><?php echo memtxt(1829,154/*REMAP%mainpage_bar1_text*/);?></div></div>

@@ -7,10 +7,15 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'local\\Assets\\Asset' => $baseDir . '/local/game/assets/Asset.php',
-    'local\\Assets\\Character' => $baseDir . '/local/game/assets/characters/Character.php',
-    'local\\Assets\\Item' => $baseDir . '/local/game/assets/items/Item.php',
-    'local\\achievements' => $baseDir . '/local/achievements.php',
-    'local\\config' => $baseDir . '/local/config.php',
-    'local\\database' => $baseDir . '/local/database.php',
+    'local\\ConfigSystem' => $baseDir . '/local/ConfigSystem.php',
+    'local\\DatabaseSystem' => $baseDir . '/local/DatabaseSystem.php',
+    'local\\achv\\AchievementCategory' => $baseDir . '/local/achv/AchievementCategory.php',
+    'local\\achv\\AchievementItem' => $baseDir . '/local/achv/AchievementItem.php',
+    'local\\achv\\AchievementSystem' => $baseDir . '/local/achv/AchievementSystem.php',
+    'local\\achv\\Assets\\Asset' => $baseDir . '/local/game/Asset.php',
+    'local\\achv\\Assets\\Character' => $baseDir . '/local/game/characters/Character.php',
+    'local\\achv\\Assets\\Item' => $baseDir . '/local/game/items/Item.php',
+    'local\\ex\\LocalException' => $baseDir . '/local/ex/LocalException.php',
+    'local\\ex\\ServerException' => $baseDir . '/local/ex/ServerException.php',
+    'local\\ex\\SystemException' => $baseDir . '/local/ex/SystemException.php',
 );

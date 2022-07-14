@@ -1,23 +1,24 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
-use local\config;
+use local\ConfigSystem;
 
 function getlang(){
     if(!isset($_COOKIE['lang'])) return 'en';
     $lang_cookie = $_COOKIE['lang'];
-    $config=new config();
+    $config=new ConfigSystem();
     $lang_set = $config->GetAllLanguages();
     return in_array($lang_cookie, $lang_set) ? $lang_cookie : 'en';
 }
 
 function memtxt(){
-    $config = new config();
+    $config = new ConfigSystem();
     $shmop = shmop_open($config->GetShmopIdLang(), 'a', 0600, $config->GetShmopLangMaxsz());
 
-    //if the first arg is string, it's a textcode!
-    if(count(func_get_args()) == 1){
-        $textcode = func_get_arg(0);
-        if(gettype($textcode)!=='string') throw new Exception("Parameter invalid.");
+    $args= func_get_args();
+    if(count($args) == 1){
+        $textcode = $args[0];
+        if(gettype($textcode)==='array') return memtxt($textcode[0], $textcode[1]);
+        if(gettype($textcode)!=='string') throw new \local\ex\ServerException("Parameter invalid.");
 
         $dirEnd =hexdec(bin2hex(shmop_read($shmop, 0, 2)));
         $dirSz = $dirEnd-4;
@@ -31,17 +32,17 @@ function memtxt(){
         while($hash!== bin2hex(shmop_read($shmop,$primeIndex+4,$hashSz))){
             $primeIndex+=$tupleSz;
             if($primeIndex>=$dirSz)$primeIndex-=$dirSz;
-            if($primeIndex==$initIndex) throw new Exception("Unable to find any text of textcode \"".$textcode."\".");
+            if($primeIndex==$initIndex) throw new \local\ex\ServerException("Unable to find any text of textcode \"".$textcode."\".");
         }
 
         $offset = hexdec(bin2hex(shmop_read($shmop,$primeIndex+$hashSz+4,$offsetSz)));
         $size = hexdec(bin2hex(shmop_read($shmop,$primeIndex+$hashSz+4+$offsetSz,$offsetSz)));
         return memtxt($offset, $size);
     }
-    elseif(count(func_get_args()) == 2){
-        $offset = func_get_arg(0);
-        $size = func_get_arg(1);
-        if(gettype($offset)!=='integer'||gettype($size)!=='integer') throw new Exception("Parameter invalid.");
+    elseif(count($args) == 2){
+        $offset = $args[0];
+        $size = $args[1];
+        if(gettype($offset)!=='integer'||gettype($size)!=='integer') throw new \local\ex\ServerException("Parameter invalid.");
 
         $langItem = shmop_read($shmop, $offset, $size);
         $lang = getlang();

@@ -27,12 +27,17 @@ class ComposerStaticInit6f439a36664056fe09806e4ef91986ce
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'local\\Assets\\Asset' => __DIR__ . '/../..' . '/local/game/assets/Asset.php',
-        'local\\Assets\\Character' => __DIR__ . '/../..' . '/local/game/assets/characters/Character.php',
-        'local\\Assets\\Item' => __DIR__ . '/../..' . '/local/game/assets/items/Item.php',
-        'local\\achievements' => __DIR__ . '/../..' . '/local/achievements.php',
-        'local\\config' => __DIR__ . '/../..' . '/local/config.php',
-        'local\\database' => __DIR__ . '/../..' . '/local/database.php',
+        'local\\ConfigSystem' => __DIR__ . '/../..' . '/local/ConfigSystem.php',
+        'local\\DatabaseSystem' => __DIR__ . '/../..' . '/local/DatabaseSystem.php',
+        'local\\achv\\AchievementCategory' => __DIR__ . '/../..' . '/local/achv/AchievementCategory.php',
+        'local\\achv\\AchievementItem' => __DIR__ . '/../..' . '/local/achv/AchievementItem.php',
+        'local\\achv\\AchievementSystem' => __DIR__ . '/../..' . '/local/achv/AchievementSystem.php',
+        'local\\achv\\Assets\\Asset' => __DIR__ . '/../..' . '/local/game/Asset.php',
+        'local\\achv\\Assets\\Character' => __DIR__ . '/../..' . '/local/game/characters/Character.php',
+        'local\\achv\\Assets\\Item' => __DIR__ . '/../..' . '/local/game/items/Item.php',
+        'local\\ex\\LocalException' => __DIR__ . '/../..' . '/local/ex/LocalException.php',
+        'local\\ex\\ServerException' => __DIR__ . '/../..' . '/local/ex/ServerException.php',
+        'local\\ex\\SystemException' => __DIR__ . '/../..' . '/local/ex/SystemException.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

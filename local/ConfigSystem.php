@@ -1,10 +1,9 @@
 <?php
 namespace local;
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-use DateInterval;
-use DateTime;
+use DateInterval, DateTime;
 
-class config
+class ConfigSystem
 {
     private static bool $isDebug;
     private static string $dbHostname, $dbUsername, $dbPassword;
@@ -73,7 +72,7 @@ class config
     function IsServerDown(): bool{
         if(shmop_open(self::$shmopIdMaintenance, 'a', 0777, 1)===false)return true;
         if(shmop_open(self::$shmopIdLang, 'a', 0777, 1)===false)return true;
-        if(!(new database())->IsInitialized())return true;
+        if(!(new DatabaseSystem())->IsInitialized())return true;
         return false;
     }
 

@@ -16,6 +16,6 @@
   },
   "autoload": {
     "classmap": ["local"],
-    "files": ["lang/lang.php"]
+    "files": ["init.php", "lang/lang.php"]
   }
 }

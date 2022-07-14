@@ -1,6 +1,6 @@
 <?php
 
-namespace local\Assets;
+namespace local\achv\Assets;
 
 abstract class Asset
 {

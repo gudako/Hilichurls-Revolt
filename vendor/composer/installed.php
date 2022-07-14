@@ -3,7 +3,7 @@
         'name' => 'gudako/hilichurls-revolt',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'f985e68b24940b3ce52cfbd2c2b31c623a9fe1fa',
+        'reference' => '7b49bfef0548a7f47276958b13889b3c3e911bbd',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'gudako/hilichurls-revolt' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'f985e68b24940b3ce52cfbd2c2b31c623a9fe1fa',
+            'reference' => '7b49bfef0548a7f47276958b13889b3c3e911bbd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

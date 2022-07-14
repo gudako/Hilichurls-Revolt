@@ -1,11 +1,11 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-use local\config;
-use local\database;
+use local\ConfigSystem;
+use local\DatabaseSystem;
 
 //get database candidates
-$config = new config();
-$database = new database();
+$config = new ConfigSystem();
+$database = new DatabaseSystem();
 $db_username = $config->GetDBUsername();
 $db_password = $config->GetDBPassword();
 
@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             'c', permissionFull, $shmopMaxSize);
         if($shmop===false) $err("Unable to create or open the SHMOP object.");
 
-        $jsonPath = $_SERVER['DOCUMENT_ROOT'].($isAchv?"/local/achv.json":"/lang/lang.json");
+        $jsonPath = $_SERVER['DOCUMENT_ROOT'].($isAchv?"/local/achv/achv.json":"/lang/lang.json");
         $decoded = json_decode(file_get_contents($jsonPath), true);
         if($decoded===null)$err("Failed to parse JSON file: \"". $jsonPath."\"");
 
@@ -448,7 +448,7 @@ else{
 }
 
 if($db_initialized){
-    echo $colortxt("Database is loaded successfully.",colorSuccess).PHP_EOL;
+    echo $colortxt("DatabaseSystem is loaded successfully.",colorSuccess).PHP_EOL;
     if(!$config->InMaintenance() && !$config->IsDebug())
         echo $colortxt("WARNING: ONLY MODIFY THE DATABASE AT MAINTENANCE MODE!!!").PHP_EOL;
     else echo $colortxt($config->IsDebug()?
@@ -456,8 +456,8 @@ if($db_initialized){
             "Changes about database you should better refer to phpMyAdmin, etc......").PHP_EOL;
 }
 else{
-    echo $colortxt("Database is not properly set up......",colorError).PHP_EOL;
-    $postButton('db_init', "Initialize the Database!");
+    echo $colortxt("DatabaseSystem is not properly set up......",colorError).PHP_EOL;
+    $postButton('db_init', "Initialize the DatabaseSystem!");
 }
 
 echo PHP_EOL;
