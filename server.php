@@ -23,6 +23,8 @@ $shmop_maint = shmop_open($config->GetShmopIdMaintenance(), 'w', permissionFull,
 $maint_initialized = $shmop_maint !== false;
 $shmop_lang = shmop_open($config->GetShmopIdLang(), 'w', permissionFull, $config->GetShmopLangMaxsz());
 $lang_initialized = $shmop_lang !== false;
+$shmop_achv = shmop_open($config->GetShmopIdAchv(), 'w', permissionFull, $config->GetShmopAchvMaxsz());
+$achv_initialized = $shmop_achv !== false;
 $db_initialized = $database->IsInitialized();
 
 // PREDEFINED FUNCTIONS FOR EASE!
@@ -30,16 +32,18 @@ $colortxt = function(string $text, string $color = 'black'):string{
     return "<p style='color:".$color.";'>".$text."</p>";
 };
 
+$err = function(string $text)use($colortxt){
+    echo $colortxt("ERROR: ".$text, colorError).clickHereToContinue.PHP_EOL;
+    http_response_code(400);
+    die();
+};
+
 //- POST QUERY BEGIN -//
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     // - PREDEFINED FUNCTIONS FOR EASE! - //
-    $mustInitMaint = function()use($maint_initialized,$colortxt):void{
-        if(!$maint_initialized){
-            echo $colortxt("ERROR: Maintenance data is not initialized.",colorError).clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
+    $mustInitMaint = function()use($maint_initialized,$err):void{
+        if(!$maint_initialized)$err("Maintenance data is not initialized.");
     };
 
     $checkMaintText = function(string $text)use($config):bool{
@@ -50,12 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         return true;
     };
     
-    $mustHaveGoodMaintText = function($postName)use($checkMaintText,$colortxt):void{
-        if(!$checkMaintText($_POST[$postName])){
-            echo $colortxt("ERROR: Make sure your text is available in all languages and without duplicate.",
-                    colorError).clickHereToContinue;
-            http_response_code(400);
-            die();}
+    $mustHaveGoodMaintText = function($postName)use($checkMaintText,$err):void{
+        if(!$checkMaintText($_POST[$postName]))
+            $err("Make sure your text is available in all languages and without duplicate.");
     };
 
     $simplifyMaintText=function ($maintText)use($config): string {
@@ -65,11 +66,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         return preg_replace("/(\r\n|\n)(\r\n|\n)/u",'',$optimized1);
     };
 
-    $unsigned2bin=function (int $unsigned,int $bytes)use($colortxt):string{
+    $unsigned2bin=function (int $unsigned,int $bytes)use($err):string{
         $hex = dechex($unsigned);
         if(strlen($hex)>$bytes*2){
-            echo $colortxt("ERROR: Cannot fit binary \"".$hex."\" into a ".$bytes." bytes space.",
-                    colorError).clickHereToContinue;
+            $err("Cannot fit binary \"".$hex."\" into a ".$bytes." bytes space.");
             http_response_code(400);
             die();
         }
@@ -88,42 +88,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
     elseif(!$authorized) http_response_code(403);
 
-    //- INITIALIZE OR RELOAD LANGUAGE DATA -//
-    elseif (isset($_POST['init_lang']) && $_POST['init_lang']=='true'){
+    //- INITIALIZE OR RELOAD LANGUAGE OR ACHV DATA -//
+    elseif ((isset($_POST['init_lang']) && $_POST['init_lang']=='true')||
+             isset($_POST['init_achv']) && $_POST['init_achv']=='true'){
         $mustInitMaint();
+        $isAchv = (isset($_POST['achv_init']) && $_POST['achv_init']=='true');
         if($lang_initialized && !$config->InMaintenance() && !$config->IsDebug()){
-            echo $colortxt("Reloading language-text file is only possible in maintenance mode.",colorError).
-                clickHereToContinue;
+            $err("Reloading memory is only possible in maintenance mode.");
             http_response_code(400);
             die();
         }
+
+        goto noSpecify;
         startLangInit:
-        echo $colortxt("Loading the language-text file into memory......",colorProcess);
-        $shmopMaxLangSize = $config->GetShmopLangMaxsz();
-        $shmop = shmop_open($config->GetShmopIdLang(), 'c', permissionFull, $shmopMaxLangSize);
+        $isAchv = false;
+        startAchvInit:
+        /** @noinspection PhpConditionAlreadyCheckedInspection */
+        $isAchv = $isAchv??true;
+        noSpecify:
 
-        $jsonPath = $_SERVER['DOCUMENT_ROOT']."/lang/lang.json";
+        echo $colortxt("Loading the ".($isAchv?"achievements data":"language-text file")." into memory......",
+            colorProcess).PHP_EOL;
+        $shmopMaxSize = $isAchv? $config->GetShmopAchvMaxsz(): $config->GetShmopLangMaxsz();
+        $shmop = shmop_open($isAchv?$config->GetShmopIdAchv():$config->GetShmopIdLang(),
+            'c', permissionFull, $shmopMaxSize);
+        if($shmop===false) $err("Unable to create or open the SHMOP object.");
+
+        $jsonPath = $_SERVER['DOCUMENT_ROOT'].($isAchv?"/achv/achv.json":"/lang/lang.json");
         $decoded = json_decode(file_get_contents($jsonPath), true);
-        if($decoded===null){
-            echo $colortxt("ERROR: Failed to parse JSON file: \"". $jsonPath."\"",colorError).clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
+        if($decoded===null)$err("Failed to parse JSON file: \"". $jsonPath."\"");
 
-        $itemCount = count($decoded);
-        $shmopHashSize = min(20, ceil(log($shmopMaxLangSize, 256) * 3));
-        $shmopOffsetSize = ceil(log($shmopMaxLangSize, 256));
+        $itemCount =!$isAchv?count($decoded):from($decoded)->sum(function($val){return count($val) + 1;});
+        $shmopHashSize = min(20, ceil(log($shmopMaxSize, 256) * 3));
+        $shmopOffsetSize = ceil(log($shmopMaxSize, 256));
         $shmopTupleSize = $shmopHashSize + $shmopOffsetSize*2;
         $spaceCount = $itemCount * $config->GetShmopHashtableMulti();
         $bytesTakenByHashtable =$shmopTupleSize * $spaceCount;
         $byte = 4 + $bytesTakenByHashtable;
 
-        if($config->GetShmopHashtableMulti()<2){
-            echo $colortxt("ERROR: Config \"shmop_hashtable_multi\" should at least be 2.",colorError).
-                clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
+        if($config->GetShmopHashtableMulti()<2)$err("Config \"shmop_hashtable_multi\" should at least be 2.");
 
         shmop_write($shmop,$unsigned2bin($byte,2),0);
         shmop_write($shmop,$unsigned2bin($shmopHashSize,1),2);
@@ -135,26 +138,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $remap = array();
         $timesHit = 0;
         $timesOff = 0;
-        foreach ($decoded as $textcode => $textItem){
-            $content = '';
-            foreach ($textItem as $lang => $text) $content .= '<'.$lang.'>'.$text.'</'.$lang.'>';
-            $size = strlen($content);
-            if($byte+$size>=$shmopMaxLangSize){
-                echo $colortxt("ERROR: Language-text data exceeding the max memory ". $shmopMaxLangSize.
-                    " bytes.",colorError).clickHereToContinue;
-                http_response_code(400);
-                die();
-            }
-            shmop_write($shmop, $content, $byte);
-            if(isset($remap[$textcode]))
-                echo $colortxt("WARNING: Duplicate of textcode \"".$textcode."\"",colorError);
-            $remap[$textcode] = [$byte, $size];
 
-            $textcodeHash = substr(sha1($textcode),0,$shmopHashSize*2);
+        $record = function($key, $value)use
+        (&$timesHit,&$timesOff,&$byte,$bytesTakenByHashtable,$shmop,$shmopHashSize,$shmopTupleSize,
+            $spaceCount,$shmopOffsetSize,$shmopMaxSize,$remap,$unsigned2bin,$colortxt,$err){
+            $size = strlen($value);
+            if($byte+$size>=$shmopMaxSize)
+                $err("Input data exceeding the max memory: ". $shmopMaxSize. " bytes.");
+
+            shmop_write($shmop, $value, $byte);
+            if(isset($remap[$key]))
+                echo $colortxt("WARNING: Duplicate of key \"".$key."\"",colorError);
+            $remap[$key] = [$byte, $size];
+
+            $textcodeHash = substr(sha1($key),0,$shmopHashSize*2);
             $indexInTable = (hexdec($textcodeHash) % $spaceCount) * $shmopTupleSize;
-            $read = null;
+
             $timesHit++;
-            while($read=shmop_read($shmop, $indexInTable+4, $shmopTupleSize)!==
+            while(shmop_read($shmop, $indexInTable+4, $shmopTupleSize)!==
                 str_repeat(hex2bin('00'),$shmopTupleSize))
             {
                 $timesHit++;
@@ -166,18 +167,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $unsigned2bin($size,$shmopOffsetSize),4+$indexInTable);
 
             $byte += $size;
-        }
-        $hitAccuracy =1-$timesOff/$timesHit;
+        };
 
-        echo $colortxt("Memory loaded to offset ".$byte." for a maximum at ".$shmopMaxLangSize.
-                " (space used ".round(100.0*$byte/$shmopMaxLangSize,2)."%).", colorSubprocess).PHP_EOL;
+        /** @noinspection PhpIfWithCommonPartsInspection */
+        if($isAchv) foreach ($decoded as $chapName => $chapter){
+            $chapSize = from($chapter)->where(function($v){return gettype($v)==='object';})
+                ->groupBy(function($v){return (!isset($v['visible']) || $v['visible']=='true')?0:1;})
+                ->sum(function ($v,$k)use($record,$shmopOffsetSize){
+                    $achv = json_encode($v, JSON_FORCE_OBJECT);
+                    $size = strlen($achv)+$shmopOffsetSize;
+                    $achv = hex2bin(str_pad(dechex($size),$shmopOffsetSize*2,'0')).$achv;
+                    $record($k,$achv);
+                    return $size;}
+                ) + $shmopOffsetSize;
+            $chapAttr =json_encode(from($chapter)->where(function($v){return gettype($v)!=='object';})->toArray(),JSON_FORCE_OBJECT);
+            $record($chapName, str_repeat('00',$shmopOffsetSize).
+                hex2bin(str_pad(dechex($chapSize),$shmopOffsetSize*4,'0')).$chapAttr);
+        }
+        else foreach ($decoded as $textcode => $textItem){
+            $content = from($textItem)->
+            aggregate(function (&$a,$text,$lang){$a.='<'.$lang.'>'.$text.'</'.$lang.'>';},'');
+            $record($textcode, $content);
+        }
+
+        $hitAccuracy =1-$timesOff/$timesHit;
+        echo $colortxt("Memory loaded to offset ".$byte." for a maximum at ".$shmopMaxSize.
+                " (space used ".round(100.0*$byte/$shmopMaxSize,2)."%).", colorSubprocess).PHP_EOL;
         echo $colortxt("Hashtable hits: ".$timesOff." misses in ".$timesHit." hits. Accuracy: ".
                 round($hitAccuracy*100,2)."%",colorSubprocess).PHP_EOL;
         if($hitAccuracy<=0.5)
             echo $colortxt("WARNING: Hashtable hit accuracy is too low. May hinder performance at reading memory.", colorError).PHP_EOL;
 
         echo $colortxt("Remapping the function calls in the PHP files......",colorProcess).PHP_EOL;
-        $remapInFiles = function(string $dir) use (&$remapInFiles, $colortxt, $remap):void{
+        $remapCode = $isAchv? 'ACHV':"REMAP";
+        $remapInFiles = function(string $dir) use (&$remapInFiles, $colortxt, $remap, $remapCode):void{
             $paths = scandir($dir);
             foreach ($paths as $path) {
                 if(preg_match("/^\.\w+$/", $path)) continue;
@@ -198,7 +221,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                     $dealcnt = 0;
                     for ($i=0;$i<=count($lines)-1;$i++){
                         $pattern = /** @lang RegExp */
-                            "/(\d+, *\d+|\d+|)( *\/\* *REMAP%([a-z\d][a-z\d_]+[a-z\d\?\!]) *\*\/)/";
+                            "/(\d+, *\d+|\d+|)( *\/\* *".$remapCode."%([a-z\d][a-z\d_]+[a-z\d\?\!]) *\*\/)/";
                         $replaced = preg_replace_callback($pattern,
                             function($matches)use($colortxt, $path, $remap, $linecnt, &$dealcnt)
                             {
@@ -216,8 +239,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                     }
                     if($dealcnt==0) continue;
                     file_put_contents($path, implode('', $lines));
-                    echo $colortxt("Made ".$dealcnt." replacements in file: \"".$path."\"",colorSubprocess).
-                        PHP_EOL;
+                    echo $colortxt("Made ".$dealcnt." replacements in file: \"".$path."\"",colorSubprocess). PHP_EOL;
                 }
             }
         };
@@ -227,11 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     //- INITIALIZE OR RELOAD MAINTENANCE DATA -//
     elseif (isset($_POST['init_maint']) && $_POST['init_maint']=='true'){
-        if($maint_initialized && !$config->InMaintenance() &&!$config->IsDebug()){
-            echo $colortxt("ERROR: No maintenance is currently in progress.",colorError).clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
+        if($maint_initialized && !$config->InMaintenance() &&!$config->IsDebug())$err("No maintenance is currently in progress.");
         $quitMaint = $maint_initialized && !$config->NoMaintenance();
         echo $colortxt("Loading initial maintenance status memory......",colorProcess);
         $shmop_maint= shmop_open($config->GetShmopIdMaintenance(),'c',permissionFull,26);
@@ -262,11 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $maintMins = $_POST['maint_mins'];
         if (filter_var($maintHrs, FILTER_VALIDATE_INT)===false || $maintHrs>24 || $maintHrs<0 ||
             filter_var($maintMins, FILTER_VALIDATE_INT)===false || $maintMins>59 || $maintMins<0 ||
-            ($maintHrs==0&&$maintMins==0)){
-            echo $colortxt("ERROR: The maintain time number input is invalid.",colorError).clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
+            ($maintHrs==0&&$maintMins==0))$err("The maintain time number input is invalid.");
         $mustHaveGoodMaintText('maint_text');
         echo $colortxt("Issuing a maintenance after ".$maintHrs." hours ". $maintMins." minutes......",
                 colorProcess).PHP_EOL;
@@ -282,11 +296,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     //- CHANGE THE MAINTENANCE TEXT -//
     elseif(isset($_POST['change_maint_text'])){
         $mustInitMaint();
-        if($config->NoMaintenance()){
-            echo $colortxt("ERROR: Currently no maintenance is issued.",colorError).clickHereToContinue;
-            http_response_code(400);
-            die();
-        }
+        if($config->NoMaintenance())$err("Currently no maintenance is issued.");
         $mustHaveGoodMaintText('change_maint_text');
         startChangeMaintText:
         $targetText =$simplifyMaintText($_POST['change_maint_text']);
@@ -304,7 +314,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo $colortxt($initData,colorSubprocess).PHP_EOL;
         $res = $database->GetConnection(false)->query($initData);
         if ($res!==false) echo $colortxt("Success!",colorSuccess).clickHereToContinue;
-        else echo $colortxt("ERROR: Things are going wrong. Need debug.",colorError).clickHereToContinue;
+        else $err("Things are going wrong. Need debug."); //todo database
     }
 
     //ONLY FOR DEBUG, IMMEDIATELY DROP INTO THE MAINTENANCE MODE
@@ -350,7 +360,7 @@ $postButton = function (string $call, string $text): void{
 };
 
 if(!$maint_initialized){
-    echo $colortxt("ERROR: The maintenance data hasn't been loaded into memory.",colorError).PHP_EOL;
+    echo $colortxt("The maintenance data hasn't been loaded into memory.",colorError).PHP_EOL;
     $postButton('init_maint', 'Click here to load it');
 }
 else{

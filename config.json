@@ -5,7 +5,9 @@
   "mode_debug": true,
   "shmop_id_maintenance": 101010,
   "shmop_id_lang": 114514,
+  "shmop_id_achv": 233333,
   "shmop_lang_max_size": 100000,
+  "shmop_achv_max_size": 200000,
   "all_languages": ["en", "zh"],
   "shmop_hashtable_multi": 3
 }

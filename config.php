@@ -7,7 +7,7 @@ class Config
 {
     private static bool $isDebug;
     private static string $dbHostname, $dbUsername, $dbPassword;
-    private static int $shmopLangMaxsz, $shmopIdMaintenance, $shmopIdLang;
+    private static int $shmopLangMaxsz, $shmopAchvMaxsz, $shmopIdMaintenance, $shmopIdLang, $shmopIdAchv;
     private static array $allLanguages;
     private static int $shmopHashtableMulti;
 
@@ -20,6 +20,7 @@ class Config
             self::$dbUsername = $config['db_username'];
             self::$dbPassword = $config['db_password'];
             self::$shmopLangMaxsz = $config['shmop_lang_max_size'];
+            self::$shmopAchvMaxsz = $config['shmop_achv_max_size'];
             self::$shmopIdMaintenance = $config['shmop_id_maintenance'];
             self::$shmopIdLang = $config['shmop_id_lang'];
             self::$allLanguages = $config['all_languages'];
@@ -47,12 +48,20 @@ class Config
         return self::$shmopLangMaxsz;
     }
 
+    function GetShmopAchvMaxsz(): int{
+        return self::$shmopAchvMaxsz;
+    }
+
     function GetShmopIdMaintenance(): int{
         return self::$shmopIdMaintenance;
     }
 
     function GetShmopIdLang(): int{
         return self::$shmopIdLang;
+    }
+
+    function GetShmopIdAchv(): int{
+        return self::$shmopIdAchv;
     }
 
     function GetAllLanguages(): array{
