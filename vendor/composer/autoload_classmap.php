@@ -15,7 +15,5 @@ return array(
     'local\\achv\\Assets\\Asset' => $baseDir . '/local/game/Asset.php',
     'local\\achv\\Assets\\Character' => $baseDir . '/local/game/characters/Character.php',
     'local\\achv\\Assets\\Item' => $baseDir . '/local/game/items/Item.php',
-    'local\\ex\\LocalException' => $baseDir . '/local/ex/LocalException.php',
-    'local\\ex\\ServerException' => $baseDir . '/local/ex/ServerException.php',
-    'local\\ex\\SystemException' => $baseDir . '/local/ex/SystemException.php',
+    'local\\ex\\RecoverableException' => $baseDir . '/local/ex/RecoverableException.php',
 );

@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/utils/AES-256-CBC.php";
 use local\ConfigSystem;
 use local\DatabaseSystem;
 
@@ -356,6 +357,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo $colortxt("Written to the maintenance memory: \"".$toWrite."\"",colorSubprocess).PHP_EOL;
         echo $colortxt("Success!",colorSuccess).clickHereToContinue;
     }
+
+    // DECRYPT THE LOGGING MESSAGE
+    elseif(isset($_POST['log_dec'])){
+        echo $colortxt("Decrypting the input data......",colorProcess).PHP_EOL;
+        $bin= hex2bin(trim($_POST['log_dec']));
+        if($bin===false)$err("It's not a valid hex input.");
+        $msg = decrypt($bin,$config->GetLogEncryptKey());
+        if($msg===null)$err("Failed to decrypt.");
+        $msg=str_replace(["\r\n","\n"],"<br>",$msg);
+        echo $colortxt("Success! The decrypted message is below:",colorSuccess).PHP_EOL.
+            $colortxt($msg, colorSubprocess).PHP_EOL;
+        echo clickHereToContinue;
+    }
     
     else{
         echo clickHereToContinue;
@@ -460,6 +474,10 @@ else{
     $postButton('db_init', "Initialize the DatabaseSystem!");
 }
 
-echo PHP_EOL;
+echo "<form action='server.php' method='post'>Decrypt the logs message:<br>".
+    "<textarea name='log_dec' style='height: 200px; width: 500px; resize: none;'></textarea><br>".
+    "<input type='submit' value='Decrypt This! I wanna see the hell inside...!'></form>";
 
+echo PHP_EOL;
+http_response_code(200);
 

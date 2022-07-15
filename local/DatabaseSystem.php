@@ -1,6 +1,8 @@
 <?php
 namespace local;
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
+
+use mysql_xdevapi\Exception;
 use mysqli;
 
 class DatabaseSystem
@@ -26,7 +28,8 @@ class DatabaseSystem
                 self::$config->GetDBHostname()."'")->fetch_row()!==null;
     }
 
-    function LogThrowable(\Throwable $throwable, string $data):int{
-
+    function MakeLog(string $trace, string $errnoStr = null):int{
+        throw new Exception();
+        //todo
     }
 }

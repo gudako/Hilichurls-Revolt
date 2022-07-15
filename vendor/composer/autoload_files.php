@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'f9e61f18f0291090ecf3f67a829046de' => $vendorDir . '/athari/yalinqo/YaLinqo/Linq.php',
+    'b54474e13a8c2b97375e6908412f6fc5' => $baseDir . '/init_ex.php',
     '88dd806882df5b46df98f4a2be036e1b' => $baseDir . '/lang/lang.php',
 );

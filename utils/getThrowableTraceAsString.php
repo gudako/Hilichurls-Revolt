@@ -1,5 +1,6 @@
 <?php
-function getThrowableTraceAsString(Throwable $throwable) {
+function getThrowableTraceAsString(Throwable $throwable): string
+{
     $rtn = '';
     $count = 0;
     foreach ($throwable->getTrace() as $frame) {
@@ -17,7 +18,7 @@ function getThrowableTraceAsString(Throwable $throwable) {
             }
             $args = join(", ", $args);
         }
-        $rtn .= sprintf("#%s %s(%s): %s%s%s(%s)\n", $count, $frame['file'], $frame['line'],
+        $rtn .= sprintf("#%s %s(%s): %s%s%s(%s)\r\n", $count, $frame['file'], $frame['line'],
             $frame['class'] ?? '', $frame['type'] ?? '', $frame['function'], $args);
         $count++;
     }

@@ -7,9 +7,18 @@ $lang = $_GET['lang'] ?? 'en';
 $logcode = $_GET['logcode'] ?? null;
 $msg = $_GET['msg'] ?? null;
 if(!($logcode===null xor $msg===null)){
-    http_response_code(400);
+    http_response_code(404);
     die();}
-else http_response_code(500);
+$allowed = true;
+try{
+    $query = $logcode===null?"msg={$_GET['msg']}":"logcode={$_GET['logcode']}";
+    $allowed = isset($_GET['auth']) && hash_equals(sha1($query.(new DateTimeImmutable())->format('Y-m-d').
+            "You got that?"), $_GET['auth']);
+}catch(Throwable){}
+if(!$allowed){
+    http_response_code(404);
+    die();}
+//http_response_code(500);
 ?>
 <head>
     <title>500 Internal Server Error</title>
@@ -111,7 +120,7 @@ else http_response_code(500);
         elseif ($lang ==='zh')echo "如果该问题持续存在，你可以把下面的代码发送到邮箱 <a href='$mailto'>".EMAIL_RECIPIENT."</a> 中，和我们获得联系。我们会在第一时间内处理此问题。"; ?></div>
     <div class="texts" style="font-size: 34px;<?php if($logcode===null)echo 'display:none';?>">
         <?php echo 'ERR'.$logcode;?></div>
-    <div class="texts" style="border:1px rgba(128,128,128,0.31) solid;margin:19px 30px;padding:10px;color:gray;
+    <div class="texts" style="border:1px rgba(128,128,128,0.31) solid;margin:19px 30px;padding:10px;color:gray;word-break:break-all;
     <?php if($msg===null)echo 'display:none';?>"><?php echo $msg;?></div>
     <div class="texts"><?php if($lang === 'en') echo "Sincere apology to all the inconveniences we may have caused to you.";
         elseif ($lang ==='zh') echo "同时，我们诚挚地为所有可能对您造成的不便表示抱歉。";?></div><br>

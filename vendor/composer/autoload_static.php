@@ -8,6 +8,7 @@ class ComposerStaticInit6f439a36664056fe09806e4ef91986ce
 {
     public static $files = array (
         'f9e61f18f0291090ecf3f67a829046de' => __DIR__ . '/..' . '/athari/yalinqo/YaLinqo/Linq.php',
+        'b54474e13a8c2b97375e6908412f6fc5' => __DIR__ . '/../..' . '/init_ex.php',
         '88dd806882df5b46df98f4a2be036e1b' => __DIR__ . '/../..' . '/lang/lang.php',
     );
 
@@ -35,9 +36,7 @@ class ComposerStaticInit6f439a36664056fe09806e4ef91986ce
         'local\\achv\\Assets\\Asset' => __DIR__ . '/../..' . '/local/game/Asset.php',
         'local\\achv\\Assets\\Character' => __DIR__ . '/../..' . '/local/game/characters/Character.php',
         'local\\achv\\Assets\\Item' => __DIR__ . '/../..' . '/local/game/items/Item.php',
-        'local\\ex\\LocalException' => __DIR__ . '/../..' . '/local/ex/LocalException.php',
-        'local\\ex\\ServerException' => __DIR__ . '/../..' . '/local/ex/ServerException.php',
-        'local\\ex\\SystemException' => __DIR__ . '/../..' . '/local/ex/SystemException.php',
+        'local\\ex\\RecoverableException' => __DIR__ . '/../..' . '/local/ex/RecoverableException.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
