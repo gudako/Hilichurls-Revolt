@@ -50,7 +50,7 @@ $exHandler = function (Throwable $exception)use($handler){
             $writeTrace($exception->getPrevious());
         }
         $trace = "{$exception->getMessage()}\r\n".get_class($exception)." (code {$exception->getCode()}) ".
-            "thrown in file \"{$exception->getFile()}\" on line {$exception->getLine()}.\r\n".
+            "thrown in file \"{$exception->getFile()}\" on line {$exception->getLine()}\r\n".
             (count($exception->getTrace()) == 0?"":"Stack trace:\r\n".getThrowableTraceAsString($exception)).
             ($exception->getPrevious()===null?"":"↓ PREVIOUS EXCEPTION ↓\r\n").$trace;
     };
@@ -60,7 +60,7 @@ $exHandler = function (Throwable $exception)use($handler){
 
 $errHandler=function(int$errno,string$errstr,string$errfile=null,int$errline=null,array$errcontext=null)use($handler):bool{
     $trace = "$errstr\r\n".errnoRef[$errno]." thrown".($errfile===null?"":(" in file \"$errfile\"".
-            ($errline===null?"":" on line $errline"))).".";
+            ($errline===null?"":" on line $errline")));
     $handler($trace, $errno);
     return false;
 };

@@ -31,7 +31,7 @@ $db_initialized = $database->IsInitialized();
 
 // PREDEFINED FUNCTIONS FOR EASE!
 $colortxt = function(string $text, string $color = 'black'):string{
-    return "<p style='color:".$color.";'>".$text."</p>";
+    return "<p style='color:$color;'>$text</p>";
 };
 
 $err = function(string $text)use($colortxt){
@@ -41,8 +41,8 @@ $err = function(string $text)use($colortxt){
 };
 
 $postButton = function (string $call, string $text): void{
-    echo "<form action='server.php' method='post'><input type='text' style='display: none;' name='".$call."' ".
-        "value='true'><input type='submit' value='".$text."'></form>".PHP_EOL;
+    echo "<form action='server.php' method='post'><input type='text' style='display: none;' name='$call' ".
+        "value='true'><input type='submit' value='$text'></form>".PHP_EOL;
 };
 
 //- POST QUERY BEGIN -//
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $checkMaintText = function(string $text)use($config):bool{
         foreach ($config->GetAllLanguages() as $lang){
-            $pattern = "/<".$lang.">[\s\S]*\S+[\s\S]*<\/".$lang.">/u";
+            $pattern = "/<$lang>[\s\S]*\S+[\s\S]*<\/$lang>/u";
             if(preg_match_all($pattern, $text)!==1) return false;
         }
         return true;
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $simplifyMaintText=function ($maintText)use($config): string {
         $langs =implode("|",$config->GetAllLanguages());
-        $optimized1 = preg_replace("/<(".$langs.")>\s*([\s\S]+?)\s*<\/(".$langs.")>/u",
+        $optimized1 = preg_replace("/<($langs)>\s*([\s\S]+?)\s*<\/($langs)>/u",
             "<$1>\n$2\n</$1>\n\n", $maintText);
         return preg_replace("/(\r\n|\n)(\r\n|\n)/u",'',$optimized1);
     };
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $unsigned2bin=function (int $unsigned,int $bytes)use($err):string{
         $hex = dechex($unsigned);
         if(strlen($hex)>$bytes*2){
-            $err("Cannot fit binary \"".$hex."\" into a ".$bytes." bytes space.");
+            $err("Cannot fit binary \"$hex\" into a $bytes bytes space.");
             http_response_code(400);
             die();
         }
@@ -136,13 +136,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if($config->GetShmopHashtableMulti()<2)$err("config \"shmop_hashtable_multi\" should at least be 2.");
 
         shmop_write($shmop,hex2bin(str_repeat('00',$shmopMaxSize)),0);
-        echo $colortxt("Washed the SHMOP memory to ".$shmopMaxSize." bytes.",colorSubprocess);
+        echo $colortxt("Washed the SHMOP memory to $shmopMaxSize bytes.",colorSubprocess);
 
         shmop_write($shmop,$unsigned2bin($byte,2),0);
         shmop_write($shmop,$unsigned2bin($shmopHashSize,1),2);
         shmop_write($shmop,$unsigned2bin($shmopOffsetSize,1),3);
-        echo $colortxt("Hash size: ".$shmopHashSize.", Offset size: ".$shmopOffsetSize.
-            ", Hashtable ends at offset: ". $byte,colorSubprocess);
+        echo $colortxt("Hash size: $shmopHashSize, Offset size: $shmopOffsetSize, Hashtable ends at offset: $byte",colorSubprocess);
 
         $remap = array();
         $timesHit = 0;
@@ -153,11 +152,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $spaceCount,$shmopOffsetSize,$shmopMaxSize,&$remap,$unsigned2bin,$colortxt,$err){
             $size = strlen($value);
             if($byte+$size>=$shmopMaxSize)
-                $err("Input data exceeding the max memory: ". $shmopMaxSize. " bytes.");
+                $err("Input data exceeding the max memory: $shmopMaxSize bytes.");
 
             shmop_write($shmop, $value, $byte);
-            if(isset($remap[$key]))
-                echo $colortxt("WARNING: Duplicate of key \"".$key."\"",colorError);
+            if(isset($remap[$key]))echo $colortxt("WARNING: Duplicate of key \"$key\"",colorError);
             $remap[$key] = [$byte, $size];
 
             $textcodeHash = substr(sha1($key),0,$shmopHashSize*2);
@@ -198,13 +196,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
         else foreach ($decoded as $textcode => $textItem){
             $content = from($textItem)->
-            aggregate(function ($a,$text,$lang){return $a.'<'.$lang.'>'.$text.'</'.$lang.'>';},'');
+            aggregate(function ($a,$text,$lang){return "$a<$lang>$text</$lang>";},'');
             $record($textcode, $content);
         }
 
         $hitAccuracy =1-$timesOff/$timesHit;
-        echo $colortxt("Memory loaded to offset ".$byte." for a maximum at ".$shmopMaxSize.
-                " bytes. Space used ".round(100.0*$byte/$shmopMaxSize,2)."%", colorSubprocess).PHP_EOL;
+        echo $colortxt("Memory loaded to offset $byte for a maximum at $shmopMaxSize bytes. Space used ".
+                round(100.0*$byte/$shmopMaxSize,2)."%", colorSubprocess).PHP_EOL;
         echo $colortxt("Hashtable hits: ".$timesOff." misses in ".$timesHit." hits. Accuracy: ".
                 round($hitAccuracy*100,2)."%",colorSubprocess).PHP_EOL;
         if($hitAccuracy<=0.5)
@@ -232,8 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                     if(strtolower(pathinfo($path, PATHINFO_EXTENSION))!=='php') continue;
                     $lines = file($path);
                     if($lines === false){
-                        echo $colortxt("WARNING: Failed to load file for read and write: \"".$path."\"",
-                                colorError).PHP_EOL;
+                        echo $colortxt("WARNING: Failed to load file for read and write: \"$path\"", colorError).PHP_EOL;
                         continue;
                     }
                     $linecnt = 0;
@@ -244,8 +241,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                             {
                                 $textcode = $matches[3];
                                 if(!isset($remap[$textcode])){
-                                    echo $colortxt("WARNING: Undefined textcode \"".$textcode.
-                                        "\" demanded in file: \"".$path."\" at line ".$linecnt,colorError).PHP_EOL;
+                                    echo $colortxt("WARNING: Undefined textcode \"$textcode\" demanded in file: \"$path\" at line ".$linecnt,colorError).PHP_EOL;
                                     return $matches[0];
                                 }
                                 $dealcnt++;
@@ -263,7 +259,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             }
         };
         $remapInFiles($_SERVER['DOCUMENT_ROOT']);
-        echo $colortxt("Summary: Made ".$totalrepcnt." replacements in ".$filecnt." files.",colorSubprocess). PHP_EOL;
+        echo $colortxt("Summary: Made $totalrepcnt replacements in $filecnt files.",colorSubprocess). PHP_EOL;
         echo $colortxt("Success!",colorSuccess).PHP_EOL;
         if($compelAll&&!$isAchv){
             echo $colortxt("Turning to load the achievements data......",colorSubprocess).PHP_EOL;
@@ -284,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $shmop_maint= shmop_open($config->GetShmopIdMaintenance(),'c',permissionFull,26);
         $initmem = str_repeat('0',26);
         shmop_write($shmop_maint, $initmem, 0);
-        echo $colortxt("Written to the maintenance memory: \"".$initmem."\"",colorSubprocess).PHP_EOL;
+        echo $colortxt("Written to the maintenance memory: \"$initmem\"",colorSubprocess).PHP_EOL;
         if($quitMaint){
             echo $colortxt("Successfully reset maintenance memory. Requiring a full memory reload.",
                 colorSubprocess).PHP_EOL;
@@ -306,13 +302,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             filter_var($maintMins, FILTER_VALIDATE_INT)===false || $maintMins>59 || $maintMins<0 ||
             ($maintHrs==0&&$maintMins==0))$err("The maintain time number input is invalid.");
         $mustHaveGoodMaintText('maint_text');
-        echo $colortxt("Issuing a maintenance after ".$maintHrs." hours ". $maintMins." minutes......",
+        echo $colortxt("Issuing a maintenance after $maintHrs hours $maintMins minutes......",
                 colorProcess).PHP_EOL;
         $now = new DateTime();
         $add = new DateInterval('PT'.$maintHrs.'H'.$maintMins.'M');
         $toWrite = $now->add($add)->format('Y-m-d H:i:s.u');
         shmop_write($shmop_maint, $toWrite, 0);
-        echo $colortxt("Written to the maintenance memory: \"".$toWrite."\"",colorSubprocess).PHP_EOL;
+        echo $colortxt("Written to the maintenance memory: \"$toWrite\"",colorSubprocess).PHP_EOL;
         $_POST['change_maint_text'] = $_POST['maint_text'];
         goto startChangeMaintText;
     }
@@ -354,7 +350,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo $colortxt("Issuing an immediate maintenance......",colorProcess).PHP_EOL;
         $toWrite=(new DateTime())->format('Y-m-d H:i:s.u');
         shmop_write($shmop_maint, $toWrite, 0);
-        echo $colortxt("Written to the maintenance memory: \"".$toWrite."\"",colorSubprocess).PHP_EOL;
+        echo $colortxt("Written to the maintenance memory: \"$toWrite\"",colorSubprocess).PHP_EOL;
         echo $colortxt("Success!",colorSuccess).clickHereToContinue;
     }
 
@@ -403,7 +399,7 @@ else{
     $getDefMaintText=function()use($config):string{
         $defMaintText = '';
         foreach ($config->GetAllLanguages() as $lang)
-            $defMaintText .= "<".$lang.">".PHP_EOL.($config->IsDebug()?"TEST VALUE":"").PHP_EOL. "</".$lang.">".PHP_EOL;
+            $defMaintText .= "<$lang>".PHP_EOL.($config->IsDebug()?"TEST VALUE":"").PHP_EOL. "</$lang>".PHP_EOL;
         return $defMaintText;
     };
 
@@ -411,7 +407,7 @@ else{
         echo "<form action='server.php' method='post'>".
             "Issue a maintanence for <input type='number' name='maint_hrs' value='1' max='24' min='0'> hours ".
             "<input type='number' name='maint_mins' value='0' max='59' min='0'> minutes <br>with the message:<br>".
-            "<textarea name='maint_text' style='height: 300px; width: 500px; resize: none;'>".$getDefMaintText().
+            "<textarea name='maint_text' style='height: 300px; width: 500px; resize: none;'>{$getDefMaintText()}".
             "</textarea><br><input type='submit' value='Issue a Maintenence'></form>";
     }
     else{

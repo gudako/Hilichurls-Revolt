@@ -23,19 +23,12 @@ abstract class AchievementSystem
         if(!isset(self::$config)) self::$config = new ConfigSystem();
         if(!isset(self::$shmop, self::$prefixHashSize, self::$prefixOffsetSize, self::$dataOffset)){
             self::$shmop = shmop_open(self::$config->GetShmopIdAchv(), 'a', 0600, self::$config->GetShmopAchvMaxsz());
-            if(self::$shmop===false)
-                throw new Exception()
+            if(self::$shmop===false)throw new Exception("Failed to open the ACHV shmop object.");
             self::$dataOffset = shmop_read(self::$shmop, 0, 2);
             self::$prefixHashSize = shmop_read(self::$shmop, 2, 1);
             self::$prefixOffsetSize = shmop_read(self::$shmop, 3, 1);
         }
     }
 
-    function GetString(){
-        return shmop_read(self::$shmop, $this->memloc, $this->memsize);
-    }
-
-    function GetArray(){
-        return
-    }
+    abstract function getString();
 }

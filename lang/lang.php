@@ -17,8 +17,13 @@ function memtxt(){
     $args= func_get_args();
     if(count($args) == 1){
         $textcode = $args[0];
-        if(gettype($textcode)==='array') return memtxt($textcode[0], $textcode[1]);
-        if(gettype($textcode)!=='string') throw new Exception("Parameter invalid.");
+        if(gettype($textcode)==='array'){
+            if(count($textcode)!==2||gettype($textcode[0])!=='integer'||gettype($textcode[1])!=='integer')
+                throw new Exception("Parameter invalid: \"memtxt\" when called with invalid array");
+            return memtxt($textcode[0], $textcode[1]);
+        }
+        if(gettype($textcode)!=='string')
+            throw new Exception("Parameter invalid: \"memtxt\" called with unrecognized type");
 
         $dirEnd =hexdec(bin2hex(shmop_read($shmop, 0, 2)));
         $dirSz = $dirEnd-4;
@@ -32,7 +37,8 @@ function memtxt(){
         while($hash!== bin2hex(shmop_read($shmop,$primeIndex+4,$hashSz))){
             $primeIndex+=$tupleSz;
             if($primeIndex>=$dirSz)$primeIndex-=$dirSz;
-            if($primeIndex==$initIndex) throw new Exception("Unable to find any text of textcode \"".$textcode."\".");
+            if($primeIndex==$initIndex)
+                throw new Exception("Unable to find any text with the textcode \"$textcode\".");
         }
 
         $offset = hexdec(bin2hex(shmop_read($shmop,$primeIndex+$hashSz+4,$offsetSz)));
@@ -42,7 +48,8 @@ function memtxt(){
     elseif(count($args) == 2){
         $offset = $args[0];
         $size = $args[1];
-        if(gettype($offset)!=='integer'||gettype($size)!=='integer') throw new Exception("Parameter invalid.");
+        if(gettype($offset)!=='integer'||gettype($size)!=='integer')
+            throw new Exception("Parameter invalid: \"memtxt\" called with OFFSET and SIZE they must be integer");
 
         $langItem = shmop_read($shmop, $offset, $size);
         $lang = getlang();
@@ -51,5 +58,5 @@ function memtxt(){
             throw new Exception("No definition for language named \"".$lang."\".");
         return $matches[0];
     }
-    else throw new Exception("Parameter invalid.");
+    else throw new Exception("Parameter invalid: \"memtxt\" not accepting three or more args");
 }

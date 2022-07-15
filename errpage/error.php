@@ -18,7 +18,7 @@ try{
 if(!$allowed){
     http_response_code(404);
     die();}
-//http_response_code(500);
+http_response_code(500);
 ?>
 <head>
     <title>500 Internal Server Error</title>
@@ -88,7 +88,7 @@ if(!$allowed){
             elseif ($lang ==='zh')echo "服务器拉跨了!";?></div>
         <div><?php if($lang === 'en')echo "That saying, we got those bugs in files......";
             elseif ($lang ==='zh')echo "指的是，这些文件里有一些奇怪的BUG......";?></div>
-        <img src="img/pages/bug.png">
+        <img src="../img/pages/bug.png">
     </div>
     <a class="small" href="<?php
     function change_url_parameter($url,$parameterName,$parameterValue): string{
@@ -116,7 +116,7 @@ if(!$allowed){
         "serious%20that%20has%20made%20us%20unable%20to%20continue%20playing%20the%20game.%0D%0A%0D%0AThe%20code%20of%20".
         "the%20error%20is%20as%20below%3A%0D%0A".($msg??"ERR$logcode")."%0D%0A%0D%0APlease%20fix%20it%20as%20soon%20as%20".
         "possible%20and%20give%20me%20a%20reply%20in%20time."; ?>
-    <div class="texts"><?php if($lang === 'en') echo "If the problem persists, you can get in contact with us send the following code to email <a href='$mailto'>".EMAIL_RECIPIENT."</a>, we'll reply you fast.";
+    <div class="texts"><?php if($lang === 'en') echo "If the problem persists, you can get in contact with us by sending us the following code to email <a href='$mailto'>".EMAIL_RECIPIENT."</a>, we'll reply you fast.";
         elseif ($lang ==='zh')echo "如果该问题持续存在，你可以把下面的代码发送到邮箱 <a href='$mailto'>".EMAIL_RECIPIENT."</a> 中，和我们获得联系。我们会在第一时间内处理此问题。"; ?></div>
     <div class="texts" style="font-size: 34px;<?php if($logcode===null)echo 'display:none';?>">
         <?php echo 'ERR'.$logcode;?></div>
@@ -125,7 +125,7 @@ if(!$allowed){
     <div class="texts"><?php if($lang === 'en') echo "Sincere apology to all the inconveniences we may have caused to you.";
         elseif ($lang ==='zh') echo "同时，我们诚挚地为所有可能对您造成的不便表示抱歉。";?></div><br>
     <a href="<?php echo$mailto;?>" class="texts"><?php if($lang === 'en') echo "Click here to send the email.";elseif ($lang ==='zh') echo "点击此处发送邮件。";?></a>
-    <div class="texts"><?php if($lang === 'en') echo "If you can't send the email by clicking the button, you can also send it manually. Just make sure to include the code above.";
+    <div class="texts"><?php if($lang === 'en') echo "If you can't send the email by clicking the button, you can also do it manually. Just make sure to include the code above.";
     elseif ($lang ==='zh') echo "如果你无法通过点击按钮的方式来发送此邮件，你也可以手动发送。确保你在邮件中包含了上述的错误代码。";?></div>
     <?php echo str_repeat("<br>",7);?>
 </div>
