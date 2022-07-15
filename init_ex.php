@@ -65,12 +65,11 @@ $errHandler=function(int$errno,string$errstr,string$errfile=null,int$errline=nul
     return false;
 };
 
-set_exception_handler($exHandler);
-set_error_handler($errHandler);
-
 if((new \local\ConfigSystem())->IsDebug()){
     error_reporting(E_ALL);
 }
 else{
+    set_exception_handler($exHandler);
+    set_error_handler($errHandler);
     error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 }

@@ -18,7 +18,7 @@ $authorized = $config->IsDebug() || (isset($_SESSION['username']) && $_SESSION['
 const colorError = 'darkred', colorMaintain = 'blue', colorSuccess = 'darkgreen', colorProcess = 'darkslategray',
     colorSubprocess = 'gray';
 const permissionFull = 0666;
-const clickHereToContinue = "<a style='display: block;' href='server.php'>Click here to continue</a>".PHP_EOL;
+const clickHereToContinue = "<a style='display: block;' href='server'>Click here to continue</a>".PHP_EOL;
 
 //maintenance mode initialized?
 $shmop_maint = shmop_open($config->GetShmopIdMaintenance(), 'w', permissionFull, 26);
@@ -41,7 +41,7 @@ $err = function(string $text)use($colortxt){
 };
 
 $postButton = function (string $call, string $text): void{
-    echo "<form action='server.php' method='post'><input type='text' style='display: none;' name='$call' ".
+    echo "<form action='server' method='post'><input type='text' style='display: none;' name='$call' ".
         "value='true'><input type='submit' value='$text'></form>".PHP_EOL;
 };
 
@@ -404,7 +404,7 @@ else{
     };
 
     if($maintainTime===false){
-        echo "<form action='server.php' method='post'>".
+        echo "<form action='server' method='post'>".
             "Issue a maintanence for <input type='number' name='maint_hrs' value='1' max='24' min='0'> hours ".
             "<input type='number' name='maint_mins' value='0' max='59' min='0'> minutes <br>with the message:<br>".
             "<textarea name='maint_text' style='height: 300px; width: 500px; resize: none;'>{$getDefMaintText()}".
@@ -420,7 +420,7 @@ else{
                     $maintainTime->format('%H:%I:%S'),colorMaintain).PHP_EOL;
         }
         $maintFileData = file_get_contents('_maint.txt');
-        echo "<form action='server.php' method='post'><label>Current maintenance text:</label><br>".
+        echo "<form action='server' method='post'><label>Current maintenance text:</label><br>".
             "<textarea name='change_maint_text' style='height: 300px; width: 500px; resize: none;'>".
             ($maintFileData===false?$getDefMaintText():$maintFileData).
             "</textarea><br><input type='submit' value='Change Maintenance Text'></form>";
@@ -440,7 +440,7 @@ if(!$lang_initialized){
 else{
     echo $colortxt("Language-text memory loaded fine.",colorSuccess).PHP_EOL;
     if($config->InMaintenance()||$config->IsDebug()) {
-        echo "<form action='server.php' method='post'><input type='text' style='display: none;' name='init_lang' ".
+        echo "<form action='server' method='post'><input type='text' style='display: none;' name='init_lang' ".
             "value='true'><input type='submit' value='Reload language-text memory'".($config->IsDebug()?' (DEBUG)':'').
             "><br><input type='checkbox' name='compel' value='true' checked>Meanwhile, reload the achievements memory?</form>" .PHP_EOL;
     }
@@ -459,7 +459,7 @@ else{
 
 if($db_initialized){
     echo $colortxt("DatabaseSystem is loaded successfully.",colorSuccess).PHP_EOL;
-    if(!$config->InMaintenance() && !$config->IsDebug())
+    if(!$maint_initialized ||( !$config->InMaintenance() && !$config->IsDebug()))
         echo $colortxt("WARNING: ONLY MODIFY THE DATABASE AT MAINTENANCE MODE!!!").PHP_EOL;
     else echo $colortxt($config->IsDebug()?
             "Debugging the database you'd refer to Intellij IDEA...... You know that all!":
@@ -470,7 +470,7 @@ else{
     $postButton('db_init', "Initialize the DatabaseSystem!");
 }
 
-echo "<form action='server.php' method='post'>Decrypt the logs message:<br>".
+echo "<form action='server' method='post'>Decrypt the logs message:<br>".
     "<textarea name='log_dec' style='height: 200px; width: 500px; resize: none;'></textarea><br>".
     "<input type='submit' value='Decrypt This! I wanna see the hell inside...!'></form>";
 
