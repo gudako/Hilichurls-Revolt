@@ -182,16 +182,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $chapSize = from($chapter)->where(function($v){return gettype($v)==='array';})
                 ->orderBy(function($v){return (!isset($v['visible']) || $v['visible']=='true')?0:1;})
                 ->sum(function ($v,$k)use(&$toRec,$shmopOffsetSize){
+                    $v['name']= $k;
                     $achv = json_encode($v, JSON_FORCE_OBJECT);
                     $size = strlen($achv)+$shmopOffsetSize;
                     $achv = hex2bin(str_pad(dechex($size),$shmopOffsetSize*2,'0',STR_PAD_LEFT)).$achv;
                     $toRec[]= [$k,$achv];
                     return $size;}
-                ) + $shmopOffsetSize;
-            $chapAttr =json_encode(from($chapter)->where(function($v){return gettype($v)!=='array';})->toArray(),JSON_FORCE_OBJECT);
+                ) + $shmopOffsetSize*2;
+            $attr = from($chapter)->where(function($v){return gettype($v)!=='array';})->toArray();
+            $attr['name']= $attr;
+            $attrJson =json_encode($attr,JSON_FORCE_OBJECT);
             $record($chapName, hex2bin(str_repeat('00',$shmopOffsetSize).
                     str_pad(dechex($chapSize),$shmopOffsetSize*2,'0', STR_PAD_LEFT).
-                    str_pad(dechex(strlen($chapAttr)),$shmopOffsetSize*2,'0', STR_PAD_LEFT)).$chapAttr);
+                    str_pad(dechex(strlen($attrJson)+$shmopOffsetSize),$shmopOffsetSize*2,'0', STR_PAD_LEFT)).$attrJson);
             foreach ($toRec as $rec)$record($rec[0],$rec[1]);
         }
         else foreach ($decoded as $textcode => $textItem){

@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/utils/loadMemByTextcode.php";
 use local\ConfigSystem;
 
 function getlang(){
@@ -11,52 +12,35 @@ function getlang(){
 }
 
 function memtxt(){
+    $comment = "Function \"memtxt\" can be called with argument: (int \$offset, int \$size) OR (string \$textcode) OR ".
+        "(array \$offsetAndSize). When called with array, the array structure must be \$offsetAndSize = [int \$offset, int \$size].";
+
     $config = new ConfigSystem();
     $shmop = shmop_open($config->GetShmopIdLang(), 'a', 0600, $config->GetShmopLangMaxsz());
 
     $args= func_get_args();
     if(count($args) == 1){
-        $textcode = $args[0];
-        if(gettype($textcode)==='array'){
-            if(count($textcode)!==2||gettype($textcode[0])!=='integer'||gettype($textcode[1])!=='integer')
-                throw new Exception("Parameter invalid: \"memtxt\" when called with invalid array");
-            return memtxt($textcode[0], $textcode[1]);
+        if(gettype($args[0])==='array'){
+            if(count($args[0])!==2||gettype($args[0][0])!=='integer'||gettype($args[0][1])!=='integer')
+                throw new TypeError("Function called with invalid array, must be [int \$offset, int \$size]");
+            return memtxt($args[0][0], $args[0][1]);
         }
-        if(gettype($textcode)!=='string')
-            throw new Exception("Parameter invalid: \"memtxt\" called with unrecognized type");
-
-        $dirEnd =hexdec(bin2hex(shmop_read($shmop, 0, 2)));
-        $dirSz = $dirEnd-4;
-        $hashSz = hexdec(bin2hex(shmop_read($shmop, 2, 1)));
-        $offsetSz = hexdec(bin2hex(shmop_read($shmop, 3, 1)));
-        $tupleSz = $hashSz + $offsetSz*2;
-
-        $hash = substr(sha1($textcode),0,$hashSz*2);
-        $primeIndex = (hexdec($hash)% ($dirSz/$tupleSz))*$tupleSz;
-        $initIndex = $primeIndex+4;
-        while($hash!== bin2hex(shmop_read($shmop,$primeIndex+4,$hashSz))){
-            $primeIndex+=$tupleSz;
-            if($primeIndex>=$dirSz)$primeIndex-=$dirSz;
-            if($primeIndex==$initIndex)
-                throw new Exception("Unable to find any text with the textcode \"$textcode\".");
-        }
-
-        $offset = hexdec(bin2hex(shmop_read($shmop,$primeIndex+$hashSz+4,$offsetSz)));
-        $size = hexdec(bin2hex(shmop_read($shmop,$primeIndex+$hashSz+4+$offsetSz,$offsetSz)));
-        return memtxt($offset, $size);
+        if(gettype($args[0])!=='string')
+            throw new TypeError("Function called with unrecognized type");
+        return memtxt(loadMemByTextcode($shmop, $args[0]));
     }
     elseif(count($args) == 2){
         $offset = $args[0];
         $size = $args[1];
         if(gettype($offset)!=='integer'||gettype($size)!=='integer')
-            throw new Exception("Parameter invalid: \"memtxt\" called with OFFSET and SIZE they must be integer");
+            throw new TypeError("\$offset and \$size they must be integers");
 
         $langItem = shmop_read($shmop, $offset, $size);
         $lang = getlang();
         $matches = array();
-        if(preg_match("/(?<=<".$lang.">)(.|\r|\n)*(?=<\/".$lang.">)/m",$langItem,$matches)!==1 || !isset($matches[0]))
-            throw new Exception("No definition for language named \"".$lang."\".");
+        if(preg_match("/(?<=<$lang>)(.|\r|\n)*(?=<\/$lang>)/m",$langItem,$matches)!==1 || !isset($matches[0]))
+            throw new Error("The specified textcode does not have an definition for the language named \"$lang\".",SEVERITY_SERVER_CORRUPT);
         return $matches[0];
     }
-    else throw new Exception("Parameter invalid: \"memtxt\" not accepting three or more args");
+    else throw new ArgumentCountError($comment);
 }

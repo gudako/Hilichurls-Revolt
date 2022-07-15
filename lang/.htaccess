@@ -1,4 +1,0 @@
-order deny,allow
-<Files "lang.json">
-deny from all
-</Files>

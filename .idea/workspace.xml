@@ -6,15 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/subpages/deny.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/init/init_const.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errpage/403.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/errpage/404.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/errpage/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/error.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init_ex.php" beforeDir="false" afterPath="$PROJECT_DIR$/init_ex.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainpage.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/mainpage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_ex.php" beforeDir="false" afterPath="$PROJECT_DIR$/init/init_ex.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/init/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/local/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/achv/AchievementCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/achv/AchievementItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/achv/AchievementSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementSystem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subpages/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/loadMemByTextcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/utils/loadMemByTextcode.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,44 +69,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Hilichurls Revolt/errpage&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Markdown&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "F:/Hilichurls Revolt/init",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Markdown"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\init" />
       <recent name="F:\Hilichurls Revolt\errpage" />
       <recent name="F:\Hilichurls Revolt\utils" />
       <recent name="F:\Hilichurls Revolt\achv" />
       <recent name="F:\Hilichurls Revolt\server_call" />
-      <recent name="F:\Hilichurls Revolt" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\init" />
       <recent name="F:\Hilichurls Revolt\subpages" />
       <recent name="F:\Hilichurls Revolt\errpage" />
       <recent name="F:\Hilichurls Revolt\utils" />
       <recent name="F:\Hilichurls Revolt\local\achv" />
-      <recent name="F:\Hilichurls Revolt\local\game" />
     </key>
   </component>
   <component name="RunManager">
@@ -138,7 +141,7 @@
       <workItem from="1657620960769" duration="28621000" />
       <workItem from="1657674976169" duration="20070000" />
       <workItem from="1657785160944" duration="54151000" />
-      <workItem from="1657897891926" duration="5982000" />
+      <workItem from="1657897891926" duration="14001000" />
     </task>
     <servers />
   </component>
