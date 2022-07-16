@@ -3,7 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/utils/loadMemByTextcode.php";
 use local\ConfigSystem;
 
-function getlang(){
+function getlang():string{
     if(!isset($_COOKIE['lang'])) return 'en';
     $lang_cookie = $_COOKIE['lang'];
     $config=new ConfigSystem();
@@ -11,7 +11,7 @@ function getlang(){
     return in_array($lang_cookie, $lang_set) ? $lang_cookie : 'en';
 }
 
-function memtxt(){
+function memtxt():string{
     $comment = "Function \"memtxt\" can be called with argument: (int \$offset, int \$size) OR (string \$textcode) OR ".
         "(array \$offsetAndSize). When called with array, the array structure must be \$offsetAndSize = [int \$offset, int \$size].";
 
@@ -39,7 +39,7 @@ function memtxt(){
         $lang = getlang();
         $matches = array();
         if(preg_match("/(?<=<$lang>)(.|\r|\n)*(?=<\/$lang>)/m",$langItem,$matches)!==1 || !isset($matches[0]))
-            throw new Error("The specified textcode does not have an definition for the language named \"$lang\".",SEVERITY_SERVER_CORRUPT);
+            throw new Error("The specified textcode does not have an definition for the language named \"$lang\".",ERROR_HIGHLIGHTED);
         return $matches[0];
     }
     else throw new ArgumentCountError($comment);

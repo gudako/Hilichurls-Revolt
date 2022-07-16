@@ -28,7 +28,7 @@ class DatabaseSystem
                 self::$config->GetDBHostname()."'")->fetch_row()!==null;
     }
 
-    function MakeLog(string $trace, string $errnoStr = null):int{
+    function MakeLog(string $trace, string $errnoStr = null, int $importance=0):int{
         throw new Exception();
         //todo
     }

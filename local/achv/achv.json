@@ -1,5 +1,7 @@
 {
   "solomon_hearts":{
+    "ghost": true,
+    "othereat": "hilivur,lappland?",
     "killed_slime":{
       "primogem":20,
       "point":2,
@@ -17,6 +19,8 @@
     }
   },
   "solomon_hearts_2":{
+    "ghost": true,
+    "othereat": "hilivur,texas?",
     "an_goodorbad":{
       "primogem":20,
       "point":3,

@@ -12,7 +12,7 @@ abstract class AchievementSystem
     protected static int $prefixOffsetSize;
     protected static int $dataOffset;
 
-    private string $data;
+    protected array $data;
     protected int $memloc, $memsize;
     protected bool $isCategory;
 
@@ -21,10 +21,10 @@ abstract class AchievementSystem
         if(!isset(self::$config)) self::$config = new ConfigSystem();
         if(!isset(self::$shmop, self::$prefixHashSize, self::$prefixOffsetSize, self::$dataOffset)){
             self::$shmop = shmop_open(self::$config->GetShmopIdAchv(), 'a', 0600, self::$config->GetShmopAchvMaxsz());
-            if(self::$shmop===false)throw new \Error("Failed to open the ACHV shmop object.",SEVERITY_SERVER_CORRUPT);
-            self::$dataOffset = shmop_read(self::$shmop, 0, 2);
-            self::$prefixHashSize = shmop_read(self::$shmop, 2, 1);
-            self::$prefixOffsetSize = shmop_read(self::$shmop, 3, 1);}
+            if(self::$shmop===false)throw new \Error("Failed to open the ACHV shmop object.",ERROR_HIGHLIGHTED);
+            self::$dataOffset =hexdec(bin2hex(shmop_read(self::$shmop, 0, 2)));
+            self::$prefixHashSize = hexdec(bin2hex(shmop_read(self::$shmop, 2, 1)));
+            self::$prefixOffsetSize = hexdec(bin2hex(shmop_read(self::$shmop, 3, 1)));}
 
         $mem = self::memachv(...func_get_args());
         $this->data = $mem['data'];
@@ -53,12 +53,12 @@ abstract class AchievementSystem
             if(gettype($offset)!=='integer'||gettype($size)!=='integer')
                 throw new \TypeError("\$offset and \$size they must be integers");
 
-            $offsetSz = shmop_read($shmop,3, 1);
+            $offsetSz = hexdec(bin2hex(shmop_read($shmop,3, 1)));
             $achvData = shmop_read($shmop, $offset, $size);
             $isCategory = bin2hex(substr($achvData,0,$offsetSz))==str_repeat("00",$offsetSz);
             $dataOffset = $offset + ($isCategory?3:1)*$offsetSz;
             $dataSize = $size - ($isCategory?3:1)*$offsetSz;
-            $data = shmop_read($shmop, $dataOffset, $dataSize);
+            $data = json_decode(shmop_read($shmop, $dataOffset, $dataSize),true);
 
             return array(
                 "is_category" =>$isCategory,
@@ -70,7 +70,13 @@ abstract class AchievementSystem
         else throw new \ArgumentCountError("Argument count should be 1 or 2");
     }
 
-    public function GetJson(){return $this->data;}
+    public function GetJson(): string{return json_encode($this->data,JSON_FORCE_OBJECT);}
 
-    abstract function GetNext():AchievementSystem|false;
+    abstract function Next():AchievementSystem|false;
+
+    public function GetName(): string
+    {
+        if(!isset($this->data['name']))throw new \Error("The target data has no key named \"name\".",ERROR_HIGHLIGHTED);
+        return memtxt("achv_".$this->data['name']);
+    }
 }

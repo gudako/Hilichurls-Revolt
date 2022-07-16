@@ -35,9 +35,8 @@ $colortxt = function(string $text, string $color = 'black'):string{
 };
 
 $err = function(string $text)use($colortxt){
-    echo $colortxt("ERROR: ".$text, colorError).clickHereToContinue.PHP_EOL;
-    http_response_code(400);
-    die();
+    echo $colortxt("Error detected during the process that the progress must be ended. For details see below......", colorError).clickHereToContinue;
+    throw new Error($text, ERROR_DEV);
 };
 
 $postButton = function (string $call, string $text): void{
@@ -75,11 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $unsigned2bin=function (int $unsigned,int $bytes)use($err):string{
         $hex = dechex($unsigned);
-        if(strlen($hex)>$bytes*2){
-            $err("Cannot fit binary \"$hex\" into a $bytes bytes space.");
-            http_response_code(400);
-            die();
-        }
+        if(strlen($hex)>$bytes*2)$err("Cannot fit binary \"$hex\" into a $bytes bytes space.");
         $hex = str_pad($hex,$bytes*2,'0',STR_PAD_LEFT);
         return hex2bin($hex);
     };
@@ -132,6 +127,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $shmopTupleSize = $shmopHashSize + $shmopOffsetSize*2;
         $bytesTakenByHashtable =$shmopTupleSize * $spaceCount;
         $byte = 4 + $bytesTakenByHashtable;
+        $hashSizePrecent = 1.0*$bytesTakenByHashtable/$shmopMaxSize;
+
+
+        if($hashSizePrecent>=0.5){
+            echo $colortxt("WARNING: Hashtable is too big that may use up meaningless memory: Occupied ".
+                    round($hashSizePrecent*100,2)."%".PHP_EOL."Decrease the \"shmop_hashtable_multi\" ".
+                    "or increase the max shmop size in \"/local/config.json\" to resolve this.", colorError).PHP_EOL;
+        }
 
         if($config->GetShmopHashtableMulti()<2)$err("config \"shmop_hashtable_multi\" should at least be 2.");
 
@@ -209,7 +212,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo $colortxt("Hashtable hits: ".$timesOff." misses in ".$timesHit." hits. Accuracy: ".
                 round($hitAccuracy*100,2)."%",colorSubprocess).PHP_EOL;
         if($hitAccuracy<=0.5)
-            echo $colortxt("WARNING: Hashtable hit accuracy is too low. May hinder performance at reading memory.", colorError).PHP_EOL;
+            echo $colortxt("WARNING: Hashtable hit accuracy is too low. May hinder performance at reading memory.".
+                    PHP_EOL."Increase the \"shmop_hashtable_multi\" in \"/local/config.json\" to resolve this.", colorError).PHP_EOL;
 
         echo $colortxt("Remapping the function calls in the PHP files......",colorProcess).PHP_EOL;
         $remapCode = $isAchv? 'ACHV':"REMAP";
@@ -268,9 +272,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             echo $colortxt("Turning to load the achievements data......",colorSubprocess).PHP_EOL;
             goto startAchvInit;
         }
-        elseif (!$compelAll&&!$isAchv){
-            echo $colortxt("You may want to load & reload the ACHV memory:",colorSubprocess).PHP_EOL;
-             $postButton('init_achv', 'Load or Reload Achievements memory');
+        elseif (!$compelAll&&!$isAchv&&$achv_initialized){
+            echo $colortxt("You may want to reload the ACHV memory:",colorSubprocess).PHP_EOL;
+             $postButton('init_achv', 'Reload Achievements memory');
         }
         echo clickHereToContinue;
     }

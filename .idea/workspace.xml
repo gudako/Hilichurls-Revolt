@@ -6,18 +6,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/init/init_const.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init_ex.php" beforeDir="false" afterPath="$PROJECT_DIR$/init/init_ex.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/init/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comp/error_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/error_tip.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comp/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/mainbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comp/maint_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/maint_tip.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init/init_const.php" beforeDir="false" afterPath="$PROJECT_DIR$/init/init_const.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init/init_ex.php" beforeDir="false" afterPath="$PROJECT_DIR$/init/init_ex.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/local/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/DatabaseSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/DatabaseSystem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local/achv/AchievementCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementCategory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local/achv/AchievementItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementItem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local/achv/AchievementSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementSystem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/achv/achv.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/achv.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subpages/achievements.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/achievements.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subpages/deny.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/deny.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subpages/handbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/handbook.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/subpages/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/utils/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/loadMemByTextcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/utils/loadMemByTextcode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/window/setlang.php" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,30 +84,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "F:/Hilichurls Revolt/init",
-    "list.type.of.created.stylesheet": "CSS",
-    "nodejs_package_manager_path": "npm",
-    "php.override.implement.member.chooser.php.doc": "NONE",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Markdown"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Hilichurls Revolt/init&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Markdown&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Hilichurls Revolt\init" />
@@ -141,7 +156,8 @@
       <workItem from="1657620960769" duration="28621000" />
       <workItem from="1657674976169" duration="20070000" />
       <workItem from="1657785160944" duration="54151000" />
-      <workItem from="1657897891926" duration="14001000" />
+      <workItem from="1657897891926" duration="14021000" />
+      <workItem from="1657943010804" duration="7571000" />
     </task>
     <servers />
   </component>
@@ -152,20 +168,34 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/local/achv/AchievementItem.php</url>
+          <line>13</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/test.php</url>
+          <line>3</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/lang/lang.php</url>
+          <line>29</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
         <watch expression="str_replace([&quot;\r\n&quot;,&quot;\n&quot;],&quot;&lt;br&gt;&quot;, trim($matches[0]))" language="PHP" />
       </configuration>
       <configuration name="server.php">
-        <watch expression="bin2hex(shmop_read($shmop,0,1000))" language="PHP" />
-        <watch expression="$shmopOffsetSize" language="PHP" />
-        <watch expression="bin2hex($value)" language="PHP" />
-        <watch expression="4+$indexInTable" language="PHP" />
-        <watch expression="strlen(hex2bin($textcodeHash).$unsigned2bin($byte,$shmopOffsetSize).    $unsigned2bin($size,$shmopOffsetSize))" language="PHP" />
+        <watch expression="$errno" language="PHP" />
       </configuration>
       <configuration name="test.php">
-        <watch expression="&quot;Location: $httpPrefix://{$_SERVER['HTTP_HOST']}/error.php?$query&amp;auth=$hash&amp;lang=$lang&quot;" language="PHP" />
-        <watch expression="$throwable-&gt;getTrace()" language="PHP" />
+        <watch expression="bin2hex(shmop_read(shmop_open((new \local\ConfigSystem())-&gt;GetShmopIdAchv(),'a',0600,(new \local\ConfigSystem())-&gt;GetShmopAchvMaxsz())),0,1000))" language="PHP" />
       </configuration>
     </watches-manager>
   </component>

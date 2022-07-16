@@ -1,6 +1,6 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";?>
 <head>
-    <title><?php echo memtxt(1057,53/*REMAP%game_name*/);?></title>
+    <title><?php echo memtxt(1824,53/*REMAP%game_name*/);?></title>
 </head>
 <body>
 <?php require_once 'comp/page.php';?>

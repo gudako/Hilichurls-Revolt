@@ -14,9 +14,9 @@ require_once 'lang/lang.php';
             memtxt($textMemOffset, $textMemSize) . '</span></a>' . PHP_EOL;
     }
     function add_normal_links(): void{
-        add_normal_link('mainpage',1173,39/*REMAP%mainbar_mainpage*/);
-        add_normal_link('achievements',1212,35/*REMAP%mainbar_achievements*/);
-        add_normal_link('handbook',1247,38/*REMAP%mainbar_handbook*/);
+        add_normal_link('mainpage',1940,39/*REMAP%mainbar_mainpage*/);
+        add_normal_link('achievements',1979,35/*REMAP%mainbar_achievements*/);
+        add_normal_link('handbook',2014,38/*REMAP%mainbar_handbook*/);
     }
     add_normal_links();
     ?>
@@ -29,7 +29,7 @@ require_once 'lang/lang.php';
     <!--the login button-->
     <span id="login_button">
         <img src="../img/pages/icons/play.png">
-        <?php echo memtxt(1285,40/*REMAP%mainbar_play*/);?>
+        <?php echo memtxt(2052,40/*REMAP%mainbar_play*/);?>
     </span>
 
     <!--dropdown list to set language-->
@@ -50,7 +50,7 @@ require_once 'lang/lang.php';
     <!--dropdown list for smaller screen-->
     <div id="top_menu" style="display: none">
         <?php add_normal_links();?>
-        <a class="norm" id="setlang"><span><?php echo memtxt(1325,48/*REMAP%mainbar_menu_change_lang*/);?></span></a>
+        <a class="norm" id="setlang"><span><?php echo memtxt(2092,48/*REMAP%mainbar_menu_change_lang*/);?></span></a>
     </div>
 
     <!--for the language change-->
@@ -60,7 +60,7 @@ require_once 'lang/lang.php';
         $('#setlang').click(()=>{
             whenSthMoved('');
             openWindow({
-                "title": {"text": "<?php echo memtxt(1373,51/*REMAP%setlang_window_title*/);?>"},
+                "title": {"text": "<?php echo memtxt(2140,51/*REMAP%setlang_window_title*/);?>"},
                 "context": "setlang.php"
             });});
     </script>

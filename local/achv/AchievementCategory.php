@@ -10,7 +10,7 @@ class AchievementCategory extends AchievementSystem
         if(!$this->isCategory)throw new \TypeError("Constructing an ACHV category with a textcode of a item.");
     }
 
-    public function GetNext(): AchievementCategory|false
+    public function Next(): AchievementCategory|false
     {
         $itemSize = hexdec(bin2hex(shmop_read(self::$shmop, $this->memloc+self::$prefixOffsetSize, self::$prefixOffsetSize)));
         $loc = $this->memloc + self::$prefixOffsetSize + $itemSize;

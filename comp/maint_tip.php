@@ -4,7 +4,7 @@
 text-align: center; display: none">
     <span style="margin: auto; border-radius: 4px; border: 3px #c04444 solid; font-size: 16px; padding: 6px;
     background-color: rgba(245, 245, 245, 0.9);">
-        <?php echo memtxt(1561,131/*REMAP%maintenance_issued_alert*/);?>
+        <?php echo memtxt(2328,131/*REMAP%maintenance_issued_alert*/);?>
     </span>
 </div>
 <script>
