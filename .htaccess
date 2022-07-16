@@ -8,9 +8,12 @@ RewriteRule ^ - [NC,L,R=404]
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^ %{REQUEST_URI}.php [NC,L]
 
-RewriteCond %{REQUEST_URI} ^/(achievements|handbook|mainpage|server|error)(?![a-zA-Z0-9/]+)
+Redirect /index /
+Redirect /mainpage /
+
+RewriteCond %{REQUEST_URI} ^/(achievements|handbook|mainpage|server|error)(?![a-zA-Z0-9/\.]+) [NC]
 RewriteRule ^ /subpages/%1 [NC,L]
-RewriteCond %{REQUEST_URI} ^/(403|404)(?![a-zA-Z0-9/]+)
+RewriteCond %{REQUEST_URI} ^/(403|404)(?![a-zA-Z0-9/\.]+) [NC]
 RewriteRule ^ /subpages/deny.inc?code=%1 [NC,L]
 
 ErrorDocument 403 /subpages/deny?code=403

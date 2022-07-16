@@ -1,0 +1,75 @@
+<style>
+    .item_board{
+        position: absolute;
+        left: 222px;
+        width: 190px;
+        height: auto;
+        aspect-ratio: 240 / 310;
+        user-select: none;
+        mask-image: url('../../img/game/itemmask.png');
+        mask-repeat: no-repeat;
+        mask-size: 100%;
+        -webkit-mask-image: url('../../img/game/itemmask.png');
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: 100%;
+        overflow: hidden;
+        background-color: #6f7782;
+    }
+    .item_itemback{
+        width: 110%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: -5%;
+        opacity: 0.41;
+    }
+    .item_itembar{
+        width: 100%;
+        height: auto;
+        margin-top: 85%;
+        display: block;
+        position: absolute;
+    }
+    .item_itemimg{
+        width: 75%;
+        height: auto;
+        position: absolute;
+        top: 10%;
+        left: 12.5%;
+    }
+    .item_border{
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 5.05%;
+    }
+    .item_starbar{
+        position: absolute;
+        top: 70.5%;
+        left: 0;
+        width: 100%;
+        height: 12%;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+    .item_starbar>img{
+        height: 100%;
+        width: auto;
+        display: block;
+        margin: 0 -0.5%;
+    }
+    .item_numtext{
+        +
+    }
+</style>
+<div class="item_board">
+    <img class="item_border">
+    <img class="item_itemback" src="../../img/game/itemback1.jpg">
+    <img class="item_itembar" src="../../img/game/itembar.png">
+    <img class="item_itemimg" src="../../img/game/items/mora.png">
+    <div class="item_starbar">
+        <img src="../../img/game/star.png">
+    </div>
+</div>
+<img src="../../img/test.png" style="width: 200px; left:2px;position:absolute;">

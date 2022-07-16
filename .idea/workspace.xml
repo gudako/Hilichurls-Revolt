@@ -6,33 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/img/game/itembar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/game/itemmask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/game/star.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/test.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/layout/res/item.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comp/error_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/error_tip.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comp/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/mainbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comp/maint_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/maint_tip.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init/init_const.php" beforeDir="false" afterPath="$PROJECT_DIR$/init/init_const.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init/init_ex.php" beforeDir="false" afterPath="$PROJECT_DIR$/init/init_ex.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/lang.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/DatabaseSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/DatabaseSystem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/achv/AchievementCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/achv/AchievementItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/achv/AchievementSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/AchievementSystem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/achv/achv.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/achv/achv.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/local/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/item.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/item.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/subpages/achievements.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/achievements.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subpages/deny.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/deny.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/subpages/handbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/handbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subpages/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/subpages/server.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/utils/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/loadMemByTextcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/utils/loadMemByTextcode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/setlang.php" beforeDir="false" afterPath="$PROJECT_DIR$/window/setlang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subpages/mainpage.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +142,7 @@
       <workItem from="1657674976169" duration="20070000" />
       <workItem from="1657785160944" duration="54151000" />
       <workItem from="1657897891926" duration="14021000" />
-      <workItem from="1657943010804" duration="7571000" />
+      <workItem from="1657943010804" duration="18148000" />
     </task>
     <servers />
   </component>
@@ -171,19 +156,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/local/achv/AchievementItem.php</url>
-          <line>13</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/test.php</url>
-          <line>3</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/lang/lang.php</url>
           <line>29</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/test.php</url>
+          <line>5</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

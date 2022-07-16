@@ -6,7 +6,10 @@ require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
         die();
     }
 ?>
+<!DOCTYPE html>
+<html lang="<?php echo getlang();?>">
 <head>
+    <meta charset="UTF-8">
     <title><?php echo memtxt(1824,53/*REMAP%game_name*/);?></title>
 </head>
 <body>
