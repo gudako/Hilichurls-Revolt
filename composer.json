@@ -15,8 +15,11 @@
     "ext-mysqli": "*",
     "ext-openssl": "*"
   },
+  "require-dev": {
+    "phpunit": "*"
+  },
   "autoload": {
-    "classmap": ["local"],
-    "files": ["init/init_ex.php", "init/init_const.php", "lang/lang.php"]
+    "classmap": ["local", "utils"],
+    "files": ["init/init_include.php"]
   }
 }

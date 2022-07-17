@@ -20,7 +20,7 @@ abstract class AchievementSystem
     {
         if(!isset(self::$config)) self::$config = new ConfigSystem();
         if(!isset(self::$shmop, self::$prefixHashSize, self::$prefixOffsetSize, self::$dataOffset)){
-            self::$shmop = shmop_open(self::$config->GetShmopIdAchv(), 'a', 0600, self::$config->GetShmopAchvMaxsz());
+            self::$shmop = shmop_open(self::$config->GetShmopIdAchv(), 'a', 0600, self::$config->GetShmopSizeAchv());
             if(self::$shmop===false)throw new \Error("Failed to open the ACHV shmop object.",ERROR_HIGHLIGHTED);
             self::$dataOffset =hexdec(bin2hex(shmop_read(self::$shmop, 0, 2)));
             self::$prefixHashSize = hexdec(bin2hex(shmop_read(self::$shmop, 2, 1)));
@@ -35,7 +35,7 @@ abstract class AchievementSystem
 
     private static function memachv():array{
         $config = new ConfigSystem();
-        $shmop = shmop_open($config->GetShmopIdAchv(),"a",0600,$config->GetShmopAchvMaxsz());
+        $shmop = shmop_open($config->GetShmopIdAchv(),"a",0600,$config->GetShmopSizeAchv());
         $args = func_get_args();
         if(count($args)===1){
             if(gettype($args[0])==='array'){

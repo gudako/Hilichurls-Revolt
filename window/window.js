@@ -6,9 +6,9 @@
  */
 class ModelWindow{
 
-    private opened: boolean = false;
-    private title: undefined|string|Object;
-    private context: string;
+    private opened = false;
+    private title;
+    private context;
 
     /**
      * Represents a model window.
@@ -18,7 +18,7 @@ class ModelWindow{
      * If this is an object, it must be a return value from static function {@link createTitleSetting}.
      * @param {string} context - A link to a PHP or HTML file that is loaded to be the context of the window.
      */
-    constructor(title:undefined|string|Object, context:string):string{
+    constructor(title, context){
         this.title = title;
         this.context = context;
     }
@@ -29,7 +29,7 @@ class ModelWindow{
      * @param {function} done - What's going to happen after the sort is done?
      * @return {boolean} Returns true on success. Note that when the window is fading you can't...
      */
-    open(done:function):boolean{
+    open(done){
         if(this.opened) return false;
         const windowThing = $('<div id="modal_back" style="display: none"></div>').append('<div id="window"></div>');
         let titleThing = $('<div id="title_box"></div>');
@@ -80,7 +80,7 @@ class ModelWindow{
      * @param {function} done - What's going to happen after the sort is done?
      * @return {boolean} Returns true on success. Note that when the window is fading you can't...
      */
-    close(done:function):boolean{
+    close(done){
         if (!this.opened) return false;
         $('#modal_back').fadeOut('fast', ()=>{
             $('#modal_back').remove();

@@ -16,7 +16,7 @@ function memtxt():string{
         "(array \$offsetAndSize). When called with array, the array structure must be \$offsetAndSize = [int \$offset, int \$size].";
 
     $config = new ConfigSystem();
-    $shmop = shmop_open($config->GetShmopIdLang(), 'a', 0600, $config->GetShmopLangMaxsz());
+    $shmop = shmop_open($config->GetShmopIdLang(), 'a', 0600, $config->GetShmopSizeLang());
 
     $args= func_get_args();
     if(count($args) == 1){

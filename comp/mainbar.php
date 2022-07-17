@@ -1,6 +1,4 @@
 <?php
-if(!isset($_SESSION))session_start();
-require_once 'lang/lang.php';
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="../css/mainbar.css" rel="stylesheet"/>

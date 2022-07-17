@@ -2,22 +2,19 @@
 namespace local;
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
 
-use mysql_xdevapi\Exception;
-use mysqli;
-
 class DatabaseSystem
 {
-    private static mysqli $_database;
+    private static \mysqli $_database;
     private static ConfigSystem $config;
 
     function __construct(){
         if(!isset(self::$config)) self::$config = new ConfigSystem();
     }
 
-    function GetConnection(bool $withHostname=true): mysqli
+    function GetConnection(bool $withHostname=true): \mysqli
     {
         if(isset($this::$_database)) return $this::$_database;
-        $this::$_database = new mysqli($withHostname?self::$config->GetDBHostname():null,
+        $this::$_database = new \mysqli($withHostname?self::$config->GetDBHostname():null,
             self::$config->GetDBUsername(), self::$config->GetDBPassword());
         return $this::$_database;
     }
@@ -29,7 +26,7 @@ class DatabaseSystem
     }
 
     function MakeLog(string $trace, string $errnoStr = null, int $importance=0):int{
-        throw new Exception();
+        throw new \Exception();
         //todo
     }
 }

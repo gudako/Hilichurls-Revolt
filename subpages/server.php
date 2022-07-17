@@ -1,6 +1,5 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/utils/AES-256-CBC.php";
 use local\ConfigSystem;
 use local\DatabaseSystem;
 
@@ -23,9 +22,9 @@ const clickHereToContinue = "<a style='display: block;' href='server'>Click here
 //maintenance mode initialized?
 $shmop_maint = shmop_open($config->GetShmopIdMaintenance(), 'w', permissionFull, 26);
 $maint_initialized = $shmop_maint !== false;
-$shmop_lang = shmop_open($config->GetShmopIdLang(), 'w', permissionFull, $config->GetShmopLangMaxsz());
+$shmop_lang = shmop_open($config->GetShmopIdLang(), 'w', permissionFull, $config->GetShmopSizeLang());
 $lang_initialized = $shmop_lang !== false;
-$shmop_achv = shmop_open($config->GetShmopIdAchv(), 'w', permissionFull, $config->GetShmopAchvMaxsz());
+$shmop_achv = shmop_open($config->GetShmopIdAchv(), 'w', permissionFull, $config->GetShmopSizeAchv());
 $achv_initialized = $shmop_achv !== false;
 $db_initialized = $database->IsInitialized();
 
@@ -36,7 +35,7 @@ $colortxt = function(string $text, string $color = 'black'):string{
 
 $err = function(string $text)use($colortxt){
     echo $colortxt("Error detected during the process that the progress must be ended. For details see below......", colorError).clickHereToContinue;
-    throw new Error($text, ERROR_DEV);
+    throw new Error($text, EX_CODE_SHOWDETAILS);
 };
 
 $postButton = function (string $call, string $text): void{
@@ -111,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         echo $colortxt("Loading the ".($isAchv?"achievements data":"language-text file")." into memory......",
             colorProcess).PHP_EOL;
-        $shmopMaxSize = $isAchv? $config->GetShmopAchvMaxsz(): $config->GetShmopLangMaxsz();
+        $shmopMaxSize = $isAchv? $config->GetShmopSizeAchv(): $config->GetShmopSizeLang();
         $shmop = shmop_open($isAchv?$config->GetShmopIdAchv():$config->GetShmopIdLang(),
             'c', permissionFull, $shmopMaxSize);
         if($shmop===false) $err("Unable to create or open the SHMOP object.");
@@ -128,7 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $bytesTakenByHashtable =$shmopTupleSize * $spaceCount;
         $byte = 4 + $bytesTakenByHashtable;
         $hashSizePrecent = 1.0*$bytesTakenByHashtable/$shmopMaxSize;
-
 
         if($hashSizePrecent>=0.5){
             echo $colortxt("WARNING: Hashtable is too big that may use up meaningless memory: Occupied ".

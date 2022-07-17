@@ -6,9 +6,9 @@
   "shmop_id_maintenance": 101010,
   "shmop_id_lang": 114514,
   "shmop_id_achv": 233333,
-  "shmop_lang_max_size": 100000,
-  "shmop_achv_max_size": 200000,
+  "shmop_size_lang": 100000,
+  "shmop_size_achv": 200000,
   "all_languages": ["en", "zh"],
   "shmop_hashtable_multi": 5,
-  "log_encrypt_key": "Lappland is NO.1 under the sky!!"
+  "logging_encrypt_key": "Lappland is NO.1 under the sky!!"
 }
