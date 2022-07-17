@@ -17,7 +17,8 @@ class Clickable extends LayoutObject{
     _elementFile(){};
     _postImport(element){
         if(this._onClick!==null){
-            element.children("style-click").replaceWith("style"); //todo test
+            const locked=element.children("style-click");
+            locked.replaceWith("<style>"+locked.html()+"</style>"); //todo test
         }
     };
 

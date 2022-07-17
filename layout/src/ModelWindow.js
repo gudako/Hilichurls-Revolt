@@ -4,7 +4,7 @@
  * @author gudako
  */
 class ModelWindow extends LayoutObject{
-
+//todo transforms.
     /**
      * @private
      * Whether the window is currently in opened state.

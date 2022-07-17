@@ -73,6 +73,19 @@
         height: calc(100% - 4px);
         width: calc(100% - 4px);
     }
+    .item_select_cover{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: whitesmoke;
+        transition-duration: 0.2s;
+        opacity: 0;
+    }
+    .item_board:hover>.item_select_cover{
+        opacity: 0.1;
+    }
 </style>
 <div class="item_board">
     <img class="item_itemback" src="../../img/game/itemback1.jpg">
@@ -83,4 +96,5 @@
     </div>
     <div class="item_numtext">0</div>
     <div class="item_border"></div>
+    <div class="item_select_cover"></div>
 </div>
