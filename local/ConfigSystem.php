@@ -115,14 +115,16 @@ class ConfigSystem
     }
 
     /**
-     * @return int
+     * Gets the hashtable space multiplier.
+     * @return int Returns the multiplier.
      */
     function GetShmopHashtableMulti():int{
         return self::$shmopHashtableMulti;
     }
 
     /**
-     * @return string
+     * Gets the key for decrypting details of unlogged errors or exceptions.
+     * @return string Returns the AES-256-CBC key.
      */
     function GetLogEncryptKey():string{
         return self::$logEncryptKey;
@@ -151,7 +153,7 @@ class ConfigSystem
     function GetMaintenanceTime(): false|\DateInterval{
         $shmopMaint = shmop_open(self::$shmopIdMaintenance, 'a', 0600, 26);
         if($shmopMaint===false)
-            throw new \Exception("Trying to get the maintenance state while the server is down.",EX_CODE_IMPORTANT);
+            throw new \Exception("Trying to get the maintenance state while the maint memory remains uninitialized.",EX_CODE_IMPORTANT);
 
         $maintStr = shmop_read($shmopMaint, 0, 26);
         if($maintStr === str_repeat("0", 26)) return false;

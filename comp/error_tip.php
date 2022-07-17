@@ -1,8 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-use local\ConfigSystem;
 
-$config = new ConfigSystem();
+$config = new \local\ConfigSystem();
 $isServerDown = $config->IsServerDown();
 $inMaintenance = $config->InMaintenance();
 $alright = !$isServerDown && !$inMaintenance;
@@ -18,17 +17,16 @@ $alright = !$isServerDown && !$inMaintenance;
                 <?php
                 if($isServerDown) echo "<font style='font-weight: bold;'>SERVER ERROR<br>The server is currently down.</font>";
                 elseif($inMaintenance){
-                    echo "<font style='font-weight: bold;'>".memtxt(1877,63/*REMAP%maintenance_alert_title*/).'</font>';
+                    echo "<font style='font-weight: bold;'>".memtxt(1942,63/*REMAP%maintenance_alert_title*/).'</font>';
                     echo "<br><div style='border: 1px gray solid; padding: 6px; margin: 10px 20px 5px 20px;".
                         " font-size: 14px; text-align: left; max-height: 200px; overflow-y: auto; color: #3d3b3b;'>";
                     $mText = file_get_contents($_SERVER['DOCUMENT_ROOT']."/_maint.txt");
                     $lang = getlang();
                     $matches = array();
                     preg_match("/(?<=<".$lang.">)(.|\r|\n)*(?=<\/".$lang.">)/m",$mText,$matches);
-                    echo str_replace(["\r\n","\n"],"<br>", trim($matches[0])).'</div>';
+                    echo str_replace(["\r\n","\n"],"<br>", trim($matches[0]))."</div>";
                 }
-                else echo memtxt(2459,137/*REMAP%pages_js_alert_text*/);
-                ?>
+                else echo memtxt(2524,137/*REMAP%pages_js_alert_text*/);?>
             </div>
         </div>
     </div>

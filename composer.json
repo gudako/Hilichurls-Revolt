@@ -16,10 +16,10 @@
     "ext-openssl": "*"
   },
   "require-dev": {
-    "phpunit": "*"
+    "phpunit/phpunit": "*"
   },
   "autoload": {
     "classmap": ["local", "utils"],
-    "files": ["init/init_include.php"]
+    "files": ["init/init_include.php", "lang/lang.php"]
   }
 }

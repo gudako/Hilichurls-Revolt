@@ -112,17 +112,17 @@ body {
 }
 
 #bar5_text1_div{
-    padding-left: 5vw;
+    padding-left: min(5vw,50px);
     padding-bottom: min(calc(28px + 1.8vw),46px);
     font-size: min(calc(12.25px + 1.35vw),25.75px);
 }
 
 #bar5_text2_div{
     position: absolute;
-    top: min(calc(67.6667px + 2.33333vw),100px);
+    top: min(calc(67.6667px + 2.33333vw),90px);
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.76);
-    padding: 1vw;
+    padding: min(1vw,10px);
     font-size: min(calc(23.3333px + 1.66667vw),40px);
     left: min(calc(-70px + 56vw),490px);
 }
@@ -160,7 +160,7 @@ body {
 }
 
 #play_button{
-    margin: 45px 0 ;
+    margin: 45px 0;
     font-size: 20px;
     font-weight: bold;
     display: block;

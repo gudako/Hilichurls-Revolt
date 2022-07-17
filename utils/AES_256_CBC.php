@@ -1,5 +1,6 @@
 <?php
 namespace utils;
+
 /**
  * A static class providing the basic methods for AES-256-CBC encrypt&decrypt for plain texts.
  */

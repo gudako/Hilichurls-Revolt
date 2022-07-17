@@ -3,7 +3,7 @@
 <html lang="<?php echo getlang();?>">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo memtxt(1824,53/*REMAP%game_name*/);?></title>
+    <title><?php echo memtxt(1889,53/*REMAP%game_name*/);?></title>
 </head>
 <body>
 <?php require_once 'comp/page.php';?>

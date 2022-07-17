@@ -6,8 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    '6124b4c8570aa390c21fafd04a26c69f' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     'f9e61f18f0291090ecf3f67a829046de' => $vendorDir . '/athari/yalinqo/YaLinqo/Linq.php',
-    '6dbc42b229729ba1cb98e8df08a04483' => $baseDir . '/init/init_ex.php',
-    '774dcde4454719466d2683502b37ef4a' => $baseDir . '/init/init_const.php',
+    'ec07570ca5a812141189b1fa81503674' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+    '16553e02cbeff81d92122254a241c993' => $baseDir . '/init/init_include.php',
     '88dd806882df5b46df98f4a2be036e1b' => $baseDir . '/lang/lang.php',
 );

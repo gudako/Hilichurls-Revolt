@@ -83,13 +83,12 @@ $exHandler = function (Throwable $exception)use($handler){
     $writeTrace($exception);
     $importance = match ($exception->getCode()) {
         EX_CODE_EXPECTED => 0,
-        EX_CODE_IMPORTANT => 1,
+        EX_CODE_IMPORTANT => 2,
         EX_CODE_SHOWDETAILS => -1,
-        default => 0,
+        default => 1,
     };
     $handler($trace,-1, $importance);
 };
-
 
 /**
  * The handler for errors. It's a callback for predefined call.

@@ -3,8 +3,8 @@
 <html lang="<?php echo getlang();?>">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo memtxt(1824,53/*REMAP%game_name*/).' - '.
-            memtxt(5217,36/*REMAP%achievements_title_suffix*/);?></title>
+    <title><?php echo memtxt(1889,53/*REMAP%game_name*/).' - '.
+            memtxt(5282,36/*REMAP%achievements_title_suffix*/);?></title>
 </head>
 <body>
 <link href="../css/commonplace.css" rel="stylesheet"/>

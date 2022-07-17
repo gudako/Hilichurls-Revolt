@@ -1,5 +1,6 @@
 <?php
 namespace utils;
+
 /**
  * A static class providing the method for getting a textcode's representing memory offset&size in a Shmop memory object.
  */
@@ -14,6 +15,7 @@ class TextcodeDecoder{
      * @param \Shmop $shmop The Shmop memory object.
      * @param string $textcode The textcode to be searched.
      * @return array An array with two integers, first is the offset and the second is the size, of the textcode's item in the memory.
+     * @throws \InvalidArgumentException When unable to find a item related to the textcode.
      */
     static function ParseByTextcode(\Shmop $shmop, string $textcode):array{
         $dirEnd =hexdec(bin2hex(shmop_read($shmop, 0, 2)));

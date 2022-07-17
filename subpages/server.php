@@ -364,7 +364,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo $colortxt("Decrypting the input data......",colorProcess).PHP_EOL;
         $bin= hex2bin(trim($_POST['log_dec']));
         if($bin===false)$err("It's not a valid hex input.");
-        $msg = decrypt($bin,$config->GetLogEncryptKey());
+        $msg = \utils\AES_256_CBC::Decrypt($bin,$config->GetLogEncryptKey());
         if($msg===null)$err("Failed to decrypt.");
         $msg=str_replace(["\r\n","\n"],"<br>",$msg);
         echo $colortxt("Success! The decrypted message is below:",colorSuccess).PHP_EOL.

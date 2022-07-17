@@ -6,9 +6,9 @@
  */
 class ModelWindow{
 
-    private opened = false;
-    private title;
-    private context;
+    #opened = false;
+    #title;
+    #context;
 
     /**
      * Represents a model window.
@@ -19,8 +19,8 @@ class ModelWindow{
      * @param {string} context - A link to a PHP or HTML file that is loaded to be the context of the window.
      */
     constructor(title, context){
-        this.title = title;
-        this.context = context;
+        this.#title = title;
+        this.#context = context;
     }
 
     /**
@@ -30,44 +30,43 @@ class ModelWindow{
      * @return {boolean} Returns true on success. Note that when the window is fading you can't...
      */
     open(done){
-        if(this.opened) return false;
+        if(this.#opened) return false;
         const windowThing = $('<div id="modal_back" style="display: none"></div>').append('<div id="window"></div>');
         let titleThing = $('<div id="title_box"></div>');
-        if(typeof this.title === 'object'){
-            const titleObj = this.title, text = titleObj['text'], iconlink = titleObj['iconlink'],
-                color = titleObj['color'], backcolor = titleObj['backcolor'], hasclosebtn = titleObj['hasclosebtn'];
+        if(typeof this.#title === 'object'){
+            const titleObj = this.#title, text = titleObj["text"], iconlink = titleObj["iconlink"],
+                color = titleObj["color"], backcolor = titleObj["backcolor"], hasclosebtn = titleObj["hasclosebtn"];
 
-            titleThing.css('color', color).css('background-color', backcolor);
-            if(typeof iconlink !== 'undefined' && iconlink !== false)
+            titleThing.css("color", color).css('background-color', backcolor);
+            if(iconlink !== null)
                 titleThing.append('<img id="title_icon" src="/img/'+iconlink+'">');
             titleThing.append('<span id="title_text">'+text+'</span>');
             if(hasclosebtn)
-                $('<a id="close_button" onclick="closeWindow()"></a>').appendTo(titleThing)
+                $('<a id="close_button" onclick="modelWindow.close();"></a>').appendTo(titleThing)
                     .append('<img src="/img/pages/icons/close.png">');
             finish(this);
         }
-        else if(typeof this.title === 'string'){ //type: string, path rel to window
-            $.get('window/'+this.title).done((content)=>{
+        else if(typeof this.#title === "string"){
+            $.get('window/'+this.#title).done((content)=>{
                 titleThing.append($(content));
                 finish(this);
             });
         }
-        else if (typeof this.title === 'undefined' || this.title===false){
-            titleThing = '';
+        else if (typeof this.#title === "undefined" || this.#title===false){
+            titleThing = "";
             finish(this);
         }
-        else console.error("Invalid type of parameter \"title\".", this.title);
+        else console.error("Invalid type of parameter \"title\".", this.#title);
 
-        function finish(self:ModelWindow){
-            $.get('window/'+self.context).done((content)=>{
+        function finish(self){
+            $.get("window/"+self.#context).done((content)=>{
                 const windowObj = windowThing.children('#window');
-                if (titleThing!=='')
-                    windowObj.append(titleThing).append('<div id="title_separator"></div>');
-                windowObj.append('<div id="content_box"></div>').children('#content_box').append($(content));
-                $('body').append('<link href="/css/window.css" rel="stylesheet"/>').append(windowThing);
+                if (titleThing!=="") windowObj.append(titleThing).append("<div id='title_separator'></div>");
+                windowObj.append('<div id="content_box"></div>').children("#content_box").append($(content));
+                $("body").append('<link href="/css/window.css" rel="stylesheet"/>').append(windowThing);
                 windowThing.fadeIn('fast', ()=>{
-                    self.opened=true;
-                    if(typeof done==='function') done();
+                    self.#opened=true;
+                    if(typeof done==="function") done();
                 });
             })
         }
@@ -81,11 +80,11 @@ class ModelWindow{
      * @return {boolean} Returns true on success. Note that when the window is fading you can't...
      */
     close(done){
-        if (!this.opened) return false;
-        $('#modal_back').fadeOut('fast', ()=>{
+        if (!this.#opened) return false;
+        $('#modal_back').fadeOut("fast", ()=>{
             $('#modal_back').remove();
-            this.opened = false;
-            if(typeof done==='function') done();
+            this.#opened = false;
+            if(typeof done==="function") done();
         });
         return true;
     }
