@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
-
-#modal_back{
+#window_modal_back{
     background: rgba(0,0,0,0.4);
     position: fixed;
     padding: 0;
@@ -36,7 +34,7 @@
     }
 }
 
-#title_box{
+#window_title_box{
     display: flex;
     padding: 8px 10px;
     margin: 2px 0;
@@ -46,7 +44,7 @@
     background-color: #bbffff;
 }
 
-#title_separator{
+#window_title_separator{
     display: block;
     width: 100%;
     background-color: #02021c;
@@ -54,31 +52,31 @@
     margin-top: -3px;
 }
 
-#close_button{
+#window_close_button{
     margin-left: auto;
     transition-duration: 0.15s;
     user-select: none;
 }
 
-#close_button>img{
+#window_close_button>img{
     width: 17px;
     height: auto;
 }
 
-#close_button:hover{
+#window_close_button:hover{
     opacity: 0.6;
 }
 
-#close_button:active{
+#window_close_button:active{
     opacity: 0.4;
 }
 
-#content_box{
+#window_content_box{
     display: block;
     margin: 16px 14px;
 }
 
-.press_button{
+.window_press_button{
     border-radius: 3px;
     padding: 4px 12px;
     background-color: #dedede;
@@ -89,10 +87,10 @@
     cursor: pointer;
 }
 
-.press_button:hover{
+.window_press_button:hover{
     background-color: #cbcbcb;
 }
 
-.press_button:active{
+.window_press_button:active{
     background: linear-gradient(0deg, #d0d0d0, #c0c0c0);
 }

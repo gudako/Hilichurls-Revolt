@@ -7,9 +7,9 @@
     <option value="zh" <?php echo getlang()=="en"?"selected":"";?>>中文</option>
 </select>
 <p id="submit_line" style="margin: 10px 0; display: flex;">
-    <a class="press_button" style="margin-right: 16px"
-       onclick="setLang('windowed_lang')">
+    <a class="window_press_button" style="margin-right: 16px"
+       onclick="setLangCookie('windowed_lang')">
         <?php echo memtxt(2332,31/*REMAP%common_confirm*/);?>
     </a>
-    <a class="press_button" onclick="modelWindow.close();"><?php echo memtxt(2363,30/*REMAP%common_cancel*/);?></a>
+    <a class="window_press_button" onclick="modelWindow.close();"><?php echo memtxt(2363,30/*REMAP%common_cancel*/);?></a>
 </p>

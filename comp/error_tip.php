@@ -8,7 +8,7 @@ $alright = !$isServerDown && !$inMaintenance;
 ?>
 <?php echo $alright?'<noscript id="noscript_checker">':'';?>
     <link href="../css/window.css" rel="stylesheet"/>
-    <div id="modal_back">
+    <div id="window_modal_back">
         <div id="window" style="font-size: 21px; padding: 16px 6px; text-align: center;
          border: 3px #d70303 solid;">
             <img src="../img/pages/icons/<?php if($isServerDown)echo 'server_down';elseif($inMaintenance)echo 'maintenance';else echo 'warning';?>.png"

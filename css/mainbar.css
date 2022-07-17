@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
-
 #mainbar{
     display: flex;
     padding: 7px 0 5px 0;
@@ -26,7 +24,7 @@
     color: inherit;
 }
 
-#mainbar>a.norm, #top_menu_button{
+#mainbar>a.mainbar_normal, #mainbar_menu_button{
     padding: 10px 7px;
     margin: 0 7px;
     transition-duration: 0.2s;
@@ -34,33 +32,33 @@
     align-items: center;
 }
 
-#mainbar>a.norm>img, #login_button>img, #top_menu_button>img{
+#mainbar>a.mainbar_normal>img, #mainbar_login_button>img, #mainbar_menu_button>img{
     height: 17px;
     width: auto;
     margin-right: 5px;
 }
 
-#mainbar>a.norm:hover, #top_menu_button:hover{
+#mainbar>a.mainbar_normal:hover, #mainbar_menu_button:hover{
     background-color: #00695f;
 }
 
-#mainbar>a.norm:active, #top_menu_button:active{
+#mainbar>a.mainbar_normal:active, #mainbar_menu_button:active{
     background-color: #009184;
 }
 
-#top_menu_button[opened], #top_menu>a.norm, #top_menu{
+#mainbar_menu_button[opened], #mainbar_menu>a.mainbar_normal, #mainbar_menu{
     background-color: #008b9d;
 }
 
-#top_menu_button[opened]:hover, #top_menu>a.norm:hover{
+#mainbar_menu_button[opened]:hover, #mainbar_menu>a.mainbar_normal:hover{
     background-color: #07a8be;
 }
 
-#top_menu_button[opened]:active, #top_menu>a.norm:active{
+#mainbar_menu_button[opened]:active, #mainbar_menu>a.mainbar_normal:active{
     background-color: #17bdd5;
 }
 
-#login_button{
+#mainbar_login_button{
     border-radius: 3px;
     padding: 6px 16px;
     background-color: #9af1f1;
@@ -73,15 +71,15 @@
     user-select: none;
 }
 
-#login_button:hover{
+#mainbar_login_button:hover{
     background-color: #89e0e0;
 }
 
-#login_button:active{
+#mainbar_login_button:active{
     background: linear-gradient(0deg, #6fe2e2, #4e9c9c);
 }
 
-#logo{
+#mainbar_logo{
     height: 120px;
     width: auto;
     margin: -30px auto -30px 15px;
@@ -89,19 +87,19 @@
     top: 10px;
 }
 
-#lang{
+#mainbar_langselect{
     margin: 0 15px 0 4px;
 }
 
-#top_menu_button{
+#mainbar_menu_button{
     display: none;
 }
 
-#top_menu{
+#mainbar_menu{
     display: none;
 }
 
-#setlang{
+#mainbar_menu_setlang{
     user-select: none;
 }
 
@@ -112,26 +110,26 @@
 }
 
 @media only screen and (max-width: 915px) {
-    #mainbar>a.norm{
+    #mainbar>a.mainbar_normal{
         display: none;
     }
 
-    #top_menu_button{
+    #mainbar_menu_button{
         display: inline;
         cursor: pointer;
     }
 
-    #top_menu_button>img{
+    #mainbar_menu_button>img{
         height: 20px;
         margin-right: 0;
     }
 
-    #lang{
+    #mainbar_langselect{
         display: none;
     }
 
     /*for the top list dropdown menu*/
-    #top_menu{
+    #mainbar_menu{
         display: block;
         position: absolute;
         width: 130px;
@@ -140,7 +138,7 @@
         box-shadow: 3px 3px rgba(136, 136, 136, 0.53);
     }
 
-    #top_menu>a.norm{
+    #mainbar_menu>a.mainbar_normal{
         display: flex;
         align-items: center;
         padding: 5px;
@@ -148,31 +146,31 @@
         cursor: pointer;
     }
 
-    #top_menu>a.norm>img{
+    #mainbar_menu>a.mainbar_normal>img{
         height: 14px;
         width: auto;
     }
 
-    #top_menu>a.norm>span{
+    #mainbar_menu>a.mainbar_normal>span{
         margin-left: auto;
         font-size: 14px;
     }
 }
 
 @media only screen and (max-width: 585px) {
-    #login_button{
+    #mainbar_login_button{
         margin: 0 13px 0 5px;
     }
 
-    #login_button>img{
+    #mainbar_login_button>img{
         display: none;
     }
 
-    #logo{
+    #mainbar_logo{
         margin-left: 5px;
     }
 
-    #top_menu{
+    #mainbar_menu{
         width: 120px;
     }
 }

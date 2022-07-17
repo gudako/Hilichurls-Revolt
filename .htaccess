@@ -1,7 +1,7 @@
 RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} -f
-RewriteCond %{REQUEST_FILENAME} !([^.]+)\/subpages/deny.php [NC]
+RewriteCond %{REQUEST_FILENAME} !([^.]+)\/pages/deny.php [NC]
 RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
 RewriteRule ^ - [NC,L,R=404]
 
@@ -12,12 +12,12 @@ Redirect /index /
 Redirect /mainpage /
 
 RewriteCond %{REQUEST_URI} ^/(achievements|handbook|mainpage|server|error)(?![a-zA-Z0-9/\.]+) [NC]
-RewriteRule ^ /subpages/%1 [NC,L]
+RewriteRule ^ /pages/%1 [NC,L]
 RewriteCond %{REQUEST_URI} ^/(403|404)(?![a-zA-Z0-9/\.]+) [NC]
-RewriteRule ^ /subpages/deny.inc?code=%1 [NC,L]
+RewriteRule ^ /pages/deny.inc?code=%1 [NC,L]
 
-ErrorDocument 403 /subpages/deny?code=403
-ErrorDocument 404 /subpages/deny?code=404
+ErrorDocument 403 /pages/deny?code=403
+ErrorDocument 404 /pages/deny?code=404
 
 Order deny,allow
 <FilesMatch ".+\.(json)$">

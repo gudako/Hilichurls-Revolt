@@ -2,7 +2,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link href="../css/mainbar.css" rel="stylesheet"/>
 <div id="mainbar">
-    <img id="logo" src="img/pages/logo_<?php echo getlang();?>.png">
+    <img id="mainbar_logo" src="img/pages/logo_<?php echo getlang();?>.png">
 
     <!--only shown on larger screen-->
     <?php
@@ -19,19 +19,19 @@
     ?>
 
     <!--only shown on smaller screen-->
-    <span id="top_menu_button">
+    <span id="mainbar_menu_button">
         <img id="top_list_icon" src="../img/pages/icons/top_list.png">
     </span>
 
     <!--the login button-->
-    <span id="login_button">
+    <span id="mainbar_login_button">
         <img src="../img/pages/icons/play.png">
         <?php echo memtxt(2117,40/*REMAP%mainbar_play*/);?>
     </span>
 
     <!--dropdown list to set language-->
     <script>
-        function setLang(target = "lang"){
+        function setLangCookie(target = "lang"){
             const date = new Date();
             date.setTime(date.getTime() + (365*24*60*60*1000));
             const expires = "; expires=" + date.toUTCString();
@@ -39,23 +39,23 @@
             location.reload();
         }
     </script>
-    <select id="lang" onchange="setLang('lang')">
+    <select id="mainbar_langselect" onchange="setLangCookie('lang')">
         <option value="en" <?php echo getlang()=="en"?"selected":"";?>>English</option>
         <option value="zh" <?php echo getlang()=="zh"?"selected":"";?>>中文</option>
     </select>
 
     <!--dropdown list for smaller screen-->
-    <div id="top_menu" style="display: none">
+    <div id="mainbar_menu" style="display: none">
         <?php add_normal_links();?>
-        <a class="norm" id="setlang"><span><?php echo memtxt(2157,48/*REMAP%mainbar_menu_change_lang*/);?></span></a>
+        <a class="mainbar_normal" id="mainbar_menu_setlang"><span><?php echo memtxt(2157,48/*REMAP%mainbar_menu_change_lang*/);?></span></a>
     </div>
 
     <!--for the language change-->
     <link href="../css/window.css" rel="stylesheet"/>
-    <script src="../window/window.js"></script>
+    <script src="../layout/src/ModelWindow.js"></script>
     <script>
         let modelWindow;
-        $("#setlang").click(()=> {
+        $("#mainbar_menu_setlang").click(()=> {
             whenSthMoved("");
             const titleSetting = ModelWindow.createTitleSetting("<?php echo memtxt(2205, 51/*REMAP%setlang_window_title*/);?>");
             modelWindow = new ModelWindow(titleSetting, "setlang");
@@ -65,8 +65,8 @@
 
     <!--script for the dropdown list-->
     <script>
-        const topMenu = $("#top_menu");
-        const topMenuButton = $("#top_menu_button");
+        const topMenu = $("#mainbar_menu");
+        const topMenuButton = $("#mainbar_menu_button");
         const fadeOutTopMenu = function(){
             $(document).add($(window)).off(".closeMenu");
             topMenu.fadeOut("fast", ()=>topMenuButton.removeAttr("opened"));
