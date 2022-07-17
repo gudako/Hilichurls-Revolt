@@ -4,7 +4,7 @@ namespace utils;
 /**
  * A static class providing the method for getting a textcode's representing memory offset&size in a Shmop memory object.
  */
-class TextcodeDecoder{
+final class TextcodeParser{
     /**
      * This is a static class. It cannot be constructed.
      */

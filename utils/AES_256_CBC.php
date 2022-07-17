@@ -4,7 +4,7 @@ namespace utils;
 /**
  * A static class providing the basic methods for AES-256-CBC encrypt&decrypt for plain texts.
  */
-class AES_256_CBC{
+final class AES_256_CBC{
     /**
      * This is a static class. It cannot be constructed.
      */

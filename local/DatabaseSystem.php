@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
 /**
  * A class that manages the database connection and its corresponding actions of the server.
  */
-class DatabaseSystem
+final class DatabaseSystem
 {
     private static \mysqli $_database;
     private static ConfigSystem $config;

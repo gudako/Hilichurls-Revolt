@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
 /**
  * A class that represents the config settings as in /local/config.json
  */
-class ConfigSystem
+final class ConfigSystem
 {
     private static bool $isDebug;
     private static string $dbHostname, $dbUsername, $dbPassword;

@@ -1,8 +1,8 @@
 /**
  * Represents a modal window. Only one instance can be opened on a single page.
- * @property {boolean} opened - Whether the window is currently in opened state.
- * @property {undefined|string|Object} title - The window's title, see details in {@link createTitleSetting}.
- * @property {string} context - The window's context file link.
+ * @property {boolean} #opened - Whether the window is currently in opened state.
+ * @property {undefined|string|Object} #title - The window's title, see details in {@link createTitleSetting}.
+ * @property {string} #context - The window's context file link.
  */
 class ModelWindow{
 

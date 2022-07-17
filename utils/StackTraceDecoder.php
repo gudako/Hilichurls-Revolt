@@ -4,7 +4,7 @@ namespace utils;
 /**
  * A static class providing a method for getting a throwable stack as string in a readable format.
  */
-class StackTraceDecoder{
+final class StackTraceDecoder{
     /**
      * This is a static class. It cannot be constructed.
      */
