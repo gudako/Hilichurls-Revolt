@@ -6,32 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layout/Clickable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layout/LayoutObject.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layout/src/ItemBox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comp/error_tip.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/error_tip.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comp/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/mainbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/commonplace.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/commonplace.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/error.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/lowbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/lowbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/mainbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/mainpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/mainpage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/window.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/window.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/item.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/res/item.html" beforeDir="false" afterPath="$PROJECT_DIR$/layout/res/item.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subpages/achievements.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/achievements.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subpages/deny.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/deny.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subpages/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/error.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subpages/handbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/handbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subpages/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/server.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/layout/res/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/setlang.php" beforeDir="false" afterPath="$PROJECT_DIR$/layout/res/setlang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window/window.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/src/ModelWindow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/Clickable.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/Clickable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/LayoutObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/LayoutObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/src/ItemBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/src/ItemBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/src/ModelWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/src/ModelWindow.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +30,8 @@
         <option value="SCSS File" />
         <option value="composer.json" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -198,7 +177,7 @@
       <workItem from="1657785160944" duration="54151000" />
       <workItem from="1657897891926" duration="14021000" />
       <workItem from="1657943010804" duration="22871000" />
-      <workItem from="1658034061421" duration="22728000" />
+      <workItem from="1658034061421" duration="29365000" />
     </task>
     <servers />
   </component>

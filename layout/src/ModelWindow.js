@@ -1,7 +1,7 @@
 /**
+ *
  * Represents a modal window. Only one instance can be opened on a single page.
  * @author gudako
- * @implements {Clickable}
  */
 class ModelWindow extends LayoutObject{
 
