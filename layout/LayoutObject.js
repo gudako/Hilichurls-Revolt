@@ -6,11 +6,11 @@
 class LayoutObject{
     // ----------------- FIELDS DEFINITION ----------------- //
     /**
-     * @protected
+     * @private
      * A JQuery object containing the element of the layout.
      * @type jQuery
      */
-    _element;
+    #element;
 
     /**
      * @protected
@@ -63,6 +63,16 @@ class LayoutObject{
         if(parent instanceof LayoutObject){
             parent._children.push(this);
         }
+        let fileContent;
+        const uri = location.hostname+this._elementFile();
+        $.get({
+            async: false,
+            url: uri,
+            error: (jqXHR,textStatus,errorThrown)=>{throw new Error("Failed to load file \""+uri+"\": "+errorThrown);},
+            success: (data, textStatus, jqXHR)=>{fileContent = data;}
+        });
+        this.#element = fileContent.parseHTML(); //todo things
+        this._postImport(this.#element);
     };
 
     // ------------------ PUBLIC METHODS DOWN ------------------ //
@@ -116,6 +126,42 @@ class LayoutObject{
      */
     _fontSizeMultiplier(){};
 
+    /**
+     * @function
+     * @abstract
+     * @protected
+     * Get the HTML or PHP file path to import as the element.
+     * @return {string} Returns the file path relative to the root, with a backslash at the beginning.
+     */
+    _elementFile(){};
+
+    /**
+     * @function
+     * @abstract
+     * @protected
+     * The actions to be done after the element file import. The element remains invisible when this function is called.
+     * @param element The element of the layout object.
+     */
+    _postImport(element){};
+
+    /**
+     * @function
+     * @abstract
+     * @protected
+     * The actions to be done after the element is fully shown.
+     * @param element The element of the layout object.
+     */
+    _postAppear(element){};
+
+    /**
+     * @function
+     * @abstract
+     * @protected
+     * The actions to be done after the element is removed.
+     * @param element The element of the layout object.
+     */
+    _postDestruct(element){};
+
     // VIRTUAL METHODS
     /**
      * @function virtual
@@ -123,7 +169,7 @@ class LayoutObject{
      * Actions after the fade in animation, in attempt to show the layout object.
      */
     _show(){
-        if(!this._element.length||!this._element.is(":visible"))
+        if(!this.#element.length||!this.#element.is(":visible"))
             throw new Error("Check your \"action\" function in \"appear\". It must make the element visible.");
         this._visible = true;
     }
@@ -134,9 +180,10 @@ class LayoutObject{
      * Actions after the fade out animation, in attempt to remove the layout object.
      */
     _remove(){
-        if(this._element.length)
+        if(this.#element.length)
             throw new Error("Check your \"action\" function in \"disappear\". It must make the element invisible.");
         this._visible = false;
+        this._children.forEach((currentValue)=>currentValue.disappear());
     }
 
     // FINAL METHODS
@@ -153,11 +200,10 @@ class LayoutObject{
      * If this parameter is false, the element will directly show without animation.
      * @return {boolean} False only if the element already visible.
      */
-    appear(action=false){
+    appear(action:(element:jQuery,prop:Object,callback:Function)=>void=false){
         if(this._visible) return false;
-
         let append2;
-        if(this._parent instanceof LayoutObject) append2 = this._parent._element;
+        if(this._parent instanceof LayoutObject) append2 = this._parent.#element;
         else if(typeof this._parent === "string"){
             append2 = this._parent;
             if($(append2).length===0) throw new Error("Cannot find an object matching the parent css selector.");
@@ -165,22 +211,24 @@ class LayoutObject{
         }
         else throw new Error("Invalid type of \"_parent\" field.");
 
-        this._element.hide().appendTo(append2).css("position", "absolute")
+        this.#element.hide().appendTo(append2).css("position", "absolute")
             .css("top", this._position[0]).css("left", this._position[1])
-            .css("height", this._width/this.aspectRatio()).css("width",this._width);
+            .css("height", this._width/this.aspectRatio()).css("width",this._width)
+            .css("font-size", (this._width*this._fontSizeMultiplier())+"%");
 
         if(typeof action === "function") {
-            action(this._element,
+            action(this.#element,
                 {
                     top: this._position[0],
                     left: this._position[1],
                     width: this._width,
                     height: 1.0 * this._width / this.aspectRatio()
-                }, this._show);
+                },()=>{ this._show();this._postAppear(this.#element)});
         }
         else if(action === false){
-            this._element.show();
+            this.#element.show();
             this._show();
+            this._postAppear(this.#element);
         }
         else throw new Error("Invalid type of parameter \"action\".");
         return true;
@@ -197,12 +245,14 @@ class LayoutObject{
      * If this parameter is false, the element will directly disappear without animation.
      * @return {boolean} False only if the element already invisible.
      */
-    disappear(action=false){
+    disappear(action:(element:jQuery,callback:Function)=>void=false){
         if(!this._visible) return false;
-        if(typeof action === "function") action(this._element, this._remove);
+        if(typeof action === "function") action(this.#element, ()=>{this._remove();
+            this._postDestruct(this.#element);});
         else if(action === false){
-            this._element.remove();
+            this.#element.remove();
             this._remove();
+            this._postDestruct(this.#element);
         }
         else throw new Error("Invalid type of parameter \"action\".");
         return false;

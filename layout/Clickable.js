@@ -5,23 +5,29 @@
  */
 class Clickable extends LayoutObject{
 
-    /**
-     @constructor
-     @abstract
-     @param {false|Function<Event>} onClick The action to be performed on the click.
-     */
-    constructor(onClick=false) {
-        super();
+    _onClick;
 
+    constructor(width, position, parent="body", onClick:(event:Event)=>void=null){
+        super(width, position, parent);
+        this._onClick = onClick;
     }
 
-    _show() {
-        super._show();
+    aspectRatio(){};
+    _fontSizeMultiplier(){};
+    _elementFile(){};
+    _postImport(element){
+        if(this._onClick!==null){
+            element.children("style-click").replaceWith("style"); //todo test
+        }
+    };
 
+    _postAppear(element) {
+        super._postAppear(element);
+        if(this._onClick!==null) element.click(this._onClick);
     }
 
-    _remove() {
-        super._remove();
-        this._element.off();
+    _postDestruct(element) {
+        super._postDestruct(element);
+        element.off("click");
     }
 }

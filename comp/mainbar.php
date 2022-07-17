@@ -7,8 +7,8 @@
     <!--only shown on larger screen-->
     <?php
     function add_normal_link(string $name, int $textMemOffset, int $textMemSize): void{
-        echo '<a class="norm" href="'. $name .'.php"><img src="img/pages/icons/'. $name .'.png">'. '<span>'.
-            memtxt($textMemOffset, $textMemSize) . '</span></a>' . PHP_EOL;
+        echo '<a class="norm" href="'. $name .'.php"><img src="img/pages/icons/'. $name .'.png"><span>'.
+            memtxt($textMemOffset, $textMemSize) . "</span></a>" . PHP_EOL;
     }
     function add_normal_links(): void{
         add_normal_link("mainpage",2005,39/*REMAP%mainbar_mainpage*/);
