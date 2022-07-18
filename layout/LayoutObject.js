@@ -23,23 +23,9 @@ class LayoutObject{
     /**
      * @private
      * Indicates the size [height, width] of the element.
-     * @type [number,number]
+     * @type [string,string]
      */
     #size;
-
-    /**
-     * @private
-     * Indicates the positioning type (relative; absolute; ...) of the element.
-     * @type string
-     */
-    #position;
-
-    /**
-     * @private
-     * Indicates the display type (block; inline; ...) of the element.
-     * @type string
-     */
-    #display;
 
     /**
      * @private
@@ -62,17 +48,12 @@ class LayoutObject{
      Construct a new layout object.
      @param size {string|[0,string]} The width of the element. Can also be a tuple, but the first part indicating the height is ignored.
      @param loc {[string,string]} The location of the element, indicating the css property "top" and "left".
-     @param position {string} The css property "position".
-     @param display {string} The css property "display".
      @param parent {LayoutObject|string} The parent of the layout object. It can be a string css selector, or another {@link LayoutObject}.
      */
-    constructor(size, loc=["0", "0"], position="absolute",
-                display="block", parent="body"){
+    constructor(size, loc=["0", "0"], parent="body"){
         const width = Array.isArray(size)?size[1]:size;
         this.#size =[width/this.aspectRatio(),width];
-        this.#set4DirectionVal("",[position[0],"initial","initial",position[1]]);
-        this.#position = position;
-        this.#display = display;
+        this.#set4DirectionVal("",[loc[0],"initial","initial",loc[1]]);
         this.#parent = parent;
         if(parent instanceof LayoutObject) parent.#children.push(this);
         LayoutObject.#getAvailable4dAttrs().forEach(elem=>this.#init4DirectionVal(elem));
@@ -308,25 +289,63 @@ class LayoutObject{
     /**
      * @function final
      * Get or set an attribute of the element.
-     * @return {[number,number]} Returns a readonly tuple [top, left].
+     * @param {string} key - The css property to set or get.
+     * If this is empty, it targets the [top, right, bottom, left] css property;
+     * If this is empty or "margin", "padding", getting this value returns a string that may contain relative units.
+     * Otherwise, the get&set functions the same as jQuery.css
+     * @param {any} value If this is set to null, the css property is got; Otherwise, the property is written as this value.
+     * @return {void|any} Returns only when it's to get an attribute.
      */
-    attr(key="", value=undefined){
-        if(LayoutObject.#getAvailable4dAttrs().)//todo
-    }
+    css(key="", value=null){
+        key = key.trim().toLowerCase();
+        let subkey;
+        if(["top","right","bottom","left"].includes(key)){
+            subkey = key;
+            key = "";
+        }
+        else{
+            if(key.endsWith("-top")){
+                subkey = "top";
+                key = key.substring(0,key.length-1-4);
+            }
+            else if(key.endsWith("-right")){
+                subkey = "right";
+                key = key.substring(0,key.length-1-6);
+            }
+            else if(key.endsWith("-bottom")){
+                subkey = "bottom";
+                key = key.substring(0,key.length-1-7);
+            }
+            else if(key.endsWith("-left")){
+                subkey = "left";
+                key = key.substring(0,key.length-1-5);
+            }
+            else subkey=null;
+        }
 
-
-
-    /**
-     * @function final
-     * Get or set the element's padding.
-     * @param {undefined|any} value -
-     * If this is unset, the function returns the padding value;
-     * If this is set to a number or a tuple [all] or [vert, horiz] or [top, right, bottom, left],
-     * the padding value will be set correspondingly.
-     * @return {void|[number,number]} Returns the jQuery object.
-     */
-    padding(value){
-        return this.#set4DirectionVal("padding",value);
+        const opt = LayoutObject.#getAvailable4dAttrs().includes(key);
+        let localset = opt&&subkey!==null?key+"-"+subkey:null;
+        if(localset!==null){
+            if(value===null) return this[localset];
+            else {
+                this[localset] = value;
+                if(localset[0]==="-")localset=localset.substring(1);
+                this.#element.css(localset, value);
+            }
+        }
+        else if(opt){
+            if(value===null){
+                this.#set4DirectionVal(key, value);
+            }
+            else{
+                return [this[key+"-top"],this[key+"-right"],this[key+"-bottom"],this[key+"-left"]].join(" ");
+            }
+        }
+        else{
+            if(subkey!==null) key += "-" + subkey;
+            if(value===null) return this.#element.css(key);
+            this.#element.css(key, value);
+        }
     }
 
     /**

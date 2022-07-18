@@ -15,16 +15,14 @@ class Clickable extends LayoutObject{
      @constructor
      @abstract
      Construct a new clickable layout object.
-     @param positioning {string} The positioning type (relative; absolute;) of the element.
-     @param size {string|number|[0,string|number]} The size of the element. Can also be a tuple, but the first part indicating the height is ignored.
-     @param position {[string|number,string|number]} The position of the element, indicating the css property "top" and "left".
-     The element is always "position: absolute".
+     @param size {string|[0,string]} The width of the element. Can also be a tuple, but the first part indicating the height is ignored.
+     @param loc {[string,string]} The location of the element, indicating the css property "top" and "left".
      @param onClick {Function<Event>|null} The handler for the click. If this is set to null, it will behave as not clickable
      and related animations (e.g. hover effect) will not display.
      @param parent {LayoutObject|string} The parent of the layout object. It can be a string css selector, or another {@link LayoutObject}.
      */
-    constructor(size, position, positioning="absolute", onClick:(event:Event)=>void=null, parent="body"){
-        super(size, position, positioning, parent);
+    constructor(size, loc=["0", "0"], onClick:(event:Event)=>void=null, parent="body"){
+        super(size, loc, parent);
         this._onClick = onClick;
     }
 
