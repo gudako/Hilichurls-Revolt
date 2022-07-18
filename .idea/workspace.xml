@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/Clickable.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/Clickable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layout/LayoutObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/LayoutObject.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +27,8 @@
         <option value="SCSS File" />
         <option value="composer.json" />
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -177,7 +176,7 @@
       <workItem from="1657943010804" duration="22871000" />
       <workItem from="1658034061421" duration="32362000" />
       <workItem from="1658091724630" duration="2110000" />
-      <workItem from="1658130586609" duration="20277000" />
+      <workItem from="1658130586609" duration="26869000" />
     </task>
     <servers />
   </component>

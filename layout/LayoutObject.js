@@ -54,15 +54,15 @@ class LayoutObject{
     constructor(size, loc=["0", "0"], parent="body"){
         if(this.aspectRatio()!==0){
             const width = Array.isArray(size)?size[1]:size;
-            this.#size =[width/this.aspectRatio(),width]; //todo ooooooooooooooooooooooooooooooooooo
+            this.#size =[LayoutObject.#calcAttr(width,val=>val/this.aspectRatio()),width];
         }
         else this.#size = size;
         this.size(this.#size);
-
-        this.#set4DirectionVal("",[loc[0],"initial","initial",loc[1]]);
         this.#parent = parent;
         if(parent instanceof LayoutObject) parent.#children.push(this);
+        
         LayoutObject.#getAvailable4dAttrs().forEach(elem=>this.#init4DirectionVal(elem));
+        this.#set4DirectionVal("",[loc[0],"initial","initial",loc[1]]);
 
         let fileContent;
         const uri = location.hostname+this._elementFile();
@@ -82,43 +82,49 @@ class LayoutObject{
      @function
      @static
      @private
-     @param {string|Array} value
-     @return {[string,string,string,string]}
+     Convert a string of a 4-dimensional css value to an array with these 4 values.
+     @param {string} value It can be a css 4-dimension attr value (a string).
+     A 4-dimension attr is an attr that can be split into values of 4 directions, like "margin" can be split into
+     "margin-top", "margin-right", "margin-bottom" and "margin-left".
+     @return {[string,string,string,string]} An array with four values, respectively representing "-top", "-right", "-bottom", "-left".
      */
     static #parse4dimensionVal(value){
-        switch (typeof value){
-            case "number":
-                const strval = value.toString()+(value===0?"":"px");
-                return [strval, strval, strval, strval];
+        let unitstrs = value.replace("  "," ").trim().split(" ");
+        const lens = unitstrs.length;
+        if(lens===0||lens===3||lens>4)
+            throw new Error("Invalid css-unit-string count for 4-dimension parsing.");
 
-            case "object":
-                if(!Array.isArray(value))
-                    throw new Error("Cannot parse type \"object\" that isn't an Array to a 4-dimension value.");
-            case "string":
-                const matcher = new RegExp("/(0|[+-]?\d+(\.\d+)?(cm|mm|in|px|pt|pc|em|ex|ch|rem|vw|vh|vmin|vmax|%)|auto|unset|inherit|initial|revert|hold)/i")
-                let unitstrs =typeof value==="object"?value:value.replace("  "," ").trim().split(" ");
-                if(unitstrs.length===0||unitstrs.length===3||unitstrs.length>4)
-                    throw new Error("Invalid css-unit-string count for 4-dimension parsing.");
-
-                unitstrs = unitstrs.map(elem=>elem.trim().toLowerCase());
-                unitstrs.forEach(elem=>{if(elem.match(matcher)===null)
-                    throw new Error("String \""+elem+"\" is not a valid unit-string for css.");})
-
-                let res;
-                switch (unitstrs.length){
-                    case 1:
-                        res=[unitstrs[0],unitstrs[0],unitstrs[0],unitstrs[0]];
-                        break;
-                    case 2:
-                        res=[unitstrs[0],unitstrs[1],unitstrs[0],unitstrs[1]];
-                        break;
-                    case 4:
-                        res=[unitstrs[0],unitstrs[1],unitstrs[2],unitstrs[3]];
-                }
-                return res;
-            default:
-                throw new Error("Cannot parse type \""+typeof value+"\" to a 4-dimension value.");
+        unitstrs = unitstrs.map(elem=>elem.trim().toLowerCase());
+        let res;
+        switch (unitstrs.length){
+            case 1:
+                res=[unitstrs[0],unitstrs[0],unitstrs[0],unitstrs[0]];
+                break;
+            case 2:
+                res=[unitstrs[0],unitstrs[1],unitstrs[0],unitstrs[1]];
+                break;
+            case 4:
+                res=[unitstrs[0],unitstrs[1],unitstrs[2],unitstrs[3]];
         }
+        return res;
+    }
+
+    /**
+     @function
+     @static
+     @private
+     Do calculation on an attribute string with unit.
+     @param val {string} The value to be calculated.
+     @param alg {Function<number,number>} The function to calculate the value.
+     @return {string} The calculation result.
+     */
+    static #calcAttr(val, alg:(val:number)=>number){
+        val = val.trim();
+        let i;
+        for(i=0; i<=val.length-1; i++) if(val[i].toLowerCase()!==val[i].toUpperCase()) break;
+        const numpart = val.substring(0,i);
+        const unitpart = val.substring(i);
+        return alg(parseInt(numpart))+unitpart;
     }
 
     /**
@@ -134,7 +140,8 @@ class LayoutObject{
     /**
      @function
      @private
-     @param {string} attr
+     Initialize the 4-dimensional attr values that should be stored in the object.
+     @param {string} attr The 4-dimensional css attr to give a memory to.
      */
     #init4DirectionVal(attr){
         this[attr+"-top"] = "0";
@@ -152,8 +159,9 @@ class LayoutObject{
     /**
      @function
      @private
-     @param attr {string}
-     @param value {string}
+     Set a 4-dimensional css attr value and store it in memory.
+     @param attr {string} The css attr name.
+     @param value {string} The value to be set.
      */
     #set4DirectionVal(attr, value){
         const unitstrs = LayoutObject.#parse4dimensionVal(value);
@@ -162,7 +170,6 @@ class LayoutObject{
         rep[attr+"-right"] = unitstrs[1];
         rep[attr+"-bottom"] = unitstrs[2];
         rep[attr+"-left"] = unitstrs[3];
-        rep.freeze();
         const outside = this;
         for (const [key, value] of Object.entries(rep)) {
             if(value==="hold") continue;
@@ -301,8 +308,16 @@ class LayoutObject{
             }
         }
         else{
-            if(value[0]!==null){
-                this.# //todo ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            const outside = this;
+            if(value[1]!==null){
+                this.#size[1] = value[1];
+                this.#size[0] = LayoutObject.#calcAttr(value[1],val=>val/outside.aspectRatio());
+                this.#element.css("width", value[1]);
+            }
+            else if(value[0]!==null){
+                this.#size[0] = value[0];
+                this.#size[1] =  LayoutObject.#calcAttr(value[0],val=>val*outside.aspectRatio());
+                this.#element.css("width", value[1]);
             }
         }
         return this;
