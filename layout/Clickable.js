@@ -7,7 +7,7 @@ class Clickable extends LayoutObject{
     /**
      * @protected
      * The event handler when the element is clicked. Null if not set.
-     * @type Function<event>|null
+     * @type {Function<event>|null}
      */
     _onclick:(event:Event)=>void;
 
@@ -52,5 +52,16 @@ class Clickable extends LayoutObject{
     _postDestruct(element) {
         super._postDestruct(element);
         element.off("click");
+    }
+
+    // -------------- PUBLIC METHODS DOWN -------------- //
+
+    /**
+     * @function
+     * Get whether this object is clickable.
+     * @return {boolean} True if clickable.
+     */
+    isClickable(){
+        return this._onclick!==null;
     }
 }

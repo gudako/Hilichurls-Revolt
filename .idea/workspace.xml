@@ -7,7 +7,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6d4d8834-1684-4e8f-87f7-13596878be88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comp/mainbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/comp/mainbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/Clickable.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/Clickable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layout/LayoutObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/LayoutObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/Selectable.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/Selectable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/res/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/layout/window/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/res/setlang.php" beforeDir="false" afterPath="$PROJECT_DIR$/layout/window/setlang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout/src/ModelWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/layout/window/ModelWindow.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,11 +139,11 @@
       <recent name="F:\Hilichurls Revolt\server_call" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Hilichurls Revolt\layout\window" />
       <recent name="F:\Hilichurls Revolt\layout" />
       <recent name="F:\Hilichurls Revolt\layout\res" />
       <recent name="F:\Hilichurls Revolt\layout\src" />
       <recent name="F:\Hilichurls Revolt\init" />
-      <recent name="F:\Hilichurls Revolt\subpages" />
     </key>
   </component>
   <component name="RunManager">
@@ -176,7 +182,7 @@
       <workItem from="1657943010804" duration="22871000" />
       <workItem from="1658034061421" duration="32362000" />
       <workItem from="1658091724630" duration="2110000" />
-      <workItem from="1658130586609" duration="26869000" />
+      <workItem from="1658130586609" duration="30824000" />
     </task>
     <servers />
   </component>

@@ -52,7 +52,7 @@
 
     <!--for the language change-->
     <link href="/css/window.css" rel="stylesheet"/>
-    <script src="/layout/src/ModelWindow.js"></script>
+    <script src="/layout/window/ModelWindow.js"></script>
     <script>
         let modelWindow;
         $("#mainbar_menu_setlang").click(()=> {
@@ -92,5 +92,4 @@
             else fadeOutTopMenu();
         };
     </script>
-
 </div>

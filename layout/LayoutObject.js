@@ -8,13 +8,6 @@ class LayoutObject{
     // PRIVATE FIELDS
     /**
      * @private
-     * A JQuery object containing the element of the layout.
-     * @type jQuery
-     */
-    #element;
-
-    /**
-     * @private
      * Indicates whether the layout object is visible.
      * @type boolean
      */
@@ -41,6 +34,14 @@ class LayoutObject{
      */
     #children = [];
 
+    // PROTECTED FIELDS
+    /**
+     * @protected
+     * A JQuery object containing the element of the layout.
+     * @type jQuery
+     */
+    _element;
+
     // ---------------------- CONSTRUCTOR ---------------------- //
     /**
      @constructor
@@ -60,9 +61,10 @@ class LayoutObject{
         this.size(this.#size);
         this.#parent = parent;
         if(parent instanceof LayoutObject) parent.#children.push(this);
-        
+        this._element.css("font-size",LayoutObject.#calcAttr(this.#size[1],val=>val*this._fontSizeMultiplier()));
+
         LayoutObject.#getAvailable4dAttrs().forEach(elem=>this.#init4DirectionVal(elem));
-        this.#set4DirectionVal("",[loc[0],"initial","initial",loc[1]]);
+        this.#set4DirectionVal("",[loc[0],"initial","initial",loc[1]].join(" "));
 
         let fileContent;
         const uri = location.hostname+this._elementFile();
@@ -72,8 +74,8 @@ class LayoutObject{
             error: (jqXHR,textStatus,errorThrown)=>{throw new Error("Failed to load file \""+uri+"\": "+errorThrown);},
             success: (data, textStatus, jqXHR)=>{fileContent = data;}
         });
-        this.#element = fileContent.parseHTML(); //todo things
-        this._postImport(this.#element);
+        this._element = fileContent.parseHTML(); //todo things
+        this._postImport(this._element);
     };
 
     // ----------------- PRIVATE METHODS DOWN ----------------- //
@@ -173,7 +175,7 @@ class LayoutObject{
         const outside = this;
         for (const [key, value] of Object.entries(rep)) {
             if(value==="hold") continue;
-            this.#element.css(key[0]==="-"?key.substring(1):key, value);
+            this._element.css(key[0]==="-"?key.substring(1):key, value);
             outside[key] = value;
         }
     }
@@ -234,7 +236,7 @@ class LayoutObject{
      * Actions after the fade in animation, in attempt to show the layout object.
      */
     _show(){
-        if(!this.#element.length||!this.#element.is(":visible"))
+        if(!this._element.length||!this._element.is(":visible"))
             throw new Error("Check your \"action\" function in \"appear\". It must make the element visible.");
         this.#visible = true;
     }
@@ -245,7 +247,7 @@ class LayoutObject{
      * Actions after the fade out animation, in attempt to remove the layout object.
      */
     _remove(){
-        if(this.#element.length)
+        if(this._element.length)
             throw new Error("Check your \"action\" function in \"disappear\". It must make the element invisible.");
         this.#visible = false;
         this.#children.forEach(val=>val.disappear());
@@ -259,11 +261,11 @@ class LayoutObject{
      * @param {string} key - The value to add.
      */
     _addInterfaceAttr(key){
-        const eAttr = this.#element.attr("data-interface");
+        const eAttr = this._element.attr("data-interface");
         if(typeof eAttr==="undefined"||eAttr===false){
-            this.#element.attr("data-interface",key);
+            this._element.attr("data-interface",key);
         }
-        else this.#element.attr("data-interface",eAttr+" "+key);
+        else this._element.attr("data-interface",eAttr+" "+key);
     }
 
     // ------------------ PUBLIC METHODS DOWN ------------------ //
@@ -300,11 +302,11 @@ class LayoutObject{
         if(this.aspectRatio()===0){
             if(value[0]!==null) {
                 this.#size[0] = value[0];
-                this.#element.css("height", value[0]);
+                this._element.css("height", value[0]);
             }
             if(value[1]!==null) {
                 this.#size[1] = value[1];
-                this.#element.css("width", value[1]);
+                this._element.css("width", value[1]);
             }
         }
         else{
@@ -312,12 +314,12 @@ class LayoutObject{
             if(value[1]!==null){
                 this.#size[1] = value[1];
                 this.#size[0] = LayoutObject.#calcAttr(value[1],val=>val/outside.aspectRatio());
-                this.#element.css("width", value[1]);
+                this._element.css("width", value[1]);
             }
             else if(value[0]!==null){
                 this.#size[0] = value[0];
                 this.#size[1] =  LayoutObject.#calcAttr(value[0],val=>val*outside.aspectRatio());
-                this.#element.css("width", value[1]);
+                this._element.css("width", value[1]);
             }
         }
         return this;
@@ -368,7 +370,7 @@ class LayoutObject{
             else {
                 this[localset] = value;
                 if(localset[0]==="-")localset=localset.substring(1);
-                this.#element.css(localset, value);
+                this._element.css(localset, value);
                 return this;
             }
         }
@@ -379,8 +381,8 @@ class LayoutObject{
         }
         else{
             if(subkey!==null) key += "-" + subkey;
-            if(value===null) return this.#element.css(key);
-            this.#element.css(key, value);
+            if(value===null) return this._element.css(key);
+            this._element.css(key, value);
             return this;
         }
     }
@@ -401,7 +403,7 @@ class LayoutObject{
     appear(action:(element:jQuery,prop:Object,callback:Function)=>void=false){
         if(this.#visible) return false;
         let append2;
-        if(this.#parent instanceof LayoutObject) append2 = this.#parent.#element;
+        if(this.#parent instanceof LayoutObject) append2 = this.#parent._element;
         else if(typeof this.#parent === "string"){
             append2 = this.#parent;
             if($(append2).length===0) throw new Error("Cannot find an object matching the parent css selector.");
@@ -409,18 +411,18 @@ class LayoutObject{
         }
         else throw new Error("Invalid type of \"#parent\" field.");
 
-        this.#element.hide().appendTo(append2);
+        this._element.hide().appendTo(append2);
         if(typeof action === "function") {
-            action(this.#element,
+            action(this._element,
                 {
                     loc: this.css(),
                     size: this.#size
-                },()=>{ this._show();this._postAppear(this.#element)});
+                },()=>{ this._show();this._postAppear(this._element)});
         }
         else if(action === false){
-            this.#element.show();
+            this._element.show();
             this._show();
-            this._postAppear(this.#element);
+            this._postAppear(this._element);
         }
         else throw new Error("Invalid type of parameter \"action\".");
         return true;
@@ -439,12 +441,12 @@ class LayoutObject{
      */
     disappear(action:(element:jQuery,callback:Function)=>void=false){
         if(!this.#visible) return false;
-        if(typeof action === "function") action(this.#element, ()=>{this._remove();
-            this._postDestruct(this.#element);});
+        if(typeof action === "function") action(this._element, ()=>{this._remove();
+            this._postDestruct(this._element);});
         else if(action === false){
-            this.#element.remove();
+            this._element.remove();
             this._remove();
-            this._postDestruct(this.#element);
+            this._postDestruct(this._element);
         }
         else throw new Error("Invalid type of parameter \"action\".");
         return false;
