@@ -46,13 +46,19 @@ class LayoutObject{
      @constructor
      @abstract
      Construct a new layout object.
-     @param size {string|[0,string]} The width of the element. Can also be a tuple, but the first part indicating the height is ignored.
+     @param size {string|[string,string]} The size of the element. For layout with fixed aspect ratio, only a width is needed;
+     Otherwise, both value must be specified.
      @param loc {[string,string]} The location of the element, indicating the css property "top" and "left".
      @param parent {LayoutObject|string} The parent of the layout object. It can be a string css selector, or another {@link LayoutObject}.
      */
     constructor(size, loc=["0", "0"], parent="body"){
-        const width = Array.isArray(size)?size[1]:size;
-        this.#size =[width/this.aspectRatio(),width];
+        if(this.aspectRatio()!==0){
+            const width = Array.isArray(size)?size[1]:size;
+            this.#size =[width/this.aspectRatio(),width]; //todo ooooooooooooooooooooooooooooooooooo
+        }
+        else this.#size = size;
+        this.size(this.#size);
+
         this.#set4DirectionVal("",[loc[0],"initial","initial",loc[1]]);
         this.#parent = parent;
         if(parent instanceof LayoutObject) parent.#children.push(this);
@@ -122,7 +128,7 @@ class LayoutObject{
      @return {Array<string>}
      */
     static #getAvailable4dAttrs(){
-        return ["","margin","padding"];
+        return ["","margin"];
     }
 
     /**
@@ -146,8 +152,8 @@ class LayoutObject{
     /**
      @function
      @private
-     @param {string} attr
-     @param {string} value
+     @param attr {string}
+     @param value {string}
      */
     #set4DirectionVal(attr, value){
         const unitstrs = LayoutObject.#parse4dimensionVal(value);
@@ -192,7 +198,7 @@ class LayoutObject{
      * @protected
      * The actions to be done after the element file import. The element remains invisible when this function is called.
      * Typically, this is used to alter the element's appearance.
-     * @param element The element of the layout object.
+     * @param element {jQuery} The element of the layout object.
      */
     _postImport(element){};
 
@@ -201,7 +207,7 @@ class LayoutObject{
      * @abstract
      * @protected
      * The actions to be done after the element is fully faded in and shown. Typically, this is to add some event handler.
-     * @param element The element of the layout object.
+     * @param element {jQuery} The element of the layout object.
      */
     _postAppear(element){};
 
@@ -210,7 +216,7 @@ class LayoutObject{
      * @abstract
      * @protected
      * The actions to be done after the element is fully faded out and removed. Typically, this is to remove some event handler.
-     * @param element The element of the layout object.
+     * @param element {jQuery} The element of the layout object.
      */
     _postDestruct(element){};
 
@@ -235,11 +241,10 @@ class LayoutObject{
         if(this.#element.length)
             throw new Error("Check your \"action\" function in \"disappear\". It must make the element invisible.");
         this.#visible = false;
-        this.#children.forEach((currentValue)=>currentValue.disappear());
+        this.#children.forEach(val=>val.disappear());
     }
 
     // FINAL METHODS
-
     /**
      * @function final
      * @protected
@@ -261,9 +266,7 @@ class LayoutObject{
      * @function
      * @abstract
      * Get the aspect ratio of the element. Calculated as width/height.
-     * @return {number} Returns the aspect ratio.
-     * For a non-fixed aspect ratio layout, this is calculated as width/height at the call time.
-     * Otherwise, it's a predefined value in the class.
+     * @return {number} Returns the aspect ratio. For a layout object having non-fixed value, this is 0.
      */
     aspectRatio();
 
@@ -279,22 +282,41 @@ class LayoutObject{
 
     /**
      * @function final
-     * Get the size of the element.
-     * @return {[number,number]} Returns a readonly tuple [height, width].
+     * Gets or sets the size of the element.
+     * @param value {null|[null|string,null|string]} A tuple [height, width] to set the size. If height or width is
+     * null, it remains the original. If the aspect ratio is fixed, and both width and height are to set, only the width is counted;
+     * If this is null, the method gets the size.
+     * @return {this|[string,string]} Returns a readonly tuple [height, width] when get; Otherwise, returns this.
      */
-    getSize(){
-        return [this.#size[0],this.#size[1]].freeze();
+    size(value=null){//todo
+        if(value===null) return [this.#size[0],this.#size[1]].freeze();
+        if(this.aspectRatio()===0){
+            if(value[0]!==null) {
+                this.#size[0] = value[0];
+                this.#element.css("height", value[0]);
+            }
+            if(value[1]!==null) {
+                this.#size[1] = value[1];
+                this.#element.css("width", value[1]);
+            }
+        }
+        else{
+            if(value[0]!==null){
+                this.# //todo ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            }
+        }
+        return this;
     }
 
     /**
      * @function final
      * Get or set an attribute of the element.
-     * @param {string} key - The css property to set or get.
+     * @param key {string} The css property to set or get.
      * If this is empty, it targets the [top, right, bottom, left] css property;
-     * If this is empty or "margin", "padding", getting this value returns a string that may contain relative units.
+     * If this is empty or "margin", getting this value returns a string that may contain relative units.
      * Otherwise, the get&set functions the same as jQuery.css
-     * @param {any} value If this is set to null, the css property is got; Otherwise, the property is written as this value.
-     * @return {void|any} Returns only when it's to get an attribute.
+     * @param value {any} If this is set to null, the css property is got; Otherwise, the property is written as this value.
+     * @return {this|any} Returns the result when it's to get an attribute; Otherwise, return this.
      */
     css(key="", value=null){
         key = key.trim().toLowerCase();
@@ -303,25 +325,26 @@ class LayoutObject{
             subkey = key;
             key = "";
         }
-        else{
-            if(key.endsWith("-top")){
-                subkey = "top";
-                key = key.substring(0,key.length-1-4);
-            }
-            else if(key.endsWith("-right")){
-                subkey = "right";
-                key = key.substring(0,key.length-1-6);
-            }
-            else if(key.endsWith("-bottom")){
-                subkey = "bottom";
-                key = key.substring(0,key.length-1-7);
-            }
-            else if(key.endsWith("-left")){
-                subkey = "left";
-                key = key.substring(0,key.length-1-5);
-            }
-            else subkey=null;
+        else if(key.endsWith("-top")){
+            subkey = "top";
+            key = key.substring(0,key.length-1-4);
         }
+        else if(key.endsWith("-right")){
+            subkey = "right";
+            key = key.substring(0,key.length-1-6);
+        }
+        else if(key.endsWith("-bottom")){
+            subkey = "bottom";
+            key = key.substring(0,key.length-1-7);
+        }
+        else if(key.endsWith("-left")){
+            subkey = "left";
+            key = key.substring(0,key.length-1-5);
+        }
+        else subkey=null;
+
+        if(["padding","border","height","width"].includes(key))
+            throw new Error("Unable to set css \""+key+"\": Access denied.");
 
         const opt = LayoutObject.#getAvailable4dAttrs().includes(key);
         let localset = opt&&subkey!==null?key+"-"+subkey:null;
@@ -331,20 +354,19 @@ class LayoutObject{
                 this[localset] = value;
                 if(localset[0]==="-")localset=localset.substring(1);
                 this.#element.css(localset, value);
+                return this;
             }
         }
         else if(opt){
-            if(value===null){
-                this.#set4DirectionVal(key, value);
-            }
-            else{
-                return [this[key+"-top"],this[key+"-right"],this[key+"-bottom"],this[key+"-left"]].join(" ");
-            }
+            if(value===null) this.#set4DirectionVal(key, value);
+            else return [this[key+"-top"],this[key+"-right"],this[key+"-bottom"],this[key+"-left"]].join(" ");
+            return this;
         }
         else{
             if(subkey!==null) key += "-" + subkey;
             if(value===null) return this.#element.css(key);
             this.#element.css(key, value);
+            return this;
         }
     }
 
@@ -372,18 +394,12 @@ class LayoutObject{
         }
         else throw new Error("Invalid type of \"#parent\" field.");
 
-        this.#element.hide().appendTo(append2).css("position", this.#position)
-            .css("top", this.#position[0]).css("left", this.#position[1])
-            .css("height", this.#size[0]).css("width",this.#size[1])
-            .css("font-size", (this.#size[0]*this._fontSizeMultiplier())+"%");
-
+        this.#element.hide().appendTo(append2);
         if(typeof action === "function") {
             action(this.#element,
                 {
-                    top: this.#position[0],
-                    left: this.#position[1],
-                    width: this._width,
-                    height: 1.0 * this._width / this.aspectRatio()
+                    loc: this.css(),
+                    size: this.#size
                 },()=>{ this._show();this._postAppear(this.#element)});
         }
         else if(action === false){

@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Padauk&display=swap');
 
 .item_board{
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: initial;
-    right: initial;
     width: 190px; /* Change this to resize */
     font-size: 220%; /* Change this to resize */
     height: auto;

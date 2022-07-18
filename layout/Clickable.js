@@ -9,21 +9,22 @@ class Clickable extends LayoutObject{
      * The event handler when the element is clicked. Null if not set.
      * @type Function<event>|null
      */
-    _onClick:(event:Event)=>void;
+    _onclick:(event:Event)=>void;
 
     /**
-     @constructor
-     @abstract
-     Construct a new clickable layout object.
-     @param size {string|[0,string]} The width of the element. Can also be a tuple, but the first part indicating the height is ignored.
-     @param loc {[string,string]} The location of the element, indicating the css property "top" and "left".
-     @param onClick {Function<Event>|null} The handler for the click. If this is set to null, it will behave as not clickable
-     and related animations (e.g. hover effect) will not display.
-     @param parent {LayoutObject|string} The parent of the layout object. It can be a string css selector, or another {@link LayoutObject}.
+     * @constructor
+     * @abstract
+     * Construct a new clickable layout object.
+     * @param size {string|[string,string]} The size of the element. For layout with fixed aspect ratio, only a width is needed;
+     * Otherwise, both value must be specified.
+     * @param loc {[string,string]} The location of the element, indicating the css property "top" and "left".
+     * @param onclick {Function<Event>|null} The handler for the click. If this is set to null, it will behave as not clickable
+     * and related animations (e.g. hover effect) will not display.
+     * @param parent {LayoutObject|string} The parent of the layout object. It can be a string css selector, or another {@link LayoutObject}.
      */
-    constructor(size, loc=["0", "0"], onClick:(event:Event)=>void=null, parent="body"){
+    constructor(size, loc=["0", "0"], onclick:(event:Event)=>void=null, parent="body"){
         super(size, loc, parent);
-        this._onClick = onClick;
+        this._onclick = onclick;
     }
 
     /** @inheritdoc */
@@ -44,7 +45,7 @@ class Clickable extends LayoutObject{
     /** @inheritdoc */
     _postAppear(element) {
         super._postAppear(element);
-        if(this._onClick!==null) element.click(this._onClick);
+        if(this._onclick!==null) element.click(this._onclick);
     }
 
     /** @inheritdoc */
