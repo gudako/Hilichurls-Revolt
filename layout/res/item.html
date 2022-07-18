@@ -1,100 +1,12 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Padauk&display=swap');
-    .item_board{
-        position: absolute;
-        width: 190px; /* Change this to resize */
-        font-size: 220%; /* Change this to resize */
-        height: auto;
-        aspect-ratio: 240 / 300;
-        user-select: none;
-        mask-image: url('../../img/game/itemmask.png');
-        mask-repeat: no-repeat;
-        mask-size: 100%;
-        -webkit-mask-image: url('../../img/game/itemmask.png');
-        -webkit-mask-repeat: no-repeat;
-        -webkit-mask-size: 100%;
-        overflow: hidden;
-        background-color: #6f7782;
-        font-weight: bold;
-    }
-    .item_itemback{
-        width: 110%;
-        height: auto;
-        position: absolute;
-        top: 0;
-        left: -5%;
-        opacity: 0.41;
-    }
-    .item_itembar{
-        width: 100%;
-        height: auto;
-        margin-top: 82%;
-        display: block;
-        position: absolute;
-    }
-    .item_itemimg{
-        width: 75%;
-        height: auto;
-        position: absolute;
-        top: 8%;
-        left: 12.5%;
-    }
-    .item_starbar{
-        position: absolute;
-        top: 70.5%;
-        left: 0;
-        width: 100%;
-        height: 12%;
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-    }
-    .item_starbar>img{
-        height: 100%;
-        width: auto;
-        display: block;
-        margin: 0 -0.5%;
-    }
-    .item_numtext{
-        font-family: 'Padauk',sans-serif;
-        text-align: center;
-        display: block;
-        width: 100%;
-        position: absolute;
-        top: 80.5%;
-        color: rgba(0, 0, 0, 0.7);
-    }
-    .item_border{
-        position: absolute;
-        top: 0;
-        left: 0;
-        border: 2px rgba(0, 0, 0, 0.38) solid;
-        border-radius: 5.05%;
-        height: calc(100% - 4px);
-        width: calc(100% - 4px);
-    }
-    .item_select_cover{
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: whitesmoke;
-        transition-duration: 0.2s;
-        opacity: 0;
-    }
-    .item_board:hover>.item_select_cover{
-        opacity: 0.1;
-    }
-</style>
-<div class="item_board">
-    <img class="item_itemback" src="../../img/game/itemback1.jpg">
-    <img class="item_itembar" src="../../img/game/itembar.png">
-    <img class="item_itemimg" src="../../img/game/items/mora.png">
+<div class="item_board" data-interface="clickable selectable " data-selected="true">
+    <link href="/layout/res/css/item.css" rel="stylesheet"/>
+    <img class="item_itemback" src="/img/game/itemback1.jpg">
+    <img class="item_itembar" src="/img/game/itembar.png">
+    <img class="item_itemimg" src="/img/game/items/mora.png">
     <div class="item_starbar">
-        <img src="../../img/game/star.png">
+        <img src="/img/game/star.png">
     </div>
     <div class="item_numtext">0</div>
     <div class="item_border"></div>
-    <div class="item_select_cover"></div>
+    <div class="item_cover"></div>
 </div>

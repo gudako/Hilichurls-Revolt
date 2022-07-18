@@ -4,11 +4,10 @@
 body{
   margin: 0;
   padding: 0;
-  background-image: url("../img/pages/back.jpg");
+  background-image: url("/img/pages/back.jpg");
   font-family: 'Noto Sans SC', sans-serif;
   color: whitesmoke;
 }
-
 div.clip{
   max-width: 1006px;
   margin: auto;
@@ -16,7 +15,6 @@ div.clip{
   border-left: 3px white solid;
   border-right: 3px white solid;
 }
-
 .credit{
   color: gray;
   text-align: right;

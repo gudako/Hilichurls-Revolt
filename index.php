@@ -14,7 +14,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php";
 </head>
 <body>
 <link href="css/commonplace.css" rel="stylesheet"/>
-<link href="css/mainpage.css" rel="stylesheet"/>
+<link href="css/index.css" rel="stylesheet"/>
 <div class="clip">
     <?php require_once "comp/page.php";?>
     <div id="bar1">

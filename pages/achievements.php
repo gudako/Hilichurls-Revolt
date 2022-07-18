@@ -7,8 +7,8 @@
             memtxt(5282,36/*REMAP%achievements_title_suffix*/);?></title>
 </head>
 <body>
-<link href="../css/commonplace.css" rel="stylesheet"/>
-<link href="../css/achievements.css" rel="stylesheet"/>
+<link href="/css/commonplace.css" rel="stylesheet"/>
+<link href="/css/achievements.css" rel="stylesheet"/>
 <div class="clip">
     <?php require_once 'comp/page.php';?>
     <div id="getRoof" class="_top">
@@ -23,7 +23,7 @@
                 <div class="barText">24.5%</div>
             </div>
             <div class="achvTextBox">
-                <img src="../img/game/achi-point.png">
+                <img src="/img/game/achi-point.png">
                 <div>100<sub><sub>/3000</sub></sub></div>
             </div>
         </div>

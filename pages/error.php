@@ -88,7 +88,7 @@ http_response_code(500);
             elseif ($lang ==='zh')echo "服务器拉跨了!";?></div>
         <div><?php if($lang === 'en')echo "That saying, we got those bugs in files......";
             elseif ($lang ==='zh')echo "指的是，这些文件里有一些奇怪的BUG......";?></div>
-        <img src="../img/pages/bug.png">
+        <img src="/img/pages/bug.png">
     </div>
     <a class="small" href="<?php
     function change_url_parameter($url,$parameterName,$parameterValue): string{

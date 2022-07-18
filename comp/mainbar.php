@@ -1,6 +1,6 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT']."/vendor/autoload.php"; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link href="../css/mainbar.css" rel="stylesheet"/>
+<link href="/css/mainbar.css" rel="stylesheet"/>
 <div id="mainbar">
     <img id="mainbar_logo" src="img/pages/logo_<?php echo getlang();?>.png">
 
@@ -20,12 +20,12 @@
 
     <!--only shown on smaller screen-->
     <span id="mainbar_menu_button">
-        <img id="top_list_icon" src="../img/pages/icons/top_list.png">
+        <img id="top_list_icon" src="/img/pages/icons/top_list.png">
     </span>
 
     <!--the login button-->
     <span id="mainbar_login_button">
-        <img src="../img/pages/icons/play.png">
+        <img src="/img/pages/icons/play.png">
         <?php echo memtxt(2117,40/*REMAP%mainbar_play*/);?>
     </span>
 
@@ -51,8 +51,8 @@
     </div>
 
     <!--for the language change-->
-    <link href="../css/window.css" rel="stylesheet"/>
-    <script src="../layout/src/ModelWindow.js"></script>
+    <link href="/css/window.css" rel="stylesheet"/>
+    <script src="/layout/src/ModelWindow.js"></script>
     <script>
         let modelWindow;
         $("#mainbar_menu_setlang").click(()=> {

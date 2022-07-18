@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php require_once 'comp/page.php';?>
-<link href="../css/handbook.css" rel="stylesheet"/>
+<link href="/css/handbook.css" rel="stylesheet"/>
 
 
 </body>

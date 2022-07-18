@@ -11,7 +11,7 @@ text-align: center; display: none">
     let originText = null;
     const grab = function ()
     {
-        $.get("../calls/maint_check").done((data)=>
+        $.get("/calls/maint_check").done((data)=>
         {
             const ret = data.toString();
             if(ret==='true')location.reload();
